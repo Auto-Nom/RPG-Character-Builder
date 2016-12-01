@@ -29,21 +29,21 @@ def d20():
 
 def load_data():
     """ Loads the various data files needed for the program. """
-    with open("rpgSystem.txt", 'r') as rpgs:
-        rpgSystem = json.load(rpgs)
+    with open("DATA/rpgData.json", 'r') as rpgd:
+        rpgData = json.load(rpgd)
     
-    with open("rpgNames.txt", 'r') as rpgn:
-        rpgNames = json.load(rpgn)
+    with open("DATA/namesData.json", 'r') as rpgn:
+        namesData = json.load(rpgn)
     
-    with open("rpgStats.txt", 'r') as rpgt:
-        rpgStats = json.load(rpgt)
+    with open("DATA/statsData.json", 'r') as rpgs:
+        statsData = json.load(rpgs)
 
-    return rpgSystem, rpgNames, rpgStats
+    return rpgData, namesData, statsData
 
 
 # Load the data so it can be used in this file
 # This line won't necessarily stay here but for now it's useful for testing
-rpgSystem, rpgNames, rpgStats = load_data()
+rpgData, namesData, statsData = load_data()
 
 #----------------------------------------------------------------------------
 class Character(object):
@@ -269,13 +269,13 @@ def race_gen():
     while True:
         print()
         print("What race do you want to play as?")
-        print("You can choose from the following: %s" % rpgSystem["Races"])
+        print("You can choose from the following: %s" % rpgData["Races"])
         print('Type "random" for a random race')
         race = input(">")
         race = race.title()        # .title works for Half-Elf etc.
         
         if race.lower() == "random":
-            race = random.choice(rpgSystem["Races"])
+            race = random.choice(rpgData["Races"])
             while True:
                 print("Is a %s fine?" % race)
                 print("Type Yes to confirm, No to re-random, or X to pick for yourself")
@@ -288,14 +288,14 @@ def race_gen():
                     race = "X"
                     break
                 elif confirm == "N" or confirm == "NO":
-                    race = random.choice(rpgSystem["Races"])
+                    race = random.choice(rpgData["Races"])
                 else:
                     print("Invalid command")
         
         if race == "X":
             pass
         
-        elif race not in rpgSystem["Races"]:
+        elif race not in rpgData["Races"]:
             print("Invalid selection\n")
             
         else:
@@ -315,13 +315,13 @@ def role_gen():
     while True:
         print()
         print("What class do you want to play as?")
-        print("You can choose from the following: %s" % rpgSystem["Roles"])
+        print("You can choose from the following: %s" % rpgData["Roles"])
         print('Type "random" for a random class')
         role = input(">")
         role = role.capitalize()
         
         if role.lower() == "random":
-            role = random.choice(rpgSystem["Roles"])
+            role = random.choice(rpgData["Roles"])
             while True:
                 print("Is a %s fine?" % role)
                 print("Type Yes to confirm, No to re-random, or X to pick for yourself")
@@ -334,7 +334,7 @@ def role_gen():
                     role = "X"
                     break
                 elif confirm == "N" or confirm == "NO":
-                    role = random.choice(rpgSystem["Roles"])
+                    role = random.choice(rpgData["Roles"])
                 else:
                     print("Invalid command")
         
@@ -342,7 +342,7 @@ def role_gen():
         if role == "X":
             pass
         
-        elif role not in rpgSystem["Roles"]:
+        elif role not in rpgData["Roles"]:
             print("Invalid selection\n")
         
         else:
@@ -364,11 +364,11 @@ def name_gen(race):
         if name.lower() == "random":
             # Half-Elves don't have their own specific names
             if race == "Half-Elf":
-                name = random.choice(rpgNames["Human_names"] + rpgNames["Elf_names"])
+                name = random.choice(namesData["Human_names"] + namesData["Elf_names"])
             
             else:
                 race_names = race + "_names"
-                name = random.choice(rpgNames[race_names])
+                name = random.choice(namesData[race_names])
         
         print("You are named: %s!" % name)
         return name
@@ -377,9 +377,9 @@ def points_mode():
     """ Manually generate ability scores using the points mode. """
     pDict = {}
     # json changes dict keys to strings even if they were originally integers
-    for i in rpgStats["PointsCost"]:
-        pDict[int(i)] = rpgStats["PointsCost"][i]
-    points = rpgStats["TotalPoints"]
+    for i in statsData["PointsCost"]:
+        pDict[int(i)] = statsData["PointsCost"][i]
+    points = statsData["TotalPoints"]
     
     print("You have %s points to spend" % points)
     print("The ability score to point cost is as follows: \n%s" % pDict)
@@ -480,24 +480,24 @@ def stat_gen():
 def auto_assign(player):
     """ Assigns the character's ability scores based on its class."""
     
-    player.strength = player.scorelist[rpgStats["RoleStats"][player.role]["StrengthPriority"]]
-    player.dexterity = player.scorelist[rpgStats["RoleStats"][player.role]["DexterityPriority"]]
-    player.constitution = player.scorelist[rpgStats["RoleStats"][player.role]["ConstitutionPriority"]]
-    player.intelligence = player.scorelist[rpgStats["RoleStats"][player.role]["IntelligencePriority"]]
-    player.wisdom = player.scorelist[rpgStats["RoleStats"][player.role]["WisdomPriority"]]
-    player.charisma = player.scorelist[rpgStats["RoleStats"][player.role]["CharismaPriority"]]
-    player.hitpoints = rpgStats["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
+    player.strength = player.scorelist[statsData["RoleStats"][player.role]["StrengthPriority"]]
+    player.dexterity = player.scorelist[statsData["RoleStats"][player.role]["DexterityPriority"]]
+    player.constitution = player.scorelist[statsData["RoleStats"][player.role]["ConstitutionPriority"]]
+    player.intelligence = player.scorelist[statsData["RoleStats"][player.role]["IntelligencePriority"]]
+    player.wisdom = player.scorelist[statsData["RoleStats"][player.role]["WisdomPriority"]]
+    player.charisma = player.scorelist[statsData["RoleStats"][player.role]["CharismaPriority"]]
+    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
     
 
 def add_bonuses(player):
     """ Bases the character's bonuses on its race. """
 
-    player.strength += rpgStats["RaceStats"][player.race]["StrengthBonus"]
-    player.dexterity += rpgStats["RaceStats"][player.race]["DexterityBonus"]
-    player.constitution += rpgStats["RaceStats"][player.race]["ConstitutionBonus"]
-    player.intelligence += rpgStats["RaceStats"][player.race]["IntelligenceBonus"]
-    player.wisdom += rpgStats["RaceStats"][player.race]["WisdomBonus"]
-    player.charisma += rpgStats["RaceStats"][player.race]["CharismaBonus"]
+    player.strength += statsData["RaceStats"][player.race]["StrengthBonus"]
+    player.dexterity += statsData["RaceStats"][player.race]["DexterityBonus"]
+    player.constitution += statsData["RaceStats"][player.race]["ConstitutionBonus"]
+    player.intelligence += statsData["RaceStats"][player.race]["IntelligenceBonus"]
+    player.wisdom += statsData["RaceStats"][player.race]["WisdomBonus"]
+    player.charisma += statsData["RaceStats"][player.race]["CharismaBonus"]
     
     # Half-Elves get +1 to 2 scores, randomly chosen for now
     if player.race == "Half-Elf":
@@ -514,7 +514,7 @@ def add_bonuses(player):
 def modifier_assign(player):
     """ Assigns modifiers (just hitpoints for now actually). """
     
-    player.hitpoints = rpgStats["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
+    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
     
 
 def score_assignment(player):
@@ -532,7 +532,7 @@ def score_assignment(player):
         elif assign_mode == "Y" or assign_mode == "YES":
             sList = player.getScorelist()
             sListCopy = sList.copy()
-            abilityCopy = rpgSystem["Attributes"].copy()
+            abilityCopy = rpgData["Attributes"].copy()
             
             while True:
                 print("Your scores to assign are: %s" % sListCopy)

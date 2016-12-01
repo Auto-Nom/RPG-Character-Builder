@@ -9,10 +9,10 @@ import sys
 import json
 import random
 
-import dndSystem as ds
+import rpgSystem as ds
 
 # Load the necessary data into dictionaries
-rpgSystem, rpgNames, rpgStats = ds.load_data()
+rpgData, namesData, statsData = ds.load_data()
 
 def easy_gen(name, race, role):
     """ Automatically generates a character for a given name, race, and role. """
@@ -27,14 +27,14 @@ def easy_gen(name, race, role):
 
 def random_gen():
     """ Randomly generates a character. """
-    race = random.choice(ds.rpgSystem["Races"])
-    role = random.choice(ds.rpgSystem["Roles"])
+    race = random.choice(ds.rpgData["Races"])
+    role = random.choice(ds.rpgData["Roles"])
     
     if race == "Half-Elf":
-        name = random.choice(ds.rpgNames["Human_names"] + ds.rpgNames["Elf_names"])
+        name = random.choice(ds.namesData["Human_names"] + ds.namesData["Elf_names"])
     else:
         race_names = race + "_names"
-        name = random.choice(ds.rpgNames[race_names])
+        name = random.choice(ds.namesData[race_names])
     
     Char = ds.Character(name, race, role)
     sList = ds.stat_roll()
@@ -64,7 +64,7 @@ def new_player():
 #----------------------------------------------------------------------------
 def startCheck():
     if len(sys.argv) != 2:
-        print('Usage: ./dnd.py "random" or ./dnd.py "new"')
+        print('Usage: python rpgBuilder.py "random" or python rpgBuilder.py "new"')
         return 1
     else:
         if sys.argv[1] == "random":
@@ -78,7 +78,7 @@ def startCheck():
             ds.query_save(newb)
             return 0
         else:
-            print('Usage: ./dnd.py "random" or ./dnd.py "new"')
+        print('Usage: python rpgBuilder.py "random" or python rpgBuilder.py "new"')
             return 1
 
 startCheck()
