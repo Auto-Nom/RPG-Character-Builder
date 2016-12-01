@@ -1,0 +1,197 @@
+{
+    "PointsCost": {
+        "8": 0,
+        "9": 1,
+        "10": 2,
+        "11": 3,
+        "12": 4,
+        "13": 5,
+        "14": 7,
+        "15": 9
+    },
+    "RaceStats": {
+        "Dragonborn": {
+            "CharismaBonus": 1,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 2,
+            "WisdomBonus": 0
+        },
+        "Dwarf": {
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 2,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 2,
+            "WisdomBonus": 0
+        },
+        "Elf": {
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 2,
+            "IntelligenceBonus": 1,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0
+        },
+        "Gnome": {
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 1,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 2,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0
+        },
+        "Half-Elf": {
+            "CharismaBonus": 2,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0
+        },
+        "Half-Orc": {
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 1,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 2,
+            "WisdomBonus": 0
+        },
+        "Halfling": {
+            "CharismaBonus": 1,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 2,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0
+        },
+        "Human": {
+            "CharismaBonus": 1,
+            "ConstitutionBonus": 1,
+            "DexterityBonus": 1,
+            "IntelligenceBonus": 1,
+            "StrengthBonus": 1,
+            "WisdomBonus": 1
+        },
+        "Tiefling": {
+            "CharismaBonus": 2,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 1,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0
+        }
+    },
+    "RoleStats": {
+        "Barbarian": {
+            "CharismaPriority": 3,
+            "ConstitutionPriority": 1,
+            "DexterityPriority": 2,
+            "HitpointsBase": 12,
+            "IntelligencePriority": 5,
+            "StrengthPriority": 0,
+            "WisdomPriority": 4
+        },
+        "Bard": {
+            "CharismaPriority": 0,
+            "ConstitutionPriority": 4,
+            "DexterityPriority": 1,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 3,
+            "StrengthPriority": 5,
+            "WisdomPriority": 2
+        },
+        "Cleric": {
+            "CharismaPriority": 3,
+            "ConstitutionPriority": 2,
+            "DexterityPriority": 5,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 4,
+            "StrengthPriority": 1,
+            "WisdomPriority": 0
+        },
+        "Druid": {
+            "CharismaPriority": 5,
+            "ConstitutionPriority": 1,
+            "DexterityPriority": 3,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 2,
+            "StrengthPriority": 4,
+            "WisdomPriority": 0
+        },
+        "Fighter": {
+            "CharismaPriority": 3,
+            "ConstitutionPriority": 2,
+            "DexterityPriority": 1,
+            "HitpointsBase": 10,
+            "IntelligencePriority": 5,
+            "StrengthPriority": 0,
+            "WisdomPriority": 3
+        },
+        "Monk": {
+            "CharismaPriority": 3,
+            "ConstitutionPriority": 4,
+            "DexterityPriority": 0,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 3,
+            "StrengthPriority": 2,
+            "WisdomPriority": 1
+        },
+        "Paladin": {
+            "CharismaPriority": 1,
+            "ConstitutionPriority": 3,
+            "DexterityPriority": 4,
+            "HitpointsBase": 10,
+            "IntelligencePriority": 5,
+            "StrengthPriority": 0,
+            "WisdomPriority": 2
+        },
+        "Ranger": {
+            "CharismaPriority": 5,
+            "ConstitutionPriority": 3,
+            "DexterityPriority": 0,
+            "HitpointsBase": 10,
+            "IntelligencePriority": 4,
+            "StrengthPriority": 2,
+            "WisdomPriority": 1
+        },
+        "Rogue": {
+            "CharismaPriority": 1,
+            "ConstitutionPriority": 5,
+            "DexterityPriority": 0,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 2,
+            "StrengthPriority": 3,
+            "WisdomPriority": 4
+        },
+        "Sorceror": {
+            "CharismaPriority": 0,
+            "ConstitutionPriority": 1,
+            "DexterityPriority": 4,
+            "HitpointsBase": 6,
+            "IntelligencePriority": 2,
+            "StrengthPriority": 5,
+            "WisdomPriority": 3
+        },
+        "Warlock": {
+            "CharismaPriority": 0,
+            "ConstitutionPriority": 1,
+            "DexterityPriority": 4,
+            "HitpointsBase": 8,
+            "IntelligencePriority": 3,
+            "StrengthPriority": 5,
+            "WisdomPriority": 2
+        },
+        "Wizard": {
+            "CharismaPriority": 4,
+            "ConstitutionPriority": 3,
+            "DexterityPriority": 1,
+            "HitpointsBase": 6,
+            "IntelligencePriority": 0,
+            "StrengthPriority": 5,
+            "WisdomPriority": 2
+        }
+    },
+    "TotalPoints": 27
+}

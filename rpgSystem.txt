@@ -1,0 +1,35 @@
+{
+    "Attributes": [
+        "Strength",
+        "Dexterity",
+        "Constitution",
+        "Intelligence",
+        "Wisdom",
+        "Charisma"
+    ],
+    "Races": [
+        "Dwarf",
+        "Elf",
+        "Halfling",
+        "Human",
+        "Dragonborn",
+        "Gnome",
+        "Half-Elf",
+        "Half-Orc",
+        "Tiefling"
+    ],
+    "Roles": [
+        "Barbarian",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorceror",
+        "Warlock",
+        "Wizard"
+    ]
+}
