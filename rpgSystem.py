@@ -90,10 +90,7 @@ class Character(object):
         return self.role
 
     def getAttrib(self, attribute):
-        try:
-            return self.attribDict[attribute]
-        except KeyError:
-            return False
+        return self.attribDict[attribute]
 
     def getAttribDict(self):
         return self.attribDict.copy()
@@ -215,29 +212,32 @@ def query_save(player):
 
 
 def stat_roll():
-        """
-        Rolls ability scores.
+    """
+    Rolls ability scores.
 
-        Output: a list of scores in descending order,
-        which can then be assigned to abilities.
-        """
-        scorelist = []
-        for i in range(6):
-            statlist = []
-            for j in range(4):
-                statlist.append(dice(6))
-            statlist.remove(min(statlist))
+    Output: a list of scores in descending order,
+    which can then be assigned to abilities.
+    """
+    scorelist = []
+    for i in range(len(rpgData["Attributes11"])):
+        statlist = []
+        for j in range(4):
+            statlist.append(dice(6))
+        statlist.remove(min(statlist))
 
-            ability_score = 0
-            for num in statlist:
-                ability_score += num
-            scorelist.append(ability_score)
+        ability_score = 0
+        for num in statlist:
+            ability_score += num
+        scorelist.append(ability_score)
 
-        scorelist.sort(reverse=True)
-        return scorelist
+    scorelist.sort(reverse=True)
+    return scorelist
 
 
 # ---------------------------------------------------------------------------
+# Many of these generation methods will raise KeyError if the data files are
+# improperly configured. More error checking is needed, with useful printout
+
 def race_gen():
     """ Race generation for a Character."""
     while True:
@@ -267,6 +267,7 @@ def race_gen():
                 else:
                     print("Invalid command")
 
+        # Avoid "Invalid selection" printout if the user decides to repick
         if race == "X":
             pass
 
@@ -315,7 +316,7 @@ def role_gen():
                 else:
                     print("Invalid command")
 
-        # avoids the "Invalid selection" printout if the user decided to repick
+        # Avoid the "Invalid selection" printout if the user decides to repick
         if role == "X":
             pass
 
@@ -407,6 +408,7 @@ def points_mode():
                                     scoreI.upper() == "BACK"):
                                 valid = True
                             else:
+                                # such indent, much wow
                                 try:
                                     scoreI = int(scoreI)
                                 except ValueError:
@@ -446,6 +448,7 @@ def stat_gen():
               'or "standard" to get the scores 15, 14, 13, 12 ,10, 8')
         stat_mode = input(">")
         stat_mode = stat_mode.lower()
+        # Standard only applies for D&D
         if stat_mode == "standard":
             sList = [15, 14, 13, 12, 10, 8]
             print("Your stats are:", str(sList))
@@ -455,7 +458,7 @@ def stat_gen():
             rerolls = 2
             sList = stat_roll()
             while rerolls >= 0:
-                print("Your stats are %s" % sList)
+                print("Your stats are:", str(sList))
                 if rerolls > 0:
                     print("Do you want to keep these or reroll?", str(rerolls),
                           "rerolls remaining")
@@ -515,8 +518,9 @@ def add_bonuses(player):
 def modifier_assign(player):
     """ Assigns modifiers (just hitpoints for now actually)."""
 
-    player.hitpoints = (statsData["RoleStats"][player.role]["HitpointsBase"] +
-                        player.calc_mod(player.getAttrib("Constitution")))
+    hp = (statsData["RoleStats"][player.role]["HitpointsBase"] +
+          player.calc_mod(player.getAttrib("Constitution")))
+    player.setHitpoints(hp)
 
 
 def score_assignment(player):

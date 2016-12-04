@@ -10,9 +10,6 @@ import random
 
 import rpgSystem as ds
 
-# Load the necessary data into dictionaries
-# rpgData, namesData, statsData = ds.load_data()
-
 
 def easy_gen(name, race, role):
     """
@@ -35,6 +32,7 @@ def random_gen():
     race = random.choice(ds.rpgData["Races"])
     role = random.choice(ds.rpgData["Roles"])
 
+    # Half-Elves do not have unique names
     if race == "Half-Elf":
         name = random.choice(ds.namesData["Human_names"] +
                              ds.namesData["Elf_names"])
