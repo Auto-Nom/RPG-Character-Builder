@@ -78,7 +78,7 @@ def startCheck():
             ds.query_save(newb)
             return 0
         else:
-        print('Usage: python rpgBuilder.py "random" or python rpgBuilder.py "new"')
+            print('Usage: python rpgBuilder.py "random" or python rpgBuilder.py "new"')
             return 1
 
 startCheck()

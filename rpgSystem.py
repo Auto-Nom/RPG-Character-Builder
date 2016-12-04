@@ -59,13 +59,12 @@ class Character(object):
         self.race = race
         self.role = role
         
-        self.strength = 0
-        self.dexterity = 0
-        self.constitution = 0
-        self.intelligence = 0
-        self.wisdom = 0
-        self.charisma = 0
         self.hitpoints = 0
+        
+        self.attribDict = {}
+        
+        for i in rpgData["Attributes"]:
+            self.attribDict[i] = 0
         
         self.scorelist = []
         
@@ -89,31 +88,22 @@ class Character(object):
         
     def getRole(self):
         return self.role
-        
-    def getStrength(self):
-        return self.strength
-        
-    def getDexterity(self):
-        return self.dexterity
-        
-    def getConstitution(self):
-        return self.constitution
-        
-    def getIntelligence(self):
-        return self.intelligence
-        
-    def getWisdom(self):
-        return self.wisdom
-        
-    def getCharisma(self):
-        return self.charisma
+    
+    def getAttrib(self, attribute):
+        try:
+            return self.attribDict[attribute]
+        except KeyError:
+            return False
+    
+    def getAtribDict(self):
+        return attribDict.copy()
         
     def getHitpoints(self):
         return self.hitpoints
     
     def getScorelist(self):
         return self.scorelist.copy()
-    
+   
     
     # Set attributes
     def setName(self, X):
@@ -124,24 +114,9 @@ class Character(object):
         
     def setRole(self, X):
         self.role = X
-        
-    def setStrength(self, X):
-        self.strength = X
-        
-    def setDexterity(self, X):
-        self.dexterity = X
-        
-    def setConstitution(self, X):
-        self.constitution = X
-        
-    def setIntelligence(self, X):
-        self.intelligence = X
-        
-    def setWisdom(self, X):
-        self.wisdom = X
-        
-    def setCharisma(self, X):
-        self.charisma = X
+    
+    def setAttrib(self, attribute, x):
+        self.attribDict[attribute] = x 
         
     def setHitpoints(self, X):
         self.hitpoints = X
@@ -164,12 +139,7 @@ class Character(object):
         "Name": self.name,
         "Race": self.race,
         "Role": self.role,
-        "Strength": self.strength,
-        "Dexterity": self.dexterity,
-        "Constitution": self.constitution,
-        "Intelligence": self.intelligence,
-        "Wisdom": self.wisdom,
-        "Charisma": self.charisma,
+        "Attributes": self.attribDict,
         "Hitpoints": self.hitpoints
         }
         
@@ -196,8 +166,8 @@ class Character(object):
     
     
     def __str__(self):
-        return "Name: %s\nRace: %s\nClass: %s\nStrength: %s\nDexterity: %s\nConstitution: %s\nIntelligence: %s\nWisdom: %s\nCharisma: %s\nHitpoints: %s\n" \
-        % (str(self.name), str(self.race), str(self.role), str(self.strength), str(self.dexterity), str(self.constitution), str(self.intelligence), str(self.wisdom), str(self.charisma), str(self.hitpoints))
+        return "Name: %s\nRace: %s\nClass: %s\nAttributes: %s\nHitpoints: %s\n" \
+        % (str(self.name), str(self.race), str(self.role), str(self.attribDict), str(self.hitpoints))
 
 #----------------------------------------------------------------------------
 def load_char(filename):
@@ -211,12 +181,8 @@ def load_char(filename):
     
     savedChar = Character(charDict["Name"], charDict["Race"], charDict["Role"])
     
-    savedChar.setStrength(charDict["Strength"])
-    savedChar.setDexterity(charDict["Dexterity"])
-    savedChar.setConstitution(charDict["Constitution"])
-    savedChar.setIntelligence(charDict["Intelligence"])
-    savedChar.setWisdom(charDict["Wisdom"])
-    savedChar.setCharisma(charDict["Charisma"])
+    for i in charDict["Attributes"]:
+        savedChar.setAttrib(i, charDict["Attributes"][i])
     savedChar.setHitpoints(charDict["Hitpoints"])
     
     print("Character %s sucessfully loaded" % savedChar.getName())
@@ -383,7 +349,9 @@ def points_mode():
     
     print("You have %s points to spend" % points)
     print("The ability score to point cost is as follows: \n%s" % pDict)
-    sList = [8, 8, 8, 8, 8, 8]
+    sList = []
+    for i in range(len(rpgData["Attributes"])):
+        sList.append(min(pDict))
     print("Your current scorelist is: %s" % sList)
     
     while True:
@@ -479,42 +447,38 @@ def stat_gen():
 
 def auto_assign(player):
     """ Assigns the character's ability scores based on its class."""
+    for i in rpgData["Attributes"]:
+        prio = i + "Priority"
+        player.setAttrib(i, player.scorelist[statsData["RoleStats"][player.role][prio]])
     
-    player.strength = player.scorelist[statsData["RoleStats"][player.role]["StrengthPriority"]]
-    player.dexterity = player.scorelist[statsData["RoleStats"][player.role]["DexterityPriority"]]
-    player.constitution = player.scorelist[statsData["RoleStats"][player.role]["ConstitutionPriority"]]
-    player.intelligence = player.scorelist[statsData["RoleStats"][player.role]["IntelligencePriority"]]
-    player.wisdom = player.scorelist[statsData["RoleStats"][player.role]["WisdomPriority"]]
-    player.charisma = player.scorelist[statsData["RoleStats"][player.role]["CharismaPriority"]]
-    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
+    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.getAttrib("Constitution"))
     
 
 def add_bonuses(player):
     """ Bases the character's bonuses on its race. """
-
-    player.strength += statsData["RaceStats"][player.race]["StrengthBonus"]
-    player.dexterity += statsData["RaceStats"][player.race]["DexterityBonus"]
-    player.constitution += statsData["RaceStats"][player.race]["ConstitutionBonus"]
-    player.intelligence += statsData["RaceStats"][player.race]["IntelligenceBonus"]
-    player.wisdom += statsData["RaceStats"][player.race]["WisdomBonus"]
-    player.charisma += statsData["RaceStats"][player.race]["CharismaBonus"]
     
+    for i in rpgData["Attributes"]:
+        bonus = i + "Bonus"
+        val = player.getAttrib(i) + statsData["RaceStats"][player.race][bonus]
+        player.setAttrib(i, val)
+    
+   
     # Half-Elves get +1 to 2 scores, randomly chosen for now
     if player.race == "Half-Elf":
         
-        a = random.choice([player.strength, player.dexterity, player.constitution, \
-        player.intelligence, player.wisdom, player.charisma])
-        a += 1
+        a = random.choice(rpgData["Attributes"])
+        val = player.getAttrib(a) + 1
+        player.setAttrib(a, val)
         
-        b = random.choice([player.strength, player.dexterity, player.constitution, \
-        player.intelligence, player.wisdom, player.charisma])
-        b += 1
+        b = random.choice(rpgData["Attributes"])
+        player.getAttrib(a) + 1
+        player.setAttrib(b, val)
     
 
 def modifier_assign(player):
     """ Assigns modifiers (just hitpoints for now actually). """
     
-    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.constitution)
+    player.hitpoints = statsData["RoleStats"][player.role]["HitpointsBase"] + player.calc_mod(player.getAttrib("Constitution"))
     
 
 def score_assignment(player):
@@ -545,18 +509,7 @@ def score_assignment(player):
                     print("That attribute is not available")
                 
                 else:
-                    if abil == "Strength":
-                        player.setStrength(i)
-                    if abil == "Dexterity":
-                        player.setDexterity(i)
-                    if abil == "Constitution":
-                        player.setConstitution(i)
-                    if abil == "Intelligence":
-                        player.setIntelligence(i)
-                    if abil == "Wisdom":
-                        player.setWisdom(i)
-                    if abil == "Charisma":
-                        player.setCharisma(i)
+                    player.setAttrib(abil, i)
                     
                     abilityCopy.remove(abil)
                     sListCopy.remove(i)
