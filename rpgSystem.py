@@ -44,6 +44,21 @@ def load_data():
 
 # Load the data so it can be used in this file
 rpgData, namesData, statsData = load_data()
+# Create individual lists/dictionaries from data
+try:
+    Attributes = rpgData["Attributes"]
+    Races = rpgData["Races"]
+    Roles = rpgData["Roles"]
+except KeyError as err:
+    print("DATA/rpgDATA.json is missing a", str(err), "section")
+    raise
+
+try:
+    RaceStats = statsData["RaceStats"]
+    RoleStats = statsData["RoleStats"]
+except KeyError as err:
+    print("DATA/statsData/json is missing a", str(err), "section")
+    raise
 
 
 # ---------------------------------------------------------------------------
@@ -64,7 +79,7 @@ class Character(object):
 
         self.attribDict = {}
 
-        for i in rpgData["Attributes"]:
+        for i in Attributes:
             self.attribDict[i] = 0
 
         self.scorelist = []
@@ -90,7 +105,11 @@ class Character(object):
         return self.role
 
     def getAttrib(self, attribute):
-        return self.attribDict[attribute]
+        try:
+            return self.attribDict[attribute]
+        except KeyError as err:
+            print("Error: This character has no", str(err), "attribute")
+            return False
 
     def getAttribDict(self):
         return self.attribDict.copy()
@@ -118,7 +137,7 @@ class Character(object):
         self.hitpoints = X
 
     def setScorelist(self, X):
-        """ X is a list of 6 integers."""
+        """ X is a list of integers."""
         self.scorelist = X
 
     def saveChar(self, filename="default"):
@@ -219,7 +238,7 @@ def stat_roll():
     which can then be assigned to abilities.
     """
     scorelist = []
-    for i in range(len(rpgData["Attributes11"])):
+    for i in range(len(Attributes)):
         statlist = []
         for j in range(4):
             statlist.append(dice(6))
@@ -235,21 +254,18 @@ def stat_roll():
 
 
 # ---------------------------------------------------------------------------
-# Many of these generation methods will raise KeyError if the data files are
-# improperly configured. More error checking is needed, with useful printout
-
 def race_gen():
     """ Race generation for a Character."""
     while True:
         print()
         print("What race do you want to play as?")
-        print("You can choose from the following:", str(rpgData["Races"]))
+        print("You can choose from the following:", str(Races))
         print('Type "random" for a random race')
         race = input(">")
         race = race.title()        # .title works for Half-Elf etc.
 
         if race.lower() == "random":
-            race = random.choice(rpgData["Races"])
+            race = random.choice(Races)
             while True:
                 print("Is a", str(race), "fine?")
                 print("Type Yes to confirm, No to re-random",
@@ -263,7 +279,7 @@ def race_gen():
                     race = "X"
                     break
                 elif confirm == "N" or confirm == "NO":
-                    race = random.choice(rpgData["Races"])
+                    race = random.choice(Races)
                 else:
                     print("Invalid command")
 
@@ -271,7 +287,7 @@ def race_gen():
         if race == "X":
             pass
 
-        elif race not in rpgData["Races"]:
+        elif race not in Races:
             print("Invalid selection\n")
 
         else:
@@ -292,13 +308,13 @@ def role_gen():
     while True:
         print()
         print("What class do you want to play as?")
-        print("You can choose from the following:", str(rpgData["Roles"]))
+        print("You can choose from the following:", str(Roles))
         print('Type "random" for a random class')
         role = input(">")
         role = role.capitalize()
 
         if role.lower() == "random":
-            role = random.choice(rpgData["Roles"])
+            role = random.choice(Roles)
             while True:
                 print("Is a", str(role), "fine?")
                 print("Type Yes to confirm, No to re-random",
@@ -312,7 +328,7 @@ def role_gen():
                     role = "X"
                     break
                 elif confirm == "N" or confirm == "NO":
-                    role = random.choice(rpgData["Roles"])
+                    role = random.choice(Roles)
                 else:
                     print("Invalid command")
 
@@ -320,7 +336,7 @@ def role_gen():
         if role == "X":
             pass
 
-        elif role not in rpgData["Roles"]:
+        elif role not in Roles:
             print("Invalid selection\n")
 
         else:
@@ -343,13 +359,18 @@ def name_gen(race):
 
         if name.lower() == "random":
             # Half-Elves don't have their own specific names
+            # Need to make this non-hardcoded; put in the data files somehow
+            # Easiest would be copy paste elf+human names into Half-Elf_names
             if race == "Half-Elf":
                 name = random.choice(namesData["Human_names"] +
                                      namesData["Elf_names"])
 
             else:
                 race_names = race + "_names"
-                name = random.choice(namesData[race_names])
+                try:
+                    name = random.choice(namesData[race_names])
+                except KeyError:
+                    name = random.choice(namesData["Common_Names"])
 
         print("You are named:", str(name) + "!")
         return name
@@ -359,14 +380,18 @@ def points_mode():
     """ Manually generate ability scores using the points mode."""
     pDict = {}
     # json changes dict keys to strings even if they were originally integers
-    for i in statsData["PointsCost"]:
-        pDict[int(i)] = statsData["PointsCost"][i]
-    points = statsData["TotalPoints"]
+    try:
+        for i in statsData["PointsCost"]:
+            pDict[int(i)] = statsData["PointsCost"][i]
+        points = statsData["PointsTotal"]
+    except KeyError as err:
+        print("DATA/statsData does not have a", str(err), "section")
+        return False
 
     print("You have", str(points), "points to spend")
     print("The ability score to point cost is as follows:\n" + str(pDict))
     sList = []
-    for i in range(len(rpgData["Attributes"])):
+    for i in range(len(Attributes)):
         sList.append(min(pDict))
     print("Your current scorelist is:", str(sList))
 
@@ -437,22 +462,31 @@ def points_mode():
 
 def stat_gen():
     """ Generate ability scores using whatever mode is chosen."""
+    try:
+        StandardPoints = statsData["StandardPoints"]
+    except KeyError:
+        StandardPoints = False
     while True:
         print()
         print("Do you want to generate your stats by die rolling,",
-              "the point buy system, or take the standard scores")
+              "the point buy system, or take the standard scores if there are")
         print("This step is just generating the list of scores, you will",
               "assign them to the stats you choose in the following step")
-        print('Type "dice" to have them generated for you,',
-              '"points" to use the point buy system,',
-              'or "standard" to get the scores 15, 14, 13, 12 ,10, 8')
+        print('Type "dice" to have them randomly generated for you,',
+              'or "points" to use the point buy system,')
+        if StandardPoints:
+            print('or type "standard" to get the scores', str(StandardPoints))
         stat_mode = input(">")
         stat_mode = stat_mode.lower()
-        # Standard only applies for D&D
+        # standard only applies if it has been set in statsData
         if stat_mode == "standard":
-            sList = [15, 14, 13, 12, 10, 8]
-            print("Your stats are:", str(sList))
-            return sList
+            if not StandardPoints:
+                print("A set of standard points have not been set in",
+                      "DATA/statsData.json")
+            else:
+                sList = StandardPoints
+                print("Your stats are:", str(sList))
+                return sList
 
         elif stat_mode == "dice":
             rerolls = 2
@@ -484,43 +518,77 @@ def stat_gen():
             print("Invalid command")
 
 
+def modifier_assign(player):
+    """
+    Assigns modifiers from attributes
+
+    (just hitpoints for now actually)
+    """
+    const = player.getAttrib("Constitution")
+    if const is False:        # Saying not const would be True if const was 0
+        print("HP cannot be calculated without a Constitution attribute")
+        return False
+    try:
+        hp = (RoleStats[player.role]["HitpointsBase"] +
+              player.calc_mod(const))
+    except KeyError as err:
+        print("Error:", str(err), "not found in RoleStats section of",
+              "DATA/statsData.json file")
+        return False
+
+    player.setHitpoints(hp)
+
+
 def auto_assign(player):
     """ Assigns the character's ability scores based on its class."""
-    for i in rpgData["Attributes"]:
+    for i in Attributes:
         prio = i + "Priority"
-        player.setAttrib(i, player.scorelist[statsData["RoleStats"]
-                                             [player.role][prio]])
+        try:
+            player.setAttrib(i, player.scorelist[RoleStats[player.role][prio]])
+        except KeyError as err:
+            print("Error:", str(err), "not found in RoleStats section of",
+                  "DATA/statsData.json file")
+            return False
 
-    player.hitpoints = (statsData["RoleStats"][player.role]["HitpointsBase"] +
-                        player.calc_mod(player.getAttrib("Constitution")))
+        except IndexError as err:
+            print(str(prio), "in DATA/statsData.json does not refer to a",
+                  "valid scorelist index. Refer to readme for how this works")
+
+    modifier_assign(player)
 
 
 def add_bonuses(player):
     """ Bases the character's bonuses on its race. """
 
-    for i in rpgData["Attributes"]:
+    for i in Attributes:
         bonus = i + "Bonus"
-        val = player.getAttrib(i) + statsData["RaceStats"][player.race][bonus]
-        player.setAttrib(i, val)
+        current = player.getAttrib(i)
+        if current is False:
+            # getAttrib will have printed out error message and returned False
+            print("Unable to add", str(i), "bonus")
+
+        else:
+            try:
+                val = (current + RaceStats[player.race][bonus])
+            except KeyError as err:
+                print("Error:", str(err), "not found in RaceStats section of",
+                      "DATA/statsData.json file")
+                return False
+
+            player.setAttrib(i, val)
 
     # Half-Elves get +1 to 2 scores, randomly chosen for now
+    # Need to make this non-hardcoded; put in the data files somehow
+    # Easiest would be copy paste elf+human names into Half-Elf_names
     if player.race == "Half-Elf":
 
-        a = random.choice(rpgData["Attributes"])
+        a = random.choice(Attributes)
         val = player.getAttrib(a) + 1
         player.setAttrib(a, val)
 
-        b = random.choice(rpgData["Attributes"])
+        b = random.choice(Attributes)
         player.getAttrib(a) + 1
         player.setAttrib(b, val)
-
-
-def modifier_assign(player):
-    """ Assigns modifiers (just hitpoints for now actually)."""
-
-    hp = (statsData["RoleStats"][player.role]["HitpointsBase"] +
-          player.calc_mod(player.getAttrib("Constitution")))
-    player.setHitpoints(hp)
 
 
 def score_assignment(player):
@@ -541,7 +609,7 @@ def score_assignment(player):
         elif assign_mode == "Y" or assign_mode == "YES":
             sList = player.getScorelist()
             sListCopy = sList.copy()
-            abilityCopy = rpgData["Attributes"].copy()
+            abilityCopy = Attributes.copy()
 
             while True:
                 print("Your scores to assign are:", str(sListCopy))

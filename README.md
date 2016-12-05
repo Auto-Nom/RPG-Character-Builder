@@ -3,14 +3,13 @@
 **This is in the very early stages and things may not work**
 
 
-At the moment this only works for D&D 5th Edition, but I plan to make it work for any tabeletop RPG if you edit the json data files accordingly.
+At the moment this only really works for D&D 5th Edition (or a homebrewed version thereof), but I plan to make it work for any tabeletop RPG if you edit the json data files accordingly.
 
 The stuff in those files was taken from the D&D basic rules which are free [here](http://dnd.wizards.com/articles/features/basicrules) and if you own the books it's fairly easy to add other classes and races by following the format in those files.
 
 TODO:
-* add more error checking, with useful printouts, especially if data files are improperly configured 
+* **make a GUI**
 * add the ability to choose spells and buy equipment
-* make a GUI
 * make it so that the program will work for any tabletop rpg, by simply editing the json data files, which someone with no programming knowledge could easily do (I think)
     * will make a more user friendly GUI version too
 * add the ability to print out a character sheet, or save to a pdf which can then be printed

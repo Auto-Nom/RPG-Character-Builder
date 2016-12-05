@@ -9,6 +9,10 @@
         "14": 7,
         "15": 9
     },
+    "PointsTotal": 27,
+    "StandardPoints": [
+     15, 14, 13, 12, 10, 8   
+    ],
     "RaceStats": {
         "Dragonborn": {
             "CharismaBonus": 1,
@@ -192,6 +196,5 @@
             "StrengthPriority": 5,
             "WisdomPriority": 2
         }
-    },
-    "TotalPoints": 27
+    }
 }
