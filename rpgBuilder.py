@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Character Generator for 5th Edition Dungeons and Dragons (and someday any rpg).

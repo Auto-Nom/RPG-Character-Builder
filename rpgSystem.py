@@ -579,7 +579,6 @@ def add_bonuses(player):
 
     # Half-Elves get +1 to 2 scores, randomly chosen for now
     # Need to make this non-hardcoded; put in the data files somehow
-    # Easiest would be copy paste elf+human names into Half-Elf_names
     if player.race == "Half-Elf":
 
         a = random.choice(Attributes)
@@ -587,7 +586,7 @@ def add_bonuses(player):
         player.setAttrib(a, val)
 
         b = random.choice(Attributes)
-        player.getAttrib(a) + 1
+        player.getAttrib(b) + 1
         player.setAttrib(b, val)
 
 
