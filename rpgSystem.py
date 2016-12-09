@@ -586,7 +586,7 @@ def add_bonuses(player):
         player.setAttrib(a, val)
 
         b = random.choice(Attributes)
-        player.getAttrib(b) + 1
+        val = player.getAttrib(b) + 1
         player.setAttrib(b, val)
 
 
