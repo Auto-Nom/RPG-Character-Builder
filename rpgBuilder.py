@@ -23,6 +23,7 @@ def easy_gen(name, race, role):
     p.setScorelist(sList)
     rs.auto_assign(p)
     rs.add_bonuses(p)
+    rs.modifier_assign(p)
     print(p)
     rs.query_save(p)
     return p
@@ -41,13 +42,17 @@ def random_gen():
                              rs.namesData["Elf_names"])
     else:
         race_names = race + "_names"
-        name = random.choice(rs.namesData[race_names])
+        try:
+            name = random.choice(rs.namesData[race_names])
+        except KeyError:
+            name = random.choice(rs.namesData["Common_Names"])
 
     Char = rs.Character(name, race, role)
     sList = rs.stat_roll()
     Char.setScorelist(sList)
     rs.auto_assign(Char)
     rs.add_bonuses(Char)
+    rs.modifier_assign(Char)
 
     return Char
 

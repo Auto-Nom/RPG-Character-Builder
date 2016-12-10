@@ -554,8 +554,6 @@ def auto_assign(player):
             print(str(prio), "in DATA/statsData.json does not refer to a",
                   "valid scorelist index. Refer to readme for how this works")
 
-    modifier_assign(player)
-
 
 def add_bonuses(player):
     """ Bases the character's bonuses on its race. """
