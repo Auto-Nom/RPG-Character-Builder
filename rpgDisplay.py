@@ -7,6 +7,7 @@ GUI for RPG Character Builder
 
 import sys
 import random
+import json
 
 from PyQt5.QtCore import Qt, pyqtSignal, QObject, QMimeData
 from PyQt5.QtGui import QIcon, QFont, QColor, QPixmap, QDrag, QIntValidator
@@ -42,7 +43,13 @@ class MainW(QMainWindow):
         openFile = QAction(QIcon('Icons/Storage.ico'), '&Open', self)
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Open new File')
-        openFile.triggered.connect(self.fileDialog)
+        openFile.triggered.connect(self.openDialog)
+        
+        # Save file action
+        saveFile = QAction(QIcon('Icons/Document.ico'), '&Save', self)
+        saveFile.setShortcut('Ctrl+S')
+        saveFile.setStatusTip('Save File')
+        saveFile.triggered.connect(self.saveDialog)
 
         # New tab action
         tabAction = QAction(QIcon('Icons/folder_doc.ico'), 'New &Tab', self)
@@ -56,11 +63,13 @@ class MainW(QMainWindow):
         fileMenu = menubar.addMenu('&File')
         fileMenu.addAction(exitAction)
         fileMenu.addAction(openFile)
+        fileMenu.addAction(saveFile)
         fileMenu.addAction(tabAction)
 
         self.toolbar = self.addToolBar('Toolbar')
         self.toolbar.addAction(exitAction)
         self.toolbar.addAction(openFile)
+        self.toolbar.addAction(saveFile)
         self.toolbar.addAction(tabAction)
 
         self.resize(640, 480)
@@ -78,15 +87,45 @@ class MainW(QMainWindow):
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
-    def fileDialog(self):
+    def openDialog(self):
 
         fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')
         if fname[0]:
+            x = self.tab_widget.newTab()
+            self.tab_widget.tabs.setCurrentWidget(x)
+            try:
+                self.tab_widget.tabs.currentWidget().PC = rs.load_char(fname[0])
+                self.tab_widget.tabs.currentWidget().rndmBtn.hide()
+                self.tab_widget.tabs.currentWidget().newBtn.hide()
+                self.tab_widget.tabs.currentWidget().cdw = CharDisplayW(self.tab_widget.tabs.currentWidget())
+                self.tab_widget.tabs.currentWidget().layout.addWidget(self.tab_widget.tabs.currentWidget().cdw)
+            except json.decoder.JSONDecodeError:
+                QMessageBox.question(self, 'Invalid filetype',
+                                     "That file could not be loaded",
+                                     QMessageBox.Ok, QMessageBox.Ok)
+            
 
-            with open(fname[0], 'r') as f:
-                data = f.read()
-                self.cont.textEdit.setText(data)
+    def saveDialog(self):
+        
+        fname = QFileDialog.getSaveFileName(self, 'Save file', '/home')
+        if fname[0]:
+        
+            char = self.tab_widget.tabs.currentWidget().PC
+            filename = fname[0]
+            
+            charDict = {
+                        "Name": char.name,
+                        "Race": char.race,
+                        "Role": char.role,
+                        "Attributes": char.attribDict,
+                        "Hitpoints": char.hitpoints
+                        }
 
+            with open(filename, 'w') as f:
+                json.dump(charDict, f, sort_keys=True, indent=4)
+                print("Save successful")
+                    
+            
     # Confirm quit
     def closeEvent(self, event):
 
@@ -107,10 +146,12 @@ class TabWidget(QWidget):
         super().__init__()
 
         self.layout = QHBoxLayout(self)
-        self.tabList = []
+        #self.tabList = []
 
         # Initialize tab screen
         self.tabs = QTabWidget()
+        self.tabs.setTabsClosable(True)
+        self.tabs.tabCloseRequested.connect(self.tabs.removeTab)
         self.numTabs = 0
         self.newTab()
         self.tabs.resize(300, 200)
@@ -121,10 +162,16 @@ class TabWidget(QWidget):
 
     def newTab(self):
 
-        self.tabList.append(Tab())
-        self.tabs.addTab(self.tabList[self.numTabs],
-                         "Tab &" + str(self.numTabs))
+#        self.tabList.append(Tab())
+#        self.tabs.addTab(self.tabList[self.numTabs],
+#                         "Tab &" + str(self.numTabs))
+
+        x = Tab()
+        self.tabs.addTab(x, "Tab &" + str(self.numTabs))
+        self.tabs.setCurrentWidget(x)
+
         self.numTabs += 1
+        return x
 
 
 class Tab(QWidget):
@@ -707,6 +754,10 @@ class CharDisplayW(QWidget):
 
         self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
         self.grid.addWidget(self.cHP, i+1, 1)
+        
+        self.editBtn = QPushButton("Edit")
+        self.editBtn.clicked.connect(self.editChar)
+        self.grid.addWidget(self.editBtn, 3, 0)
 
 #        self.bkBtn = QPushButton("Back")
 #        self.bkBtn.clicked.connect(self.goBack)
@@ -721,6 +772,116 @@ class CharDisplayW(QWidget):
 #        self.parent.layout.addWidget(self.parent.saw)
 #        self.parent.saw.show()
 #        self.close()
+
+    def editChar(self):
+        
+        self.hide()
+        self.parent.cew = CharEditW(self.parent)
+        self.parent.layout.addWidget(self.parent.cew)
+        self.parent.cew.show()
+        self.close()
+
+
+class AttributeEdit(QWidget):
+
+    def __init__(self, text, parent):
+        super().__init__(parent)
+
+        self.parent = parent
+        self.layout = QHBoxLayout(self)
+        self.text = text
+
+        self.initUI(self.text)
+
+    def initUI(self, text):
+
+        validator = QIntValidator(0, 999)
+        self.aLabel = QLabel(str(text) + ": ")
+        self.aEdit = QLineEdit()
+        self.aEdit.setMaximumWidth(30)
+        self.aEdit.setValidator(validator)
+        
+        self.layout.addWidget(self.aLabel)
+        self.layout.addWidget(self.aEdit)
+        
+    def setVal(self):
+        try:
+            self.val = int(self.aEdit.text())
+        except ValueError:
+            self.val = 0
+        finally:
+            self.parent.aDict[self.text] = self.val
+
+
+class CharEditW(QWidget):
+
+    def __init__(self, parent):
+        super().__init__()
+
+        self.parent = parent
+
+        self.aDict = {}
+        self.sDict = {}
+
+        self.initUI()
+
+    def initUI(self):
+
+        self.char = self.parent.PC
+        self.attribs = self.char.getAttribDict()
+        print(self.attribs)
+
+        self.grid = QGridLayout()
+        self.grid.setSpacing(10)
+
+        self.cName = QLabel(self.char.getName())
+        self.grid.addWidget(self.cName, 0, 0)
+        self.cRace = QLabel(self.char.getRace())
+        self.grid.addWidget(self.cRace, 1, 0)
+        self.cRole = QLabel(self.char.getRole())
+        self.grid.addWidget(self.cRole, 2, 0)
+        
+        for i in range(len(rs.Attributes)):
+            self.sDict[i] = (AttributeEdit(str(rs.Attributes[i]), self))
+            self.grid.addWidget(self.sDict[i], i+1, 4)
+
+        #self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
+        #self.grid.addWidget(self.cHP, 4, 0)
+
+        self.backBtn = QPushButton("Go Back")
+        self.backBtn.clicked.connect(self.goBack)
+        self.grid.addWidget(self.backBtn, 5, 0)
+        
+        self.confBtn = QPushButton("Confirm")
+        self.confBtn.clicked.connect(self.confirmEdit)
+        self.grid.addWidget(self.confBtn, 6, 0)
+
+        self.setLayout(self.grid)
+        self.show()
+
+    def goBack(self):
+        self.hide()
+        self.parent.cdw = CharDisplayW(self.parent)
+        self.parent.layout.addWidget(self.parent.cdw)
+        self.parent.cdw.show()
+        self.close()
+        
+    def confirmEdit(self):
+        
+        self.hide()
+        for i in self.sDict:
+            self.sDict[i].setVal()
+            
+        print(self.aDict)
+        
+        for i in self.aDict:
+            self.parent.PC.setAttrib(i, int(self.aDict[i]))
+            
+        rs.modifier_assign(self.parent.PC)
+        self.parent.cdw = CharDisplayW(self.parent)
+        self.parent.layout.addWidget(self.parent.cdw)
+        self.parent.cdw.show()
+        self.close()
 
 
 if __name__ == '__main__':
