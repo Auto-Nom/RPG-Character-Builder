@@ -8,11 +8,12 @@ At the moment this only really works for D&D 5th Edition (or a homebrewed versio
 The stuff in those files was taken from the D&D basic rules which are free [here](http://dnd.wizards.com/articles/features/basicrules) and if you own the books it's fairly easy to add other classes and races by following the format in those files.
 
 TODO:
-* **make a GUI**
-* add the ability to choose spells and buy equipment
-* make it so that the program will work for any tabletop rpg, by simply editing the json data files, which someone with no programming knowledge could easily do (I think)
-    * will make a more user friendly GUI version too
-* add the ability to print out a character sheet, or save to a pdf which can then be printed
+* **Improve the GUI**
+    * Work on the layout, which at the moment is very rough
+* Add the ability to choose spells and buy equipment
+* Make it so that the program will work for any tabletop rpg, by simply editing the json data files, which someone with no programming knowledge could easily do (I think)
+    * Will make a more user friendly GUI version too
+* Add the ability to print out a character sheet, or save to a pdf which can then be printed
 
 
 *I am not affiliated with Wizards of the Coast and all D&D stuff belongs to them.*

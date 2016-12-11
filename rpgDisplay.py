@@ -22,6 +22,7 @@ import rpgSystem as rs
 
 
 class MainW(QMainWindow):
+    """ Main window of the program."""
 
     def __init__(self):
         super().__init__()
@@ -44,7 +45,7 @@ class MainW(QMainWindow):
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Open new File')
         openFile.triggered.connect(self.openDialog)
-        
+
         # Save file action
         saveFile = QAction(QIcon('Icons/Document.ico'), '&Save', self)
         saveFile.setShortcut('Ctrl+S')
@@ -81,6 +82,7 @@ class MainW(QMainWindow):
         self.show()
 
     def center(self):
+        """ Center the window on the screen."""
 
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
@@ -88,31 +90,37 @@ class MainW(QMainWindow):
         self.move(qr.topLeft())
 
     def openDialog(self):
+        """ Open and load a saved Character file."""
 
         fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')
         if fname[0]:
+            # Create a new tab to display the character in
             x = self.tab_widget.newTab()
             self.tab_widget.tabs.setCurrentWidget(x)
             try:
-                self.tab_widget.tabs.currentWidget().PC = rs.load_char(fname[0])
-                self.tab_widget.tabs.currentWidget().rndmBtn.hide()
-                self.tab_widget.tabs.currentWidget().newBtn.hide()
-                self.tab_widget.tabs.currentWidget().cdw = CharDisplayW(self.tab_widget.tabs.currentWidget())
-                self.tab_widget.tabs.currentWidget().layout.addWidget(self.tab_widget.tabs.currentWidget().cdw)
+                self.tab_widget.tabs.currentWidget().PC = (
+                                    rs.load_char(fname[0]))
             except json.decoder.JSONDecodeError:
                 QMessageBox.question(self, 'Invalid filetype',
                                      "That file could not be loaded",
                                      QMessageBox.Ok, QMessageBox.Ok)
-            
+            else:
+                self.tab_widget.tabs.currentWidget().rndmBtn.hide()
+                self.tab_widget.tabs.currentWidget().newBtn.hide()
+                self.tab_widget.tabs.currentWidget().cdw = CharDisplayW(
+                                    self.tab_widget.tabs.currentWidget())
+                self.tab_widget.tabs.currentWidget().layout.addWidget(
+                                self.tab_widget.tabs.currentWidget().cdw)
 
     def saveDialog(self):
-        
+        """ Save a Character to a file."""
+
         fname = QFileDialog.getSaveFileName(self, 'Save file', '/home')
         if fname[0]:
-        
+
             char = self.tab_widget.tabs.currentWidget().PC
             filename = fname[0]
-            
+
             charDict = {
                         "Name": char.name,
                         "Race": char.race,
@@ -124,10 +132,9 @@ class MainW(QMainWindow):
             with open(filename, 'w') as f:
                 json.dump(charDict, f, sort_keys=True, indent=4)
                 print("Save successful")
-                    
-            
-    # Confirm quit
+
     def closeEvent(self, event):
+        """ Confirm the user wants to quit."""
 
         reply = QMessageBox.question(self, 'Goodbye',
                                      "Are you sure you want to quit?",
@@ -141,14 +148,15 @@ class MainW(QMainWindow):
 
 
 class TabWidget(QWidget):
+    """ Widget to display tabs on."""
 
     def __init__(self):
         super().__init__()
 
         self.layout = QHBoxLayout(self)
-        #self.tabList = []
+        # self.tabList = []
 
-        # Initialize tab screen
+        # Create actual tab widget
         self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
         self.tabs.tabCloseRequested.connect(self.tabs.removeTab)
@@ -156,11 +164,11 @@ class TabWidget(QWidget):
         self.newTab()
         self.tabs.resize(300, 200)
 
-        # Add tabs to widget
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
 
     def newTab(self):
+        """ Add and switch to a new tab."""
 
 #        self.tabList.append(Tab())
 #        self.tabs.addTab(self.tabList[self.numTabs],
@@ -175,18 +183,22 @@ class TabWidget(QWidget):
 
 
 class Tab(QWidget):
+    """ A tab to display in the tab widget."""
 
     def __init__(self):
         super().__init__()
 
+        # Each tab will have a character local to it
         self.PC = rs.Character(None, None, None)
 
         self.layout = QVBoxLayout(self)
 
+        # Button to create a new character
         self.newBtn = QPushButton("New Character")
         self.newBtn.clicked.connect(self.newChar)
         self.layout.addWidget(self.newBtn)
 
+        # Button to create a random character
         self.rndmBtn = QPushButton("Random Character")
         self.rndmBtn.clicked.connect(self.randomChar)
         self.layout.addWidget(self.rndmBtn)
@@ -194,13 +206,14 @@ class Tab(QWidget):
         self.setLayout(self.layout)
 
     def newChar(self):
-        # New Character
+        """ Start the process of creating a new character."""
         self.rndmBtn.hide()
         self.newBtn.hide()
         self.ncw = NewCharW(self)
         self.layout.addWidget(self.ncw)
 
     def randomChar(self):
+        """ Randomly generate a character."""
 
         race = random.choice(rs.rpgData["Races"])
         role = random.choice(rs.rpgData["Roles"])
@@ -234,18 +247,20 @@ class Tab(QWidget):
 
 
 class NewCharW(QWidget):
+    """ Choose the name, race, and role of a new character."""
 
     def __init__(self, parent):
         super().__init__()
 
         self.parent = parent
-        print(self.parent)
 
         self.initUI()
 
     def initUI(self):
 
-        QToolTip.setFont(QFont('SansSerif', 10))
+        # Layout
+        grid = QGridLayout()
+        grid.setSpacing(10)
 
         # Name Selection
         self.nameLabel = QLabel('What do you want to be named?')
@@ -255,6 +270,11 @@ class NewCharW(QWidget):
         self.nameEdit.textChanged[str].connect(self.onChanged)
         self.nameRand = QPushButton("Random")
         self.nameRand.clicked.connect(self.randomName)
+
+        grid.addWidget(self.nameLabel, 0, 0)
+        grid.addWidget(self.nameEdit, 0, 1)
+        grid.addWidget(self.nameRand, 0, 2)
+        grid.addWidget(self.hello, 0, 3)
 
         # Race Selection
         self.racePrompt = QLabel("Choose your race:")
@@ -268,6 +288,11 @@ class NewCharW(QWidget):
         self.raceRand = QPushButton("Random")
         self.raceRand.clicked.connect(self.randomRace)
 
+        grid.addWidget(self.racePrompt, 1, 0)
+        grid.addWidget(self.raceSel, 1, 1)
+        grid.addWidget(self.raceRand, 1, 2)
+        grid.addWidget(self.raceLabel, 1, 3)
+
         # Role Selection
         self.rolePrompt = QLabel("Choose your class:")
         self.roleLabel = QLabel("Class")
@@ -280,29 +305,14 @@ class NewCharW(QWidget):
         self.roleRand = QPushButton("Random")
         self.roleRand.clicked.connect(self.randomRole)
 
-        # Submit button
-        self.submitBtn = QPushButton("Next")
-        self.submitBtn.clicked.connect(self.submitChar)
-
-        # Layout
-        grid = QGridLayout()
-        grid.setSpacing(10)
-
-        grid.addWidget(self.nameLabel, 0, 0)
-        grid.addWidget(self.nameEdit, 0, 1)
-        grid.addWidget(self.nameRand, 0, 2)
-        grid.addWidget(self.hello, 0, 3)
-
-        grid.addWidget(self.racePrompt, 1, 0)
-        grid.addWidget(self.raceSel, 1, 1)
-        grid.addWidget(self.raceRand, 1, 2)
-        grid.addWidget(self.raceLabel, 1, 3)
-
         grid.addWidget(self.rolePrompt, 2, 0)
         grid.addWidget(self.roleSel, 2, 1)
         grid.addWidget(self.roleRand, 2, 2)
         grid.addWidget(self.roleLabel, 2, 3)
 
+        # Submit button
+        self.submitBtn = QPushButton("Next")
+        self.submitBtn.clicked.connect(self.submitChar)
         grid.addWidget(self.submitBtn, 3, 4)
 
         self.setLayout(grid)
@@ -312,6 +322,7 @@ class NewCharW(QWidget):
         self.role = self.roleSel.currentText()
 
     def SelActivated(self, text):
+        """ Update to the chosen race or role when selected."""
 
         sender = self.sender()
 
@@ -326,24 +337,14 @@ class NewCharW(QWidget):
             self.role = text
 
     def onChanged(self, text):
+        """ Update the name."""
 
         self.hello.setText('Hello, ' + text)
         self.hello.adjustSize()
         self.name = text
 
-    def submitChar(self):
-
-        self.hide()
-
-        self.parent.PC = rs.Character(self.name, self.race, self.role)
-        print(self.parent.PC.getName(), self.parent.PC.getRace(),
-              self.parent.PC.getRole())
-        self.parent.sew = StatEditW(self.parent)
-        self.parent.layout.addWidget(self.parent.sew)
-        self.parent.sew.show()
-        self.close()
-
     def randomName(self):
+        """ Generate a random name based on the chosen race."""
 
         if self.race == "Half-Elf":
             self.name = random.choice(rs.namesData["Human_names"] +
@@ -358,17 +359,33 @@ class NewCharW(QWidget):
         self.nameEdit.setText(self.name)
 
     def randomRace(self):
+        """ Choose a random race."""
 
         self.race = random.choice(rs.rpgData["Races"])
         self.raceSel.setCurrentText(self.race)
 
     def randomRole(self):
+        """ Choose a random role."""
 
         self.role = random.choice(rs.rpgData["Roles"])
         self.roleSel.setCurrentText(self.role)
 
+    def submitChar(self):
+        """ Create the actual Character object and move to the next step."""
+
+        self.hide()
+
+        self.parent.PC = rs.Character(self.name, self.race, self.role)
+
+        # Create the widget for the next step of character generation
+        self.parent.sew = StatEditW(self.parent)
+        self.parent.layout.addWidget(self.parent.sew)
+        self.parent.sew.show()
+        self.close()
+
 
 class StatEditW(QWidget):
+    """ A widget for generating ability scores."""
 
     def __init__(self, parent):
         super().__init__()
@@ -380,49 +397,54 @@ class StatEditW(QWidget):
 
     def initUI(self):
 
-        QToolTip.setFont(QFont('SansSerif', 10))
-
-        self.sLabel = QLabel('How do you want to generate your scores')
-
-        self.diceBtn = QPushButton("Dice")
-        self.diceBtn.clicked.connect(self.btnClicked)
-
-        self.pointsBtn = QPushButton("Points")
-        self.pointsBtn.clicked.connect(self.btnClicked)
-
-        self.stdBtn = QPushButton("Standard")
-        self.stdBtn.clicked.connect(self.btnClicked)
-
-        self.nxtBtn = QPushButton("Next")
-        self.nxtBtn.clicked.connect(self.setList)
-
-        self.bkBtn = QPushButton("Back")
-        self.bkBtn.clicked.connect(self.goBack)
-
-        self.scores = QLabel(" ")
-
         # Layout
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
+        # Label describing the step
+        self.sLabel = QLabel('How do you want to generate your scores')
         self.grid.addWidget(self.sLabel, 0, 0)
+
+        # Button for using the dice method
+        self.diceBtn = QPushButton("Dice")
+        self.diceBtn.clicked.connect(self.btnClicked)
         self.grid.addWidget(self.diceBtn, 1, 1)
+
+        # Button for using the points method
+        self.pointsBtn = QPushButton("Points")
+        self.pointsBtn.clicked.connect(self.btnClicked)
         self.grid.addWidget(self.pointsBtn, 1, 2)
+
+        # Button for taking the standard scores
+        self.stdBtn = QPushButton("Standard")
+        self.stdBtn.clicked.connect(self.btnClicked)
         self.grid.addWidget(self.stdBtn, 1, 3)
-        self.grid.addWidget(self.scores, 2, 1, 1, 3)
-        self.grid.addWidget(self.bkBtn, 3, 0)
+
+        # Button to go to the next step
+        self.nxtBtn = QPushButton("Next")
+        self.nxtBtn.clicked.connect(self.setList)
         self.grid.addWidget(self.nxtBtn, 3, 1)
         self.nxtBtn.hide()
+
+        # Button to go back to the previous step
+        self.bkBtn = QPushButton("Back")
+        self.bkBtn.clicked.connect(self.goBack)
+        self.grid.addWidget(self.bkBtn, 3, 0)
+
+        # Label for the scores generated
+        self.scores = QLabel(" ")
+        self.grid.addWidget(self.scores, 2, 1, 1, 3)
 
         self.setLayout(self.grid)
         self.show()
 
     def btnClicked(self):
+        """ Generate points using the method of the button that was clicked."""
 
         sender = self.sender()
 
+        # Dice method
         if sender == self.diceBtn:
-
             self.diceBtn.hide()
             self.pointsBtn.hide()
             self.stdBtn.hide()
@@ -431,25 +453,26 @@ class StatEditW(QWidget):
 
             self.sList = rs.stat_roll()
 
+            # At the moment a badly designed way to show the scores
             self.scoreL = '| '
-
             for i in self.sList:
                 self.scoreL += str(i) + ' | '
 
             self.scores.setText(self.scoreL)
 
+        # Points method
         elif sender == self.pointsBtn:
-
             self.diceBtn.hide()
             self.pointsBtn.hide()
             self.stdBtn.hide()
             self.sLabel.hide()
 
+            # Use the points widget class
             pointW = pointsW(self)
             self.grid.addWidget(pointW, 2, 1, 1, 3)
 
+        # Standard scores method
         elif sender == self.stdBtn:
-
             self.diceBtn.hide()
             self.pointsBtn.hide()
             self.stdBtn.hide()
@@ -457,12 +480,15 @@ class StatEditW(QWidget):
             self.sLabel.hide()
 
             self.sList = rs.statsData["StandardPoints"]
+
+            # At the moment a badly designed way to show the scores
             self.scoreL = '| '
             for i in self.sList:
                 self.scoreL += str(i) + ' | '
             self.scores.setText(self.scoreL)
 
     def goBack(self):
+        """ Go back to the previous step."""
         self.hide()
         self.parent.ncw = NewCharW(self.parent)
         self.parent.layout.addWidget(self.parent.ncw)
@@ -470,10 +496,11 @@ class StatEditW(QWidget):
         self.close()
 
     def setList(self):
+        """ Set the character's scorelist and move to the next step"""
         self.hide()
         self.sList.sort(reverse=True)
-        print(str(self.sList))
         self.parent.PC.setScorelist(self.sList)
+
         self.parent.saw = StatAssignW(self.parent)
         self.parent.layout.addWidget(self.parent.saw)
         self.parent.saw.show()
@@ -481,6 +508,7 @@ class StatEditW(QWidget):
 
 
 class valChangeW(QWidget):
+    """ Widget for increasing or decreasing a score."""
 
     def __init__(self, parent):
         super().__init__()
@@ -493,27 +521,33 @@ class valChangeW(QWidget):
 
     def initUI(self):
 
+        # Button to increase a score
         self.upBtn = QPushButton("^")
         self.upBtn.setMaximumSize(25, 25)
         self.upBtn.clicked.connect(self.changeVal)
+        self.layout.addWidget(self.upBtn)
+
+        # Label to display the score
         self.lbl = QLabel(str(self.val))
         self.lbl.setMaximumSize(25, 25)
+        self.layout.addWidget(self.lbl)
+
+        # Button to decrease a score
         self.dwnBtn = QPushButton("V")
         self.dwnBtn.setMaximumSize(25, 25)
         self.dwnBtn.clicked.connect(self.changeVal)
-
-        self.layout.addWidget(self.upBtn)
-        self.layout.addWidget(self.lbl)
         self.layout.addWidget(self.dwnBtn)
 
         self.setLayout(self.layout)
 
     def changeVal(self):
+        """ Change the value if possible, and update total points."""
         sender = self.sender()
 
         if sender == self.upBtn:
             newval = self.val + 1
 
+            # Ensure the score is valid
             if newval > max(self.parent.pDict):
                 MW.statusBar().showMessage('You may not have a higher score')
 
@@ -521,6 +555,7 @@ class valChangeW(QWidget):
                                         self.parent.pDict[self.val])) < 0:
                 MW.statusBar().showMessage('INSUFFICIENT POINTS')
             else:
+                # Update the total points
                 self.parent.points -= (self.parent.pDict[newval] -
                                        self.parent.pDict[self.val])
                 self.parent.pointsLbl.setText("Points: " +
@@ -532,6 +567,7 @@ class valChangeW(QWidget):
         elif sender == self.dwnBtn:
             newval = self. val - 1
 
+            # When decreasing the only issue would be a below minimum score
             if newval < min(self.parent.pDict):
                 MW.statusBar().showMessage('You may not have a lower score')
             else:
@@ -545,6 +581,7 @@ class valChangeW(QWidget):
 
 
 class pointsW(QWidget):
+    """ Widget for using the points method of score generation."""
 
     def __init__(self, parent):
         super().__init__()
@@ -553,6 +590,7 @@ class pointsW(QWidget):
 
         self.layout = QHBoxLayout(self)
 
+        # Create the dictionary mapping scores to their point cost
         self.pDict = {}
         for i in rs.statsData["PointsCost"]:
             self.pDict[int(i)] = rs.statsData["PointsCost"][i]
@@ -562,20 +600,24 @@ class pointsW(QWidget):
 
     def initUI(self):
 
+        # Label showing total points
         self.pointsLbl = QLabel("Points: " + str(self.points))
-
         self.layout.addWidget(self.pointsLbl)
+
+        # Create the necessary amount of valChange widgets
         for i in range(len(rs.Attributes)):
             self.sDict[i] = valChangeW(self)
             self.layout.addWidget(self.sDict[i])
 
-        self.dButton = QPushButton("Done")
-        self.dButton.clicked.connect(self.fDone)
-        self.layout.addWidget(self.dButton)
+        # Button for setting the points
+        self.doneBtn = QPushButton("Done")
+        self.doneBtn.clicked.connect(self.fDone)
+        self.layout.addWidget(self.doneBtn)
 
         self.setLayout(self.layout)
 
     def fDone(self):
+        """ Set the scores into the parent widget."""
         for i in self.sDict.values():
             self.parent.sList.append(i.val)
         self.hide()
@@ -587,6 +629,7 @@ class pointsW(QWidget):
 
 
 class AttributeBox(QWidget):
+    """ A widget for assigning a score to an attribute."""
 
     def __init__(self, text, parent):
         super().__init__(parent)
@@ -599,27 +642,38 @@ class AttributeBox(QWidget):
 
     def initUI(self, text):
 
+        # Validator to ensure only a positive int less then 1000 is entered
         validator = QIntValidator(0, 999)
+
+        # Label for the attribute name
         self.aLabel = QLabel(str(text) + ": ")
+        self.layout.addWidget(self.aLabel)
+
+        # Box to enter the desired score into
         self.aEdit = QLineEdit()
         self.aEdit.setMaximumWidth(30)
         self.aEdit.setValidator(validator)
+        self.layout.addWidget(self.aEdit)
+
+        # Button to set the score
         self.aSet = QPushButton("Set")
         self.aSet.setCheckable(True)
         self.aSet.clicked[bool].connect(self.setAttrib)
-
-        self.layout.addWidget(self.aLabel)
-        self.layout.addWidget(self.aEdit)
         self.layout.addWidget(self.aSet)
 
+        self.setLayout(self.layout)
+
     def setAttrib(self, pressed):
+        """ Set an attribute's score."""
         try:
             val = int(self.aEdit.text())
         except ValueError:
+            # Even though there's a validator, a blank box causes a ValueError
             MW.statusBar().showMessage(' ')
             self.aSet.setChecked(False)
         else:
             if pressed:
+                # Set the value if it is valid, and update the list of values
                 if val in self.parent.sList:
                     self.parent.sList.remove(val)
                     self.parent.aDict[self.text] = val
@@ -630,6 +684,7 @@ class AttributeBox(QWidget):
                     self.aSet.setChecked(False)
                     MW.statusBar().showMessage('THAT VALUE IS NOT AVAILABLE')
 
+            # Unset the value, and update the list
             else:
                 self.parent.sList.append(val)
                 self.parent.aDict[self.text] = 0
@@ -639,6 +694,7 @@ class AttributeBox(QWidget):
 
 
 class StatAssignW(QWidget):
+    """ A widget to assign scores to attributes."""
 
     def __init__(self, parent):
         super().__init__()
@@ -654,27 +710,33 @@ class StatAssignW(QWidget):
 
         self.sList = self.parent.PC.getScorelist()
 
-        self.assignPrompt = QLabel("Assign your scores to attributes")
-        self.nxtBtn = QPushButton("Next")
-        self.nxtBtn.clicked.connect(self.setAttribs)
-
-        self.autoBtn = QPushButton("Auto-Assign")
-        self.autoBtn.clicked.connect(self.autoAttribs)
-
-        self.bkBtn = QPushButton("Back")
-        self.bkBtn.clicked.connect(self.goBack)
-
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
+        # Prompt on what to do
+        self.assignPrompt = QLabel("Assign your scores to attributes")
         self.grid.addWidget(self.assignPrompt, 0, 0)
-        self.grid.addWidget(self.autoBtn, 0, 4)
+
+        # Button to advance to the next stage
+        self.nxtBtn = QPushButton("Next")
+        self.nxtBtn.clicked.connect(self.setAttribs)
         self.grid.addWidget(self.nxtBtn, 0, 5)
+
+        # Button to automatically assign scores
+        self.autoBtn = QPushButton("Auto-Assign")
+        self.autoBtn.clicked.connect(self.autoAttribs)
+        self.grid.addWidget(self.autoBtn, 0, 4)
+
+        # Button to go back to the previous step
+        self.bkBtn = QPushButton("Back")
+        self.bkBtn.clicked.connect(self.goBack)
         self.grid.addWidget(self.bkBtn, 3, 0)
 
+        # List of available scores
         self.listS = QLabel(str(self.sList))
         self.grid.addWidget(self.listS, 1, 0)
 
+        # Add the required widgets for assigning scores
         for i in range(len(rs.Attributes)):
             self.sDict[i] = (AttributeBox(str(rs.Attributes[i]), self))
             self.grid.addWidget(self.sDict[i], i+1, 4)
@@ -683,6 +745,7 @@ class StatAssignW(QWidget):
         self.show()
 
     def goBack(self):
+        """ Go back to the previous step."""
         self.hide()
         self.parent.sew = StatEditW(self.parent)
         self.parent.layout.addWidget(self.parent.sew)
@@ -690,30 +753,36 @@ class StatAssignW(QWidget):
         self.close()
 
     def setAttribs(self):
+        """ Set the character's attributes as specified, then display it."""
+
+        # Ensure all attributes have been set
         for i in self.sDict:
             if self.sDict[i].aSet.isChecked() is False:
                 MW.statusBar().showMessage('SET ALL ATTRIBUTES FIRST')
                 return
 
         self.hide()
-        print(str(self.aDict))
+
+        # Set the attributes and perform the rest of the character generation
         for i in self.aDict:
             self.parent.PC.setAttrib(i, int(self.aDict[i]))
-        print(self.parent.PC)
         rs.add_bonuses(self.parent.PC)
         rs.modifier_assign(self.parent.PC)
+
+        # Display the finished character
         self.parent.cdw = CharDisplayW(self.parent)
         self.parent.layout.addWidget(self.parent.cdw)
         self.parent.cdw.show()
         self.close()
 
     def autoAttribs(self):
+        """ Automatically assign scores to attributes, then display."""
 
         self.hide()
-        print(str(self.aDict))
         rs.auto_assign(self.parent.PC)
         rs.add_bonuses(self.parent.PC)
         rs.modifier_assign(self.parent.PC)
+
         self.parent.cdw = CharDisplayW(self.parent)
         self.parent.layout.addWidget(self.parent.cdw)
         self.parent.cdw.show()
@@ -721,6 +790,7 @@ class StatAssignW(QWidget):
 
 
 class CharDisplayW(QWidget):
+    """ A widget to display a character."""
 
     def __init__(self, parent):
         super().__init__()
@@ -733,48 +803,47 @@ class CharDisplayW(QWidget):
 
     def initUI(self):
 
+        # The character to display
         self.char = self.parent.PC
         self.attribs = self.char.getAttribDict()
 
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
+        # Name label
         self.cName = QLabel(self.char.getName())
         self.grid.addWidget(self.cName, 0, 0)
+
+        # Race label
         self.cRace = QLabel(self.char.getRace())
         self.grid.addWidget(self.cRace, 1, 0)
+
+        # Role label
         self.cRole = QLabel(self.char.getRole())
         self.grid.addWidget(self.cRole, 2, 0)
 
         i = 0
+        # Labels for all the attributes
         for k, v in self.attribs.items():
             self.aDict[k] = QLabel(str(k) + ": " + str(v))
             self.grid.addWidget(self.aDict[k], i, 1)
             i += 1
 
+        # Label for hitpoints
         self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
         self.grid.addWidget(self.cHP, i+1, 1)
-        
+
+        # Button for editing the character
         self.editBtn = QPushButton("Edit")
         self.editBtn.clicked.connect(self.editChar)
         self.grid.addWidget(self.editBtn, 3, 0)
 
-#        self.bkBtn = QPushButton("Back")
-#        self.bkBtn.clicked.connect(self.goBack)
-#        self.grid.addWidget(self.bkBtn, 3, 0)
-
         self.setLayout(self.grid)
         self.show()
 
-#    def goBack(self):
-#        self.hide()
-#        self.parent.saw = StatAssignW(self.parent)
-#        self.parent.layout.addWidget(self.parent.saw)
-#        self.parent.saw.show()
-#        self.close()
-
     def editChar(self):
-        
+        """ Edit a character's stats."""
+
         self.hide()
         self.parent.cew = CharEditW(self.parent)
         self.parent.layout.addWidget(self.parent.cew)
@@ -783,6 +852,7 @@ class CharDisplayW(QWidget):
 
 
 class AttributeEdit(QWidget):
+    """ A widget to edit a character's attribute score."""
 
     def __init__(self, text, parent):
         super().__init__(parent)
@@ -795,25 +865,34 @@ class AttributeEdit(QWidget):
 
     def initUI(self, text):
 
+        # Validator to ensure an int < 1000 is entered
         validator = QIntValidator(0, 999)
+
+        # Label for the attribute
         self.aLabel = QLabel(str(text) + ": ")
+        self.layout.addWidget(self.aLabel)
+
+        # Box to insert the new score
         self.aEdit = QLineEdit()
         self.aEdit.setMaximumWidth(30)
         self.aEdit.setValidator(validator)
-        
-        self.layout.addWidget(self.aLabel)
         self.layout.addWidget(self.aEdit)
-        
+
+        self.setLayout(self.layout)
+
     def setVal(self):
+        """ Set the attribute score."""
         try:
             self.val = int(self.aEdit.text())
         except ValueError:
+            # If no value is entered, set to zero
             self.val = 0
         finally:
             self.parent.aDict[self.text] = self.val
 
 
 class CharEditW(QWidget):
+    """ A widget for editing a character."""
 
     def __init__(self, parent):
         super().__init__()
@@ -827,6 +906,7 @@ class CharEditW(QWidget):
 
     def initUI(self):
 
+        # The character to edit
         self.char = self.parent.PC
         self.attribs = self.char.getAttribDict()
         print(self.attribs)
@@ -834,24 +914,32 @@ class CharEditW(QWidget):
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
+        # Label to display the name
         self.cName = QLabel(self.char.getName())
         self.grid.addWidget(self.cName, 0, 0)
+
+        # Label to display the race
         self.cRace = QLabel(self.char.getRace())
         self.grid.addWidget(self.cRace, 1, 0)
+
+        # Label to display the role
         self.cRole = QLabel(self.char.getRole())
         self.grid.addWidget(self.cRole, 2, 0)
-        
+
+        # Add the widgets for editing attributes
         for i in range(len(rs.Attributes)):
             self.sDict[i] = (AttributeEdit(str(rs.Attributes[i]), self))
             self.grid.addWidget(self.sDict[i], i+1, 4)
 
-        #self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
-        #self.grid.addWidget(self.cHP, 4, 0)
+        # self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
+        # self.grid.addWidget(self.cHP, 4, 0)
 
+        # Button to go back to the display screen
         self.backBtn = QPushButton("Go Back")
         self.backBtn.clicked.connect(self.goBack)
         self.grid.addWidget(self.backBtn, 5, 0)
-        
+
+        # Button to set the edits and then display the character
         self.confBtn = QPushButton("Confirm")
         self.confBtn.clicked.connect(self.confirmEdit)
         self.grid.addWidget(self.confBtn, 6, 0)
@@ -860,23 +948,23 @@ class CharEditW(QWidget):
         self.show()
 
     def goBack(self):
+        """ Go back to the display screen without setting the edits."""
         self.hide()
         self.parent.cdw = CharDisplayW(self.parent)
         self.parent.layout.addWidget(self.parent.cdw)
         self.parent.cdw.show()
         self.close()
-        
+
     def confirmEdit(self):
-        
+        """ Set the edits and update the character, then display it."""
+
         self.hide()
         for i in self.sDict:
             self.sDict[i].setVal()
-            
-        print(self.aDict)
-        
+
         for i in self.aDict:
             self.parent.PC.setAttrib(i, int(self.aDict[i]))
-            
+
         rs.modifier_assign(self.parent.PC)
         self.parent.cdw = CharDisplayW(self.parent)
         self.parent.layout.addWidget(self.parent.cdw)
