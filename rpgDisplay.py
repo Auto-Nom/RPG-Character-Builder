@@ -1019,6 +1019,58 @@ class CharEditW(QWidget):
         self.close()
 
 
+class DiceW(QWidget):
+    """ A widget to roll dice."""
+
+    def __init__(self, text, parent):
+        super().__init__(parent)
+
+        self.parent = parent
+        self.layout = QHBoxLayout(self)
+        self.text = text
+
+        self.initUI(self.text)
+
+    def initUI(self, text):
+
+        # Validator to ensure an int < 1000 is entered
+        validator = QIntValidator(0, 999)
+
+        self.dice = QPushButton(str(text))
+        self.dice.clicked.connect(self.diceRoll)
+
+        self.diceNum = QLineEdit()
+        self.diceNum.setMaximumWidth(30)
+        self.diceNum.setValidator(validator)
+        self.diceNum.setText("1")
+
+        self.totalLabel = QLabel(" ")
+
+        self.layout.addWidget(self.diceNum)
+        self.layout.addWidget(self.dice)
+        self.layout.addWidget(self.totalLabel)
+
+        self.setLayout(self.layout)
+
+    def diceRoll(self, sender):
+
+        sender = self.sender()
+        label = int(sender.text()[1:])
+        total = 0
+
+        for i in range(int(self.diceNum.text())):
+            roll = random.randint(1, label)
+            total += roll
+            self.parent.topLbl.setText(self.parent.topLbl.text() +
+                                       " + " + str(roll))
+        for i in self.parent.dDict:
+            self.parent.dDict[i].totalLabel.setText(" ")
+        self.parent.cTotal.setText(" ")
+        self.totalLabel.setText(str(total))
+        self.parent.total += total
+        self.parent.resultLbl.setText(str(self.parent.total))
+
+
 class DiceRollW(QWidget):
     """ A widget for rolling dice."""
     def __init__(self, parent):
@@ -1029,50 +1081,52 @@ class DiceRollW(QWidget):
 
     def initUI(self):
 
+        self.total = 0
+        self.dDict = {}
+
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
-        self.topLbl = QLabel("<i>Dovie'andi se tovya sagain</i> - Mat Cauthon")
-        self.topLbl.setToolTip("It's time to roll the dice")
-        self.grid.addWidget(self.topLbl, 0, 0)
+        MW.statusBar().showMessage("Dovie'andi se tovya sagain")
+#        self.topLbl = QLabel("<i>Dovie'andi se tovya sagain</i>)
+        self.topLbl = QLabel("You rolled: ")
+#        self.topLbl.setToolTip("It's time to roll the dice")
+        self.grid.addWidget(self.topLbl, 0, 0, 1, 5)
 
         self.resultLbl = QLabel(" ")
+        self.resultLbl.setFont(QFont("serif", 12))
         self.grid.addWidget(self.resultLbl, 1, 0)
+
+        self.clearBtn = QPushButton("Reset")
+        self.clearBtn.clicked.connect(self.reset)
+        self.grid.addWidget(self.clearBtn, 1, 5)
 
         # 20 sided dice
         self.d20 = QPushButton("D20")
         self.d20.clicked.connect(self.d20Roll)
         self.grid.addWidget(self.d20, 2, 1)
 
-        # 4 sided dice
-        self.d4 = QPushButton("D4")
-        self.d4.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d4, 3, 1)
+        diceList = ["D4", "D6", "D8", "D10", "D12", "D100"]
 
-        # 6 sided dice
-        self.d6 = QPushButton("D6")
-        self.d6.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d6, 4, 1)
+        j = 3
+        for i in diceList:
+            self.dDict[i] = DiceW(i, self)
+            self.grid.addWidget(self.dDict[i], j, 1)
+            j += 1
 
-        # 8 sided dice
-        self.d8 = QPushButton("D8")
-        self.d8.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d8, 5, 1)
+        # Custom dice
+        self.cNum = QLineEdit("1")
+        self.cD = QLabel("D")
+        self.cDice = QLineEdit("2")
+        self.cRoll = QPushButton("Roll custom dice")
+        self.cRoll.clicked.connect(self.customRoll)
+        self.cTotal = QLabel(" ")
 
-        # 10 sided dice
-        self.d10 = QPushButton("D10")
-        self.d10.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d10, 6, 1)
-
-        # 12 sided dice
-        self.d12 = QPushButton("D12")
-        self.d12.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d12, 7, 1)
-
-        # 100 sided dice
-        self.d100 = QPushButton("D100")
-        self.d100.clicked.connect(self.diceRoll)
-        self.grid.addWidget(self.d100, 8, 1)
+        self.grid.addWidget(self.cNum, j, 1)
+        self.grid.addWidget(self.cD, j, 2)
+        self.grid.addWidget(self.cDice, j, 3)
+        self.grid.addWidget(self.cRoll, j, 4)
+        self.grid.addWidget(self.cTotal, j, 5)
 
         self.setLayout(self.grid)
 
@@ -1087,13 +1141,26 @@ class DiceRollW(QWidget):
 
         self.resultLbl.setText(str(roll))
 
-    def diceRoll(self, sender):
-        sender = self.sender()
-        label = int(sender.text()[1:])
-
-        roll = random.randint(1, label)
+    def reset(self):
+        self.total = 0
         self.topLbl.setText("You rolled: ")
-        self.resultLbl.setText(str(roll))
+        self.resultLbl.setText(" ")
+
+    def customRoll(self):
+
+        label = int(self.cDice.text())
+        total = 0
+
+        for i in range(int(self.cNum.text())):
+            roll = random.randint(1, label)
+            total += roll
+            self.topLbl.setText(self.topLbl.text() + " + " + str(roll))
+        for i in self.dDict:
+            self.dDict[i].totalLabel.setText(" ")
+        self.cTotal.setText(str(total))
+        self.total += total
+        self.resultLbl.setText(str(self.total))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
