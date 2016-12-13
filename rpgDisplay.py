@@ -765,8 +765,9 @@ class StatAssignW(QWidget):
 
         # Add the required widgets for assigning scores
         for i in range(len(rs.Attributes)):
-            self.sDict[i] = (AttributeBox(str(rs.Attributes[i]), self))
-            self.grid.addWidget(self.sDict[i], i+1, 4)
+            self.sDict[str(rs.Attributes[i])] = (
+                                   AttributeBox(str(rs.Attributes[i]), self))
+            self.grid.addWidget(self.sDict[str(rs.Attributes[i])], i+1, 4)
 
         self.setLayout(self.grid)
         self.show()
@@ -803,17 +804,22 @@ class StatAssignW(QWidget):
         self.close()
 
     def autoAttribs(self):
-        """ Automatically assign scores to attributes, then display."""
+        """ Automatically assign scores to attributes. """
 
-        self.hide()
-        rs.auto_assign(self.parent.PC)
-        rs.add_bonuses(self.parent.PC)
-        rs.modifier_assign(self.parent.PC)
+        for i in rs.Attributes:
+            prio = i + "Priority"
+            try:
+                self.sDict[str(i)].aEdit.setText(str(self.parent.PC.scorelist[
+                           rs.RoleStats[self.parent.PC.role][prio]]))
+                self.sDict[str(i)].aSet.click()
+            except KeyError as err:
+                print("Error:", str(err), "not found in RoleStats section of",
+                      "DATA/statsData.json file")
+                return False
 
-        self.parent.cdw = CharDisplayW(self.parent)
-        self.parent.layout.addWidget(self.parent.cdw)
-        self.parent.cdw.show()
-        self.close()
+            except IndexError as err:
+                print(str(prio), "in DATA/statsData.json does not refer to a",
+                      "valid scorelist index. Refer to readme")
 
 
 class CharDisplayW(QWidget):
