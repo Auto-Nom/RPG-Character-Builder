@@ -35,7 +35,7 @@ class MainW(QMainWindow):
         self.setCentralWidget(self.tab_widget)
 
         # Exit action to add to menu and toolbar
-        exitAction = QAction(QIcon('Icons/X.png'), '&Exit', self)
+        exitAction = QAction(QIcon('Icons/Close.png'), '&Exit', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(self.close)
@@ -53,7 +53,7 @@ class MainW(QMainWindow):
         saveFile.triggered.connect(self.saveDialog)
 
         # New tab action
-        tabAction = QAction(QIcon('Icons/folder_doc.ico'), 'New &Tab', self)
+        tabAction = QAction(QIcon('Icons/New.png'), 'New &Tab', self)
         tabAction.setShortcut('Ctrl+T')
         tabAction.setStatusTip('New Tab')
         tabAction.triggered.connect(self.tab_widget.newTab)
@@ -195,13 +195,21 @@ class Tab(QWidget):
 
         # Button to create a new character
         self.newBtn = QPushButton("New Character")
+        self.newBtn.setMaximumSize(200, 30)
         self.newBtn.clicked.connect(self.newChar)
         self.layout.addWidget(self.newBtn)
 
         # Button to create a random character
         self.rndmBtn = QPushButton("Random Character")
+        self.rndmBtn.setMaximumSize(200, 30)
         self.rndmBtn.clicked.connect(self.randomChar)
         self.layout.addWidget(self.rndmBtn)
+
+        # Button to use the dice widget
+        self.diceBtn = QPushButton("Dice Rolling")
+        self.diceBtn.setMaximumSize(200, 30)
+        self.diceBtn.clicked.connect(self.diceRoller)
+        self.layout.addWidget(self.diceBtn)
 
         self.setLayout(self.layout)
 
@@ -209,6 +217,7 @@ class Tab(QWidget):
         """ Start the process of creating a new character."""
         self.rndmBtn.hide()
         self.newBtn.hide()
+        self.diceBtn.hide()
         self.ncw = NewCharW(self)
         self.layout.addWidget(self.ncw)
 
@@ -240,10 +249,26 @@ class Tab(QWidget):
 
         self.PC = Char
 
-        self.rndmBtn.hide()
+        # Don't hide random button here, for convenience to re-random
         self.newBtn.hide()
+        self.diceBtn.hide()
+        try:
+            self.layout.removeWidget(self.cdw)
+            self.cdw.close()
+            self.layout.update()
+        except AttributeError:
+            pass
+
         self.cdw = CharDisplayW(self)
         self.layout.addWidget(self.cdw)
+
+    def diceRoller(self):
+
+        self.rndmBtn.hide()
+        self.newBtn.hide()
+        self.diceBtn.hide()
+        self.drw = DiceRollW(self)
+        self.layout.addWidget(self.drw)
 
 
 class NewCharW(QWidget):
@@ -403,27 +428,27 @@ class StatEditW(QWidget):
 
         # Label describing the step
         self.sLabel = QLabel('How do you want to generate your scores')
-        self.grid.addWidget(self.sLabel, 0, 0)
+        self.grid.addWidget(self.sLabel, 0, 0, 1, 5)
 
         # Button for using the dice method
         self.diceBtn = QPushButton("Dice")
         self.diceBtn.clicked.connect(self.btnClicked)
-        self.grid.addWidget(self.diceBtn, 1, 1)
+        self.grid.addWidget(self.diceBtn, 1, 0)
 
         # Button for using the points method
         self.pointsBtn = QPushButton("Points")
         self.pointsBtn.clicked.connect(self.btnClicked)
-        self.grid.addWidget(self.pointsBtn, 1, 2)
+        self.grid.addWidget(self.pointsBtn, 1, 1)
 
         # Button for taking the standard scores
         self.stdBtn = QPushButton("Standard")
         self.stdBtn.clicked.connect(self.btnClicked)
-        self.grid.addWidget(self.stdBtn, 1, 3)
+        self.grid.addWidget(self.stdBtn, 1, 2)
 
         # Button to go to the next step
         self.nxtBtn = QPushButton("Next")
         self.nxtBtn.clicked.connect(self.setList)
-        self.grid.addWidget(self.nxtBtn, 3, 1)
+        self.grid.addWidget(self.nxtBtn, 3, 3)
         self.nxtBtn.hide()
 
         # Button to go back to the previous step
@@ -433,7 +458,8 @@ class StatEditW(QWidget):
 
         # Label for the scores generated
         self.scores = QLabel(" ")
-        self.grid.addWidget(self.scores, 2, 1, 1, 3)
+        self.scores.setFont(QFont("Serif", 16))
+        self.grid.addWidget(self.scores, 2, 1, 1, 5)
 
         self.setLayout(self.grid)
         self.show()
@@ -523,18 +549,18 @@ class valChangeW(QWidget):
 
         # Button to increase a score
         self.upBtn = QPushButton("^")
-        self.upBtn.setMaximumSize(25, 25)
+        self.upBtn.setMaximumSize(30, 30)
         self.upBtn.clicked.connect(self.changeVal)
         self.layout.addWidget(self.upBtn)
 
         # Label to display the score
         self.lbl = QLabel(str(self.val))
-        self.lbl.setMaximumSize(25, 25)
+        self.lbl.setMaximumSize(30, 30)
         self.layout.addWidget(self.lbl)
 
         # Button to decrease a score
         self.dwnBtn = QPushButton("V")
-        self.dwnBtn.setMaximumSize(25, 25)
+        self.dwnBtn.setMaximumSize(30, 30)
         self.dwnBtn.clicked.connect(self.changeVal)
         self.layout.addWidget(self.dwnBtn)
 
@@ -720,7 +746,7 @@ class StatAssignW(QWidget):
         # Button to advance to the next stage
         self.nxtBtn = QPushButton("Next")
         self.nxtBtn.clicked.connect(self.setAttribs)
-        self.grid.addWidget(self.nxtBtn, 0, 5)
+        self.grid.addWidget(self.nxtBtn, 1, 5)
 
         # Button to automatically assign scores
         self.autoBtn = QPushButton("Auto-Assign")
@@ -730,11 +756,12 @@ class StatAssignW(QWidget):
         # Button to go back to the previous step
         self.bkBtn = QPushButton("Back")
         self.bkBtn.clicked.connect(self.goBack)
-        self.grid.addWidget(self.bkBtn, 3, 0)
+        self.grid.addWidget(self.bkBtn, 1, 0)
 
         # List of available scores
         self.listS = QLabel(str(self.sList))
-        self.grid.addWidget(self.listS, 1, 0)
+        self.listS.setFont(QFont("Serif", 12))
+        self.grid.addWidget(self.listS, 2, 0)
 
         # Add the required widgets for assigning scores
         for i in range(len(rs.Attributes)):
@@ -822,21 +849,25 @@ class CharDisplayW(QWidget):
         self.cRole = QLabel(self.char.getRole())
         self.grid.addWidget(self.cRole, 2, 0)
 
+        # Space
+        self.grid.setColumnMinimumWidth(1, 100)
+
         i = 0
         # Labels for all the attributes
         for k, v in self.attribs.items():
             self.aDict[k] = QLabel(str(k) + ": " + str(v))
-            self.grid.addWidget(self.aDict[k], i, 1)
+            self.grid.addWidget(self.aDict[k], i, 2)
             i += 1
 
         # Label for hitpoints
         self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
-        self.grid.addWidget(self.cHP, i+1, 1)
+        self.grid.addWidget(self.cHP, i+1, 2)
 
         # Button for editing the character
         self.editBtn = QPushButton("Edit")
+        self.editBtn.setMaximumSize(100, 30)
         self.editBtn.clicked.connect(self.editChar)
-        self.grid.addWidget(self.editBtn, 3, 0)
+        self.grid.addWidget(self.editBtn, 5, 0)
 
         self.setLayout(self.grid)
         self.show()
@@ -844,6 +875,13 @@ class CharDisplayW(QWidget):
     def editChar(self):
         """ Edit a character's stats."""
 
+        # if the character was randomed
+        if self.parent.rndmBtn.isVisible():
+            self.wasRandom = True
+        else:
+            self.wasRandom = False
+
+        self.parent.rndmBtn.hide()
         self.hide()
         self.parent.cew = CharEditW(self.parent)
         self.parent.layout.addWidget(self.parent.cew)
@@ -874,6 +912,7 @@ class AttributeEdit(QWidget):
 
         # Box to insert the new score
         self.aEdit = QLineEdit()
+        self.aEdit.setText(str(self.parent.attribs[text]))
         self.aEdit.setMaximumWidth(30)
         self.aEdit.setValidator(validator)
         self.layout.addWidget(self.aEdit)
@@ -909,7 +948,6 @@ class CharEditW(QWidget):
         # The character to edit
         self.char = self.parent.PC
         self.attribs = self.char.getAttribDict()
-        print(self.attribs)
 
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
@@ -926,13 +964,12 @@ class CharEditW(QWidget):
         self.cRole = QLabel(self.char.getRole())
         self.grid.addWidget(self.cRole, 2, 0)
 
+        self.grid.setColumnMinimumWidth(1, 100)
+
         # Add the widgets for editing attributes
         for i in range(len(rs.Attributes)):
             self.sDict[i] = (AttributeEdit(str(rs.Attributes[i]), self))
-            self.grid.addWidget(self.sDict[i], i+1, 4)
-
-        # self.cHP = QLabel("Hitpoints: " + str(self.char.getHitpoints()))
-        # self.grid.addWidget(self.cHP, 4, 0)
+            self.grid.addWidget(self.sDict[i], i+1, 2)
 
         # Button to go back to the display screen
         self.backBtn = QPushButton("Go Back")
@@ -950,6 +987,10 @@ class CharEditW(QWidget):
     def goBack(self):
         """ Go back to the display screen without setting the edits."""
         self.hide()
+        # if character was randomed and hasn't been edited, show random button
+        if self.parent.cdw.wasRandom:
+            self.parent.rndmBtn.show()
+
         self.parent.cdw = CharDisplayW(self.parent)
         self.parent.layout.addWidget(self.parent.cdw)
         self.parent.cdw.show()
@@ -971,6 +1012,82 @@ class CharEditW(QWidget):
         self.parent.cdw.show()
         self.close()
 
+
+class DiceRollW(QWidget):
+    """ A widget for rolling dice."""
+    def __init__(self, parent):
+        super().__init__()
+        self.parent = parent
+
+        self.initUI()
+
+    def initUI(self):
+
+        self.grid = QGridLayout()
+        self.grid.setSpacing(10)
+
+        self.topLbl = QLabel("<i>Dovie'andi se tovya sagain</i> - Mat Cauthon")
+        self.topLbl.setToolTip("It's time to roll the dice")
+        self.grid.addWidget(self.topLbl, 0, 0)
+
+        self.resultLbl = QLabel(" ")
+        self.grid.addWidget(self.resultLbl, 1, 0)
+
+        # 20 sided dice
+        self.d20 = QPushButton("D20")
+        self.d20.clicked.connect(self.d20Roll)
+        self.grid.addWidget(self.d20, 2, 1)
+
+        # 4 sided dice
+        self.d4 = QPushButton("D4")
+        self.d4.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d4, 3, 1)
+
+        # 6 sided dice
+        self.d6 = QPushButton("D6")
+        self.d6.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d6, 4, 1)
+
+        # 8 sided dice
+        self.d8 = QPushButton("D8")
+        self.d8.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d8, 5, 1)
+
+        # 10 sided dice
+        self.d10 = QPushButton("D10")
+        self.d10.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d10, 6, 1)
+
+        # 12 sided dice
+        self.d12 = QPushButton("D12")
+        self.d12.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d12, 7, 1)
+
+        # 100 sided dice
+        self.d100 = QPushButton("D100")
+        self.d100.clicked.connect(self.diceRoll)
+        self.grid.addWidget(self.d100, 8, 1)
+
+        self.setLayout(self.grid)
+
+    def d20Roll(self):
+        roll = random.randint(1, 20)
+        if roll == 20:
+            self.topLbl.setText("CRITICAL SUCCESS!")
+        elif roll == 1:
+            self.topLbl.setText("CRITICAL FAILURE!")
+        else:
+            self.topLbl.setText("You rolled: ")
+
+        self.resultLbl.setText(str(roll))
+
+    def diceRoll(self, sender):
+        sender = self.sender()
+        label = int(sender.text()[1:])
+
+        roll = random.randint(1, label)
+        self.topLbl.setText("You rolled: ")
+        self.resultLbl.setText(str(roll))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
