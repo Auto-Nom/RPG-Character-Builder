@@ -20,31 +20,177 @@
             "DexterityBonus": 0,
             "IntelligenceBonus": 0,
             "StrengthBonus": 2,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed": 30,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Draconic Ancestry",
+                "Breath Weapon",
+                "Damage Resistance"
+                ]
         },
-        "Dwarf": {
+        "Mountain Dwarf": {
+            "Parent Race": "Dwarf",
             "CharismaBonus": 0,
             "ConstitutionBonus": 2,
             "DexterityBonus": 0,
             "IntelligenceBonus": 0,
             "StrengthBonus": 2,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed": 25,
+            "Proficiencies": [
+                "Battleaxe",
+                "Handaxe",
+                "Light hammer",
+                "Warhammer",
+                "Artisan's tools",
+                "Light Armor",
+                "Medium Armor"
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Dwarven Resilience",
+                "Stonecunning"
+                ]
         },
-        "Elf": {
+        "Hill Dwarf": {
+            "Parent Race": "Dwarf",
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 2,
+            "DexterityBonus": 0,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 1,
+            "Size": "Medium",
+            "Speed": 25,
+            "Proficiencies": [
+                "Battleaxe",
+                "Handaxe",
+                "Light hammer",
+                "Warhammer",
+                "Artisan's tools"
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Dwarven Resilience",
+                "Dwarven Toughness",
+                "Stonecunning"
+                ]
+        },
+        "High Elf": {
+            "Parent Race": "Elf",
             "CharismaBonus": 0,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
             "IntelligenceBonus": 1,
             "StrengthBonus": 0,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed': 30
+            "Proficiencies": [
+                "Perception",
+                "Longsword",
+                "Shortsword",
+                "Shortbow",
+                "Longbow"
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Fey Ancestry",
+                "Trance",
+                "Free Cantrip",
+                "Extra Language"
+                ]
         },
-        "Gnome": {
+        "Wood Elf": {
+            "Parent Race": "Elf",
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 2,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 1,
+            "Size": "Medium",
+            "Speed': 35
+            "Proficiencies": [
+                "Perception",
+                "Longsword",
+                "Shortsword",
+                "Shortbow",
+                "Longbow"
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Fey Ancestry",
+                "Trance",
+                "Mask of the Wild"
+                ]
+        },
+        "Dark Elf": {
+            "Parent Race": "Elf",
+            "CharismaBonus": 1,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 2,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed': 30
+            "Proficiencies": [
+                "Perception",
+                "Rapier",
+                "Shortsword",
+                "Hand crossbow"
+                ],
+            "Special Rules": [
+                "Fey Ancestry",
+                "Trance",
+                "Superior Darkvision",
+                "Sunlight Sensitivity",
+                "Drow Magic"
+                ]
+        },
+        "Rock Gnome": {
+            "Parent Race": "Gnome",
             "CharismaBonus": 0,
             "ConstitutionBonus": 1,
             "DexterityBonus": 0,
             "IntelligenceBonus": 2,
             "StrengthBonus": 0,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Small",
+            "Speed": 25,
+            "Proficiencies": [
+                "Artisan's Tools
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Gnome Cunning",
+                "Artificer's Lore",
+                "Tinker"
+                ]
+        },
+        "Forest Gnome": {
+            "Parent Race": "Gnome",
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 0,
+            "DexterityBonus": 1,
+            "IntelligenceBonus": 2,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0,
+            "Size": "Small",
+            "Speed": 25,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Gnome Cunning",
+                "Natural Illusionist",
+                "Speak with Small Beasts"
+                ]
         },
         "Half-Elf": {
             "CharismaBonus": 2,
@@ -52,7 +198,15 @@
             "DexterityBonus": 0,
             "IntelligenceBonus": 0,
             "StrengthBonus": 0,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed": 30,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Fey Ancestry",
+                ]
         },
         "Half-Orc": {
             "CharismaBonus": 0,
@@ -60,23 +214,70 @@
             "DexterityBonus": 0,
             "IntelligenceBonus": 0,
             "StrengthBonus": 2,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed": 30,
+            "Proficiencies": [
+                "Intimidation
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Relentless Endurance",
+                "Savage Attacks"
+                ]
         },
-        "Halfling": {
+        "Lightfoot Halfling": {
+            "Parent Race": "Halfling",
             "CharismaBonus": 1,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
             "IntelligenceBonus": 0,
             "StrengthBonus": 0,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Small",
+            "Speed": 25,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Lucky",
+                "Brave",
+                "Halfling Nimbleness",
+                "Naturally Stealthy"
+                ]
+        },
+        "Stout Halfling": {
+            "Parent Race": "Halfling",
+            "CharismaBonus": 0,
+            "ConstitutionBonus": 1,
+            "DexterityBonus": 2,
+            "IntelligenceBonus": 0,
+            "StrengthBonus": 0,
+            "WisdomBonus": 0,
+            "Size": "Small",
+            "Speed": 25,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Lucky",
+                "Brave",
+                "Halfling Nimbleness",
+                "Stout Resilience"
+                ]
         },
         "Human": {
+            "Parent Race": "Human",
             "CharismaBonus": 1,
             "ConstitutionBonus": 1,
             "DexterityBonus": 1,
             "IntelligenceBonus": 1,
             "StrengthBonus": 1,
-            "WisdomBonus": 1
+            "WisdomBonus": 1,
+            "Size": "Medium",
+            "Speed": 30,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+            ]
         },
         "Tiefling": {
             "CharismaBonus": 2,
@@ -84,7 +285,16 @@
             "DexterityBonus": 0,
             "IntelligenceBonus": 1,
             "StrengthBonus": 0,
-            "WisdomBonus": 0
+            "WisdomBonus": 0,
+            "Size": "Medium",
+            "Speed": 30,
+            "Proficiencies": [
+                ],
+            "Special Rules": [
+                "Darkvision",
+                "Hellish Resistance",
+                "Infernal Legacy"
+                ]
         }
     },
     "RoleStats": {

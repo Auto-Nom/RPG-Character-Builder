@@ -75,6 +75,15 @@ class Character(object):
         self.race = race
         self.role = role
 
+        self.size = RaceStats[race["Size"]]
+        self.speed = RaceStats[race["Speed"]]
+        self.proficiencies = RaceStats[race["Proficiencies"]]
+        self.specialRules = RaceStats[race["Special Rules"]]
+
+        self.lvl = 1
+        self.xp = 0
+        self.proficiencyBonus = 2
+
         self.hitpoints = 0
 
         self.attribDict = {}
@@ -140,22 +149,32 @@ class Character(object):
         """ X is a list of integers."""
         self.scorelist = X
 
-    def saveChar(self, filename="default"):
+    def __str__(self):
+        return("Name: {self.name}\n"
+               "Race: {self.race}\n"
+               "Class: {self.role}\n".format(self=self) +
+               "\n".join(
+                   "{}: {}".format(k, v) for k, v in self.attribDict.items()) +
+               "\nHitpoints: {self.hitpoints}".format(self=self))
+
+
+# ---------------------------------------------------------------------------
+def saveChar(player, filename="default"):
         """
         Save a Character into a json object.
 
         filename will default to the character's name if no argument is given.
         """
         if filename == "default":
-            filename = self.name
+            filename = player.name
 
         # Dictionary to create json object
         charDict = {
-                    "Name": self.name,
-                    "Race": self.race,
-                    "Role": self.role,
-                    "Attributes": self.attribDict,
-                    "Hitpoints": self.hitpoints
+                    "Name": player.getName(),
+                    "Race": player.getRace(),
+                    "Role": player.getRole(),
+                    "Attributes": player.getAttribDict(),
+                    "Hitpoints": player.getHitpoints()
                     }
 
         try:
@@ -180,16 +199,7 @@ class Character(object):
                 else:
                     print("Invalid command")
 
-    def __str__(self):
-        return("Name: {self.name}\n"
-               "Race: {self.race}\n"
-               "Class: {self.role}\n".format(self=self) +
-               "\n".join(
-                   "{}: {}".format(k, v) for k, v in self.attribDict.items()) +
-               "\nHitpoints: {self.hitpoints}".format(self=self))
 
-
-# ---------------------------------------------------------------------------
 def load_char(filename):
     """ Loads a Character from a json object."""
     try:
@@ -221,7 +231,7 @@ def query_save(player):
                   "or 'default' to use the character's name")
             filename = input(">")
             print("Saving...")
-            player.saveChar(filename)
+            saveChar(player, filename)
             break
         elif conf == "N" or conf == "NO":
             print("Character not saved")
