@@ -23,13 +23,17 @@
             "WisdomBonus": 0,
             "Size": "Medium",
             "Speed": 30,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Draconic"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
                 "Draconic Ancestry",
                 "Breath Weapon",
                 "Damage Resistance"
-                ]
+            ]
         },
         "Mountain Dwarf": {
             "Parent Race": "Dwarf",
@@ -41,20 +45,30 @@
             "WisdomBonus": 0,
             "Size": "Medium",
             "Speed": 25,
-            "Proficiencies": [
-                "Battleaxe",
-                "Handaxe",
-                "Light hammer",
-                "Warhammer",
-                "Artisan's tools",
-                "Light Armor",
-                "Medium Armor"
+            "Languages": [
+                "Common",
+                "Dwarvish"
+            ],
+            "Proficiencies": {
+                "Weapons": [
+                    "Battleaxe",
+                    "Handaxe",
+                    "Light hammer",
+                    "Warhammer"
                 ],
+                "Tools": [
+                    "Artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools"
+                ],
+                "Armor": [
+                    "Light Armor",
+                    "Medium Armor"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Dwarven Resilience",
                 "Stonecunning"
-                ]
+            ]
         },
         "Hill Dwarf": {
             "Parent Race": "Dwarf",
@@ -66,13 +80,21 @@
             "WisdomBonus": 1,
             "Size": "Medium",
             "Speed": 25,
-            "Proficiencies": [
-                "Battleaxe",
-                "Handaxe",
-                "Light hammer",
-                "Warhammer",
-                "Artisan's tools"
-                ],
+            "Languages": [
+                "Common",
+                "Dwarvish"
+            ],
+            "Proficiencies": {
+                "Weapons": [
+                    "Battleaxe",
+                    "Handaxe",
+                    "Light hammer",
+                    "Warhammer"
+                    ],
+                "Tools": [
+                    "Artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Dwarven Resilience",
@@ -89,21 +111,29 @@
             "StrengthBonus": 0,
             "WisdomBonus": 0,
             "Size": "Medium",
-            "Speed': 30
-            "Proficiencies": [
-                "Perception",
-                "Longsword",
-                "Shortsword",
-                "Shortbow",
-                "Longbow"
+            "Speed": 30,
+            "Languages": [
+                "Common",
+                "Elvish"
+            ],
+            "Proficiencies": {
+                "Skills": [
+                    "Perception"
                 ],
+                "Weapons": [
+                    "Longsword",
+                    "Shortsword",
+                    "Shortbow",
+                    "Longbow"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Fey Ancestry",
                 "Trance",
                 "Free Cantrip",
                 "Extra Language"
-                ]
+            ]
         },
         "Wood Elf": {
             "Parent Race": "Elf",
@@ -114,14 +144,22 @@
             "StrengthBonus": 0,
             "WisdomBonus": 1,
             "Size": "Medium",
-            "Speed': 35
-            "Proficiencies": [
-                "Perception",
-                "Longsword",
-                "Shortsword",
-                "Shortbow",
-                "Longbow"
+            "Speed": 35,
+            "Languages": [
+                "Common",
+                "Elvish"
+            ],
+            "Proficiencies": {
+                "Skills": [
+                    "Perception"
                 ],
+                "Weapons": [
+                    "Longsword",
+                    "Shortsword",
+                    "Shortbow",
+                    "Longbow"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Fey Ancestry",
@@ -138,13 +176,21 @@
             "StrengthBonus": 0,
             "WisdomBonus": 0,
             "Size": "Medium",
-            "Speed': 30
-            "Proficiencies": [
-                "Perception",
-                "Rapier",
-                "Shortsword",
-                "Hand crossbow"
+            "Speed": 30,
+            "Languages": [
+                "Common",
+                "Elvish"
+            ],
+            "Proficiencies": {
+                "Skills": [
+                    "Perception"
                 ],
+                "Weapons": [
+                    "Rapier",
+                    "Shortsword",
+                    "Hand crossbow"
+                ]
+            },
             "Special Rules": [
                 "Fey Ancestry",
                 "Trance",
@@ -163,9 +209,15 @@
             "WisdomBonus": 0,
             "Size": "Small",
             "Speed": 25,
-            "Proficiencies": [
-                "Artisan's Tools
-                ],
+            "Languages": [
+                "Common",
+                "Gnomish"
+            ],
+            "Proficiencies": {
+                "Tools": [
+                    "Artisan's Tools"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Gnome Cunning",
@@ -183,8 +235,12 @@
             "WisdomBonus": 0,
             "Size": "Small",
             "Speed": 25,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Gnomish"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
                 "Darkvision",
                 "Gnome Cunning",
@@ -201,11 +257,19 @@
             "WisdomBonus": 0,
             "Size": "Medium",
             "Speed": 30,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Elvish",
+                "One extra of your choice"
+            ],
+            "Proficiencies": {
+                "Skills": [
+                    "Two of your choice"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
-                "Fey Ancestry",
+                "Fey Ancestry"
                 ]
         },
         "Half-Orc": {
@@ -217,14 +281,20 @@
             "WisdomBonus": 0,
             "Size": "Medium",
             "Speed": 30,
-            "Proficiencies": [
-                "Intimidation
-                ],
+            "Languages": [
+                "Common",
+                "Orc"
+            ],
+            "Proficiencies": { 
+                "Skills": [
+                    "Intimidation"
+                ]
+            },
             "Special Rules": [
                 "Darkvision",
                 "Relentless Endurance",
                 "Savage Attacks"
-                ]
+            ]
         },
         "Lightfoot Halfling": {
             "Parent Race": "Halfling",
@@ -236,14 +306,18 @@
             "WisdomBonus": 0,
             "Size": "Small",
             "Speed": 25,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Halfling"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
                 "Lucky",
                 "Brave",
                 "Halfling Nimbleness",
                 "Naturally Stealthy"
-                ]
+            ]
         },
         "Stout Halfling": {
             "Parent Race": "Halfling",
@@ -255,14 +329,18 @@
             "WisdomBonus": 0,
             "Size": "Small",
             "Speed": 25,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Halfling"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
                 "Lucky",
                 "Brave",
                 "Halfling Nimbleness",
                 "Stout Resilience"
-                ]
+            ]
         },
         "Human": {
             "Parent Race": "Human",
@@ -274,8 +352,12 @@
             "WisdomBonus": 1,
             "Size": "Medium",
             "Speed": 30,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "One extra of your choice"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
             ]
         },
@@ -288,13 +370,17 @@
             "WisdomBonus": 0,
             "Size": "Medium",
             "Speed": 30,
-            "Proficiencies": [
-                ],
+            "Languages": [
+                "Common",
+                "Infernal"
+            ],
+            "Proficiencies": {
+            },
             "Special Rules": [
                 "Darkvision",
                 "Hellish Resistance",
                 "Infernal Legacy"
-                ]
+            ]
         }
     },
     "RoleStats": {
@@ -305,7 +391,36 @@
             "HitpointsBase": 12,
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
-            "WisdomPriority": 4
+            "WisdomPriority": 4,
+            "Hit Die": "D12",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor",
+                    "medium armor",
+                    "shields"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "martial weapons"
+                ],
+                "Saving Throws": [
+                    "Strength",
+                    "Constitution"
+                ],
+                "Skills": [
+                "Any two from Animal Handling, Athletics, Intimidation, Nature, Perception, Survival"
+                ]
+            },
+            "Equipment": [
+                "(a) a greataxe or (b) any martial melee weapon",
+                "(a) two handaxes or (b) any simple weapon",
+                "An expiorer's pack",
+                "four javelins"
+            ],
+            "Special Rules": [
+                "Rage",
+                "Unarmored Defense"
+            ]
         },
         "Bard": {
             "CharismaPriority": 0,
@@ -314,7 +429,41 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 3,
             "StrengthPriority": 5,
-            "WisdomPriority": 2
+            "WisdomPriority": 2,
+            "Hit Die": "D8",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "hand crossbows",
+                    "longswords",
+                    "rapiers",
+                    "shortswords"
+                ],
+                "Tools": [
+                    "Three musical instruments of your choice"
+                ],
+                "Saving Throws": [
+                    "Dexterity",
+                    "Charisma"
+                ],
+                "Skills": [
+                "Choose any three"            
+                ]
+            },
+            "Equipment": [
+                "(a) a rapier, (b) a longsword, or (c) any simple weapon",
+                "(a) a diplomat's pack or (b) an entertainer's pack",
+                "(a) a lute or (b) any other musical instrument",
+                "Leather armor",
+                "Dagger"
+            ],
+            "Special Rules": [
+                "Spellcasting",
+                "Bardic Inspiration"
+            ]
         },
         "Cleric": {
             "CharismaPriority": 3,
@@ -323,7 +472,37 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 4,
             "StrengthPriority": 1,
-            "WisdomPriority": 0
+            "WisdomPriority": 0,
+            "Hit Dice": "D8",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor",
+                    "medium armor",
+                    "shields"
+                ],
+                "Weapons": [
+                    "All simple weapons"
+                ],
+                "Saving Throws": [
+                    "Wisdom",
+                    "Charisma"
+                ],
+                "Skills": [
+                "Choose two from History, lnsight, Medicine, Persuasion, and Religion"
+                ]
+            },
+            "Equipment": [
+            "(a) a mace or (b) a warhammer (if proficient)",
+            "(a) scale mail, (b) leather armor, or (c) chain mail (if proficient)",
+            "(a) a light crossbow and 20 bolts or (b) any simple weapon",
+            "(a) a priest's pack or (b) an explorer's pack",
+            "A shield",
+            "a holy symbol"
+            ],
+            "Special Rules": [
+            "Spellcasting",
+            "Divine Domain"
+            ]            
         },
         "Druid": {
             "CharismaPriority": 5,
@@ -332,7 +511,48 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 2,
             "StrengthPriority": 4,
-            "WisdomPriority": 0
+            "WisdomPriority": 0,
+            "Hit Dice": "D8",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor",
+                    "medium armor",
+                    "shields (druids will not wear armor or use shields made of metal)"
+                    ],
+                "Weapons": [
+                    "Clubs",
+                    "daggers",
+                    "darts",
+                    "javelins",
+                    "maces",
+                    "quarterstaffs",
+                    "scimitars",
+                    "sickles",
+                    "slings",
+                    "spears"
+                ],
+                "Tools": [
+                    "Herbalism kit"
+                ],
+                "Saving Throws": [
+                    "Intelligcnce",
+                    "Wisdom"
+                ],
+                "Skills": [
+                    "Choose two from Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, and Survival"
+                ]
+            },
+            "Equipment": [
+                "a) a wooden shield or (b) any simple weapon",
+                "(a) a scimitar or (b) any simple melee weapon",
+                "Leather armor",
+                "explorer's pack",
+                "druidic focus"
+            ],
+            "Special Rules": [
+                "Druidic",
+                "Spellcasting"
+            ]
         },
         "Fighter": {
             "CharismaPriority": 3,
@@ -341,7 +561,35 @@
             "HitpointsBase": 10,
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
-            "WisdomPriority": 3
+            "WisdomPriority": 3,
+            "Hit Die": "D10",
+            "Proficiencies": {
+                "Armor": [
+                    "All armor",
+                    "shields"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "martial weapons"
+                ],
+                "Saving Throws": [
+                    "Strength",
+                    "Constitution"
+                ],
+                "Skills": [
+                    "Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival"
+                ]
+            },
+            "Equipment": [
+                "(a) chain mail or (b) leather, longbow, and 20 arrows",
+                "(a) a martial weapon and a shield or (b) two martial weapons",
+                "(a) a Iight crossbow and 20 bolts or (b) two handaxes",
+                "(a) a dungeoneer's pack or (b) an explorer's pack"
+            ],
+            "Special Rules": [
+                "Fighting Style",
+                "Second Wind"
+            ]
         },
         "Monk": {
             "CharismaPriority": 3,
@@ -350,7 +598,33 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 3,
             "StrengthPriority": 2,
-            "WisdomPriority": 1
+            "WisdomPriority": 1,
+            "Hit Die": "D8",
+            "Proficiencies": {
+                "Weapons": [
+                    "Simple weapons", 
+                    "shortswords"
+                ],
+                "Tools": [
+                    "Choose one type of artisan's tools or one musical instrument"
+                ],
+                "Saving Throws": [
+                    "Strength",
+                    "Dexterity"
+                ],
+                "Skills": [
+                    "Choose two from Acrobatics, Athletics, History, Insight, Religion, and Stealth"
+                ]
+            },
+            "Equipment": [
+                "(a) a shortsword or (b) any simple weapon",
+                "(a) a dungeoneer's pack or (b) an explorer's pack",
+                "10 darts"
+            ],
+            "Special Rules": [
+                "Unarmored Defense",
+                "Martial arts"
+            ]
         },
         "Paladin": {
             "CharismaPriority": 1,
@@ -359,7 +633,36 @@
             "HitpointsBase": 10,
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
-            "WisdomPriority": 2
+            "WisdomPriority": 2,
+            "Hit Die": "D10",
+            "Proficiencies": {
+                "Armor": [
+                    "All armor",
+                    "shields"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "martial weapons"
+                ],
+                "Saving Throws": [
+                    "Wisdom",
+                    "Charisma"
+                ],
+                "Skills": [
+                "Choose two from Athletics, Insight, Intimidation, Medicine, Persuasion, and Religion"
+                ]
+            },
+            "Equipment": [
+                "(a) a martial weapon and a shield or (b) two martial weapons",
+                "(a) five javelins or (b) any simple melee weapon",
+                "(a) a priest's pack or (b) an explorer's pack",
+                "Chain mail",
+                "a holy symbol"
+            ],
+            "Special Rules": [
+                "Divine Sense",
+                "Lay on hands"
+            ]
         },
         "Ranger": {
             "CharismaPriority": 5,
@@ -368,7 +671,37 @@
             "HitpointsBase": 10,
             "IntelligencePriority": 4,
             "StrengthPriority": 2,
-            "WisdomPriority": 1
+            "WisdomPriority": 1,
+            "Hit Die": "D10",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor",
+                    "medium armor",
+                    "shields"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "martial weapons"
+                ],
+                "Saving Throws": [
+                    "Strength",
+                    "Dexterity"
+                ],
+                "Skills": [
+                    "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survival"
+                ]
+            },
+            "Equipment": [
+                "(a) scale mail or (b) leather armor",
+                "(a) two shortswords or (b) two simple melee weapons",
+                "(a) a dungeoneer's pack or (b) an explorer's pack",
+                "a longbow",
+                "a quiver of 20 arrows"
+            ],
+            "Special Rules": [
+                "Favoured Enemy",
+                "Natural Explorer"
+            ]
         },
         "Rogue": {
             "CharismaPriority": 1,
@@ -377,7 +710,43 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 2,
             "StrengthPriority": 3,
-            "WisdomPriority": 4
+            "WisdomPriority": 4,
+            "Hit Die": "D8",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor"
+                ],
+                "Weapons": [
+                    "Simple weapons",
+                    "hand crossbows",
+                    "longswords",
+                    "rapiers",
+                    "shortswords"
+                ],
+                "Tools": [
+                    "Thieves' tools"
+                ],
+                "Saving Throws": [
+                    "Dexterity", 
+                    "Intelligence"
+                ],
+                "Skills": [
+                    "Choose four from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion. Sleight of Hand, and Stealth"
+                ]
+            },
+            "Equipment": [
+                "(a) a rapier or (b) a shortsword",
+                "(a) a shortbow and quiver of 20 arrows or (b) a shortsword",
+                "(a) a burglar's pack, (b) a dungeoneer's pack, or (c) an explorer's pack",
+                "Leather armor",
+                "two daggers",
+                "and thieves' tools"
+            ],
+            "Special Rules": [
+                "Expertise",
+                "Sneak Attack",
+                "Thieves' Cant"
+            ]
         },
         "Sorceror": {
             "CharismaPriority": 0,
@@ -386,7 +755,34 @@
             "HitpointsBase": 6,
             "IntelligencePriority": 2,
             "StrengthPriority": 5,
-            "WisdomPriority": 3
+            "WisdomPriority": 3,
+            "Hit Die": "D6",
+            "Proficiencies": {
+                "Weapons": [
+                    "Daggers",
+                    "darts",
+                    "slings",
+                    "quarterstaffs",
+                    "light crossbows"
+                ],
+                "Saving Throws": [
+                    "Constitution",
+                    "Charisma"
+                ],
+                "Skills": [
+                "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion"
+                ]
+            },
+            "Equipment": [
+                "(a) a light crossbow and 20 bolts or (b) any simple weapon",
+                "(a) a component pouch or (b) an arcane focus",
+                "(a) a dungeoneer's pack or (b) an explorer's pack",
+                "Two daggers"
+            ],
+            "Special Rules": [
+                "Spellcasting",
+                "Sorcerous Origin"
+            ]
         },
         "Warlock": {
             "CharismaPriority": 0,
@@ -395,7 +791,33 @@
             "HitpointsBase": 8,
             "IntelligencePriority": 3,
             "StrengthPriority": 5,
-            "WisdomPriority": 2
+            "WisdomPriority": 2,
+            "Hit Die": "D8",
+            "Proficiencies": {
+                "Armor": [
+                    "Light armor"
+                ],
+                "Weapons": [
+                    "Simple weapons"
+                ],
+                "Saving Throws": [
+                    "Wisdom",
+                    "Charisma"
+                ],
+                "Skills": [
+                    "Choose two skills from Arcana, Deception, History, Intimidation, Investigation, Nature, and Religion"
+                ]
+            },
+            "Equipment": [
+                "(a) a lighl crossbow and 20 bolts or (b) any simple weapon",
+                "(a) a component pouch or (b) an arcane focus",
+                "(a) a scholar's pack or (b) a dungeoneer's pack",
+                "Leather armor, any simple weapon, and two daggers"
+            ],
+            "Special Rules": [
+                "Otherworldly Patron",
+                "Pact magic"
+            ]
         },
         "Wizard": {
             "CharismaPriority": 4,
@@ -404,7 +826,34 @@
             "HitpointsBase": 6,
             "IntelligencePriority": 0,
             "StrengthPriority": 5,
-            "WisdomPriority": 2
+            "WisdomPriority": 2,
+            "Hit Die": "D6",
+            "Proficiencies": {
+                "Weapons": [
+                    "Daggers",
+                    "light crossbows",
+                    "darts",
+                    "slings",
+                    "quarterstaffs"
+                ],
+                "Saving Throws": [
+                    "Intelligence",
+                    "Wisdom"
+                ],
+                "Skills": [
+                    "Choose two from Arcana, History, Investigation, Medicine, Insight, and Religion"
+                ]
+            },
+            "Equipment": [
+                "(a) a quarterstaff or (b) a dagger",
+                "(a) a component pouch or (b) an arcane focus",
+                "(a) a scholar's pack or (b) an explorer's pack",
+                "A spellbook"
+            ],
+            "Special Rules": [
+                "Spellcasting",
+                "Arcane Recovery"
+            ]
         }
     }
 }

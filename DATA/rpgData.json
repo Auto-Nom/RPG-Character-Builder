@@ -7,13 +7,25 @@
         "Wisdom",
         "Charisma"
     ],
+    "Proficiency Types": [
+        "Armor",
+        "Weapons",
+        "Tools",
+        "Saving Throws",
+        "Skills"
+    ],
     "Races": [
-        "Dwarf",
-        "Elf",
-        "Halfling",
+        "Mountain Dwarf",
+        "Hill Dwarf",
+        "High Elf",
+        "Wood Elf",
+        "Dark Elf",
+        "Stout Halfling",
+        "Lightfoot Halfling",
         "Human",
         "Dragonborn",
-        "Gnome",
+        "Forest Gnome",
+        "Rock Gnome",
         "Half-Elf",
         "Half-Orc",
         "Tiefling"

@@ -75,10 +75,29 @@ class Character(object):
         self.race = race
         self.role = role
 
-        self.size = RaceStats[race["Size"]]
-        self.speed = RaceStats[race["Speed"]]
-        self.proficiencies = RaceStats[race["Proficiencies"]]
-        self.specialRules = RaceStats[race["Special Rules"]]
+        self.specialRules = {}
+        self.equipment = []
+        self.proficiencies = {}
+
+        for i in rpgData["Proficiency Types"]:
+            self.proficiencies[i] = []
+
+        # Race
+        self.size = RaceStats[race]["Size"]
+        self.speed = RaceStats[race]["Speed"]
+        self.languages = RaceStats[race]["Languages"]
+        self.specialRules["Race Rules"] = RaceStats[race]["Special Rules"]
+
+        for i in RaceStats[race]["Proficiencies"]:
+            self.proficiencies[i] += RaceStats[race]["Proficiencies"][i]
+
+        # Role
+        for i in RoleStats[role]["Proficiencies"]:
+            self.proficiencies[i] += RoleStats[role]["Proficiencies"][i]
+
+        self.specialRules["Role Rules"] = RoleStats[role]["Special Rules"]
+        self.equipment.append(RoleStats[role]["Equipment"])
+        self.hitDie = RoleStats[role]["Hit Die"]
 
         self.lvl = 1
         self.xp = 0
