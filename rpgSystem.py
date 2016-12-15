@@ -49,6 +49,7 @@ try:
     Attributes = rpgData["Attributes"]
     Races = rpgData["Races"]
     Roles = rpgData["Roles"]
+    Backgrounds = rpgData["Backgrounds"]
 except KeyError as err:
     print("DATA/rpgDATA.json is missing a", str(err), "section")
     raise
@@ -56,6 +57,7 @@ except KeyError as err:
 try:
     RaceStats = statsData["RaceStats"]
     RoleStats = statsData["RoleStats"]
+    BackgroundStats = statsData["BackgroundStats"]
 except KeyError as err:
     print("DATA/statsData/json is missing a", str(err), "section")
     raise
@@ -69,14 +71,17 @@ class Character(object):
     Has a race and class, as well ability scores and stats.
     """
 
-    def __init__(self, name, race, role):
+    def __init__(self, name, race, role, background):
 
         self.name = name
         self.race = race
+        self.majorRace = RaceStats[race]["majorRace"]
         self.role = role
+        self.background = background
 
         self.specialRules = {}
         self.equipment = []
+        self.languages = []
         self.proficiencies = {}
 
         for i in rpgData["Proficiency Types"]:
@@ -85,7 +90,8 @@ class Character(object):
         # Race
         self.size = RaceStats[race]["Size"]
         self.speed = RaceStats[race]["Speed"]
-        self.languages = RaceStats[race]["Languages"]
+        for i in RaceStats[race]["Languages"]:
+            self.languages.append(i)
         self.specialRules["Race Rules"] = RaceStats[race]["Special Rules"]
 
         for i in RaceStats[race]["Proficiencies"]:
@@ -96,8 +102,21 @@ class Character(object):
             self.proficiencies[i] += RoleStats[role]["Proficiencies"][i]
 
         self.specialRules["Role Rules"] = RoleStats[role]["Special Rules"]
-        self.equipment.append(RoleStats[role]["Equipment"])
+        for i in RoleStats[role]["Equipment"]:
+            self.equipment.append(i)
         self.hitDie = RoleStats[role]["Hit Die"]
+
+        # Background
+        for i in BackgroundStats[background]["Proficiencies"]:
+            self.proficiencies[i] += BackgroundStats[background][
+                                                        "Proficiencies"][i]
+        for i in BackgroundStats[background]["Languages"]:
+            self.languages.append(i)
+
+        for i in BackgroundStats[background]["Equipment"]:
+            self.equipment.append(i)
+        self.specialRules["Background Feature"] = BackgroundStats[background][
+                                                                    "Feature"]
 
         self.lvl = 1
         self.xp = 0
