@@ -596,8 +596,8 @@
             ]
         },
         "Monk": {
-            "CharismaPriority": 3,
-            "ConstitutionPriority": 4,
+            "CharismaPriority": 4,
+            "ConstitutionPriority": 5,
             "DexterityPriority": 0,
             "HitpointsBase": 8,
             "IntelligencePriority": 3,

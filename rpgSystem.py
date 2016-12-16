@@ -79,7 +79,7 @@ class Character(object):
         self.role = role
         self.background = background
 
-        self.specialRules = {}
+        self.specialRules = {"Other": []}
         self.equipment = []
         self.languages = []
         self.proficiencies = {}
@@ -151,6 +151,9 @@ class Character(object):
     def getRole(self):
         return self.role
 
+    def getBackground(self):
+        return self.background
+
     def getAttrib(self, attribute):
         try:
             return self.attribDict[attribute]
@@ -160,6 +163,36 @@ class Character(object):
 
     def getAttribDict(self):
         return self.attribDict.copy()
+
+    def getSpecialRules(self):
+        return self.specialRules.copy()
+
+    def getEquipment(self):
+        return self.equipment.copy()
+
+    def getLanguages(self):
+        return self.languages.copy()
+
+    def getProficiencies(self):
+        return self.proficiencies.copy()
+
+    def getSize(self):
+        return self.size
+
+    def getSpeed(self):
+        return self.speed
+
+    def getLevel(self):
+        return self.lvl
+
+    def getXP(self):
+        return self.xp
+
+    def getProficiencyBonus(self):
+        return self.proficiencyBonus
+
+    def getHitDie(self):
+        return self.hitDie
 
     def getHitpoints(self):
         return self.hitpoints
@@ -177,8 +210,61 @@ class Character(object):
     def setRole(self, X):
         self.role = X
 
+    def setBackground(self, X):
+        self.background = X
+
     def setAttrib(self, attribute, X):
         self.attribDict[attribute] = X
+
+    def setAttribDict(self, X):
+        self.attribDict = X
+
+    def setSize(self, X):
+        self.size = X
+
+    def setSpeed(self, X):
+        self.speed = X
+
+    def setLevel(self, X):
+        self.lvl = X
+
+    def setXP(self, X):
+        self.xp = X
+
+    def setProficiencyBonus(self, X):
+        self.proficiencyBonus = X
+
+    def setSpecialRules(self, X):
+        self.specialRules = X
+
+    def setEquipment(self, X):
+        self.equipment = X
+
+    def setLanguages(self, X):
+        self.languages = X
+
+    def setProficiencies(self, X):
+        self.proficiencies = X
+
+    def addSpecialRule(self, X, subset="Other"):
+        try:
+            self.specialRules[subset] += X
+        except KeyError:
+            print("New ruleset")
+            self.specialRules[subset] = [X]
+
+    def addEquipment(self, X):
+        self.equipment += X
+
+    def addLanguages(self, X):
+        self.languages += X
+
+    def addProficiencies(self, subset, X):
+        try:
+            self.proficiencies[subset] += X
+        except KeyError:
+            print("New proficiency set")
+            self.proficiencies[subset] = [X]
 
     def setHitpoints(self, X):
         self.hitpoints = X
@@ -187,10 +273,33 @@ class Character(object):
         """ X is a list of integers."""
         self.scorelist = X
 
+    def getCharDict(self):
+        """Get a dictionary representing the character."""
+        charDict = {
+                    "Name": self.getName(),
+                    "Race": self.getRace(),
+                    "Role": self.getRole(),
+                    "Background": self.getBackground(),
+                    "Attributes": self.getAttribDict(),
+                    "Hitpoints": self.getHitpoints(),
+                    "SpecialRules": self.getSpecialRules(),
+                    "Equipment": self.getEquipment(),
+                    "Languages": self.getLanguages(),
+                    "Proficiencies": self.getProficiencies(),
+                    "Size": self.getSize(),
+                    "Speed": self.getSpeed(),
+                    "Level": self.getLevel(),
+                    "XP": self.getXP(),
+                    "Proficiency Bonus": self.getProficiencyBonus()
+                    }
+
+        return charDict
+
     def __str__(self):
         return("Name: {self.name}\n"
                "Race: {self.race}\n"
-               "Class: {self.role}\n".format(self=self) +
+               "Class: {self.role}\n"
+               "Background: {self.background}\n".format(self=self) +
                "\n".join(
                    "{}: {}".format(k, v) for k, v in self.attribDict.items()) +
                "\nHitpoints: {self.hitpoints}".format(self=self))
@@ -207,13 +316,7 @@ def saveChar(player, filename="default"):
             filename = player.name
 
         # Dictionary to create json object
-        charDict = {
-                    "Name": player.getName(),
-                    "Race": player.getRace(),
-                    "Role": player.getRole(),
-                    "Attributes": player.getAttribDict(),
-                    "Hitpoints": player.getHitpoints()
-                    }
+        charDict = player.getCharDict()
 
         try:
             with open(filename, 'x') as f:
@@ -247,11 +350,20 @@ def load_char(filename):
         print("That file could not be found :(")
         return
 
-    savedChar = Character(charDict["Name"], charDict["Race"], charDict["Role"])
+    savedChar = Character(charDict["Name"], charDict["Race"], charDict["Role"],
+                          charDict["Background"])
 
-    for i in charDict["Attributes"]:
-        savedChar.setAttrib(i, charDict["Attributes"][i])
-    savedChar.setHitpoints(charDict["Hitpoints"])
+    savedChar.setAttribDict(charDict["Attributes"]),
+    savedChar.setHitpoints(charDict["Hitpoints"]),
+    savedChar.setSpecialRules(charDict["SpecialRules"]),
+    savedChar.setEquipment(charDict["Equipment"]),
+    savedChar.setLanguages(charDict["Languages"]),
+    savedChar.setProficiencies(charDict["Proficiencies"]),
+    savedChar.setSize(charDict["Size"]),
+    savedChar.setSpeed(charDict["Speed"]),
+    savedChar.setLevel(charDict["Level"]),
+    savedChar.setXP(charDict["XP"]),
+    savedChar.setProficiencyBonus(charDict["Proficiency Bonus"])
 
     print("Character", str(savedChar.getName()), "sucessfully loaded")
     return savedChar
@@ -418,7 +530,7 @@ def name_gen(race):
                 try:
                     name = random.choice(namesData[race_names])
                 except KeyError:
-                    name = random.choice(namesData["Common_Names"])
+                    name = random.choice(namesData["Common_names"])
 
         print("You are named:", str(name) + "!")
         return name

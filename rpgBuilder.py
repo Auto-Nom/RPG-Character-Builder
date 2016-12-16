@@ -12,13 +12,13 @@ import random
 import rpgSystem as rs
 
 
-def easy_gen(name, race, role):
+def easy_gen(name, race, role, background):
     """
     Automatically generates a character for a given name, race, and role.
 
     Does not check if inputted race and role are valid atm, may cause errors
     """
-    p = rs.Character(name, race, role)
+    p = rs.Character(name, race, role, background)
     sList = rs.stat_roll()
     p.setScorelist(sList)
     rs.auto_assign(p)
@@ -33,21 +33,19 @@ def random_gen():
     """ Randomly generates a character."""
     race = random.choice(rs.rpgData["Races"])
     role = random.choice(rs.rpgData["Roles"])
+    background = random.choice(rs.rpgData["Backgrounds"])
 
-    # Half-Elves do not have unique names
-    # Need to make this non-hardcoded; put in the data files somehow
-    # Easiest would be copy paste elf+human names into Half-Elf_names
-    if race == "Half-Elf":
-        name = random.choice(rs.namesData["Human_names"] +
-                             rs.namesData["Elf_names"])
-    else:
-        race_names = race + "_names"
+    names = []
+    majorRace = rs.RaceStats[race]["majorRace"]
+    for i in majorRace:
         try:
-            name = random.choice(rs.namesData[race_names])
+            names += rs.namesData[i + "_names"]
         except KeyError:
-            name = random.choice(rs.namesData["Common_Names"])
+            names += rs.namesData["Common_names"]
 
-    Char = rs.Character(name, race, role)
+    name = random.choice(names)
+
+    Char = rs.Character(name, race, role, background)
     sList = rs.stat_roll()
     Char.setScorelist(sList)
     rs.auto_assign(Char)
@@ -61,6 +59,7 @@ def new_player():
     """ Allows a user to generate a new character, step by step."""
     race = rs.race_gen()
     role = rs.role_gen()
+    # TODO: rs.background_gen()
     name = rs.name_gen(race)
 
     player1 = rs.Character(name, race, role)
