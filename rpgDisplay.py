@@ -943,7 +943,7 @@ class CharDisplayW(QWidget):
         self.rules = self.char.getSpecialRules()
         for i in self.rules:
             self.grid.addWidget(QLabel(str(i)), j, 4)
-            self.grid.addWidget(QLabel(str(self.rules[i])), j, 5)
+            self.grid.addWidget(QLabel(rs.textParse(str(self.rules[i]))), j, 5)
             j += 1
 
         # Equipment
@@ -953,7 +953,7 @@ class CharDisplayW(QWidget):
 
         self.equipment = self.char.getEquipment()
         for i in self.equipment:
-            self.grid.addWidget(QLabel(i), j, 5)
+            self.grid.addWidget(QLabel(rs.textParse(i)), j, 5)
             j += 1
 
         # Languages
@@ -964,7 +964,7 @@ class CharDisplayW(QWidget):
 
         self.languages = self.char.getLanguages()
         for i in self.languages:
-            self.grid.addWidget(QLabel(i), j, 5)
+            self.grid.addWidget(QLabel(rs.textParse(i)), j, 5)
             j += 1
 
         # Proficiencies
@@ -975,7 +975,7 @@ class CharDisplayW(QWidget):
         self.proficiencies = self.char.getProficiencies()
         for i in self.proficiencies:
             self.grid.addWidget(QLabel(str(i)), j, 4)
-            self.grid.addWidget(QLabel(str(self.proficiencies[i])), j, 5)
+            self.grid.addWidget(QLabel(rs.textParse(str(self.proficiencies[i]))), j, 5)
             j += 1
 
         # Button for editing the character
@@ -1153,6 +1153,7 @@ class CharEditW(QWidget):
         self.raceRuleLbl = QLabel("Race Rules:")
         self.grid.addWidget(self.raceRuleLbl, 1, 4)
         self.raceRules = QTextEdit(str(self.rules["Race Rules"]).strip('[]'))
+        self.raceRules.setAcceptRichText(False)
         self.grid.addWidget(self.raceRules, 1, 5)
 
         self.roleRuleLbl = QLabel("Role Rules:")
@@ -1243,18 +1244,18 @@ class CharEditW(QWidget):
         self.parent.PC.setAttribDict(self.aDict),
         self.parent.PC.setHitpoints(self.cHP.text())
 
-        self.rules = {"Race Rules": self.raceRules.toPlainText().split(', '),
-                      "Role Rules": self.roleRules.toPlainText().split(', '),
-                      "Background Feature": self.bgRules.toPlainText().split(', '),
-                      "Other": self.otherRules.toPlainText().split(', ')}
+        self.rules = {"Race Rules": rs.textParse(self.raceRules.toPlainText()).split(', '),
+                      "Role Rules": rs.textParse(self.roleRules.toPlainText()).split(', '),
+                      "Background Feature": rs.textParse(self.bgRules.toPlainText()).split(', '),
+                      "Other": rs.textParse(self.otherRules.toPlainText()).split(', ')}
 
         self.parent.PC.setSpecialRules(self.rules)
-        self.parent.PC.setEquipment(self.equipList.toPlainText().split(', '))
-        self.parent.PC.setLanguages(self.langList.toPlainText().split(', '))
+        self.parent.PC.setEquipment(rs.textParse(self.equipList.toPlainText()).split(', '))
+        self.parent.PC.setLanguages(rs.textParse(self.langList.toPlainText()).split(', '))
 
         self.proficiencies = {}
         for i in rs.rpgData["Proficiency Types"]:
-            self.proficiencies[i] = self.profDict[i][1].toPlainText().split(', ')
+            self.proficiencies[i] = rs.textParse(self.profDict[i][1].toPlainText()).split(', ')
 
         self.parent.PC.setProficiencies(self.proficiencies)
         self.parent.PC.setSize(self.cSize.text())
