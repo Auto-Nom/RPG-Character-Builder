@@ -802,7 +802,7 @@ def textParse(text):
         if text[i] == "[" or text[i] == "]":
             pass
         elif text[i] == "'":
-            if i < (len(text) - 1):
+            if i < (len(text) - 1) and i > 0:
                 if text[i+1] == "s" and text[i-1] != " ":
                     textCpy += text[i]
             else:

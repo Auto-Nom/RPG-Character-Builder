@@ -16,6 +16,7 @@
     "RaceStats": {
         "Dragonborn": {
             "majorRace": ["Dragonborn"],
+            "Description": "Shaped by draconic gods or the dragons themselves, dragonborn combine the best attributes of dragons and humanoids.",
             "CharismaBonus": 1,
             "ConstitutionBonus": 0,
             "DexterityBonus": 0,
@@ -38,6 +39,7 @@
         },
         "Mountain Dwarf": {
             "majorRace": ["Dwarf"],
+            "Description": "Mountain Dwarves are short, strong, and accustomed to a difficult life in rugged terrain.",
             "CharismaBonus": 0,
             "ConstitutionBonus": 2,
             "DexterityBonus": 0,
@@ -73,6 +75,7 @@
         },
         "Hill Dwarf": {
             "majorRace": ["Dwarf"],
+            "Description": "Hill Dwarves have keen senses, deep intuition, and remarkable resilience.",
             "CharismaBonus": 0,
             "ConstitutionBonus": 2,
             "DexterityBonus": 0,
@@ -105,6 +108,7 @@
         },
         "High Elf": {
             "majorRace": ["Elf"],
+            "Description": "High Elves have a keen mind and a mastery of magic",
             "CharismaBonus": 0,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
@@ -138,6 +142,7 @@
         },
         "Wood Elf": {
             "majorRace": ["Elf"],
+            "Description": "Wood Elves have keen senses and intuition, and move quickly and stealthily through forests.",
             "CharismaBonus": 0,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
@@ -170,6 +175,7 @@
         },
         "Dark Elf": {
             "majorRace": ["Elf"],
+            "Description": "Dark Elves were banished from the surface world for following the goddess Lolth down the path to evil and corruption.",
             "CharismaBonus": 1,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
@@ -202,6 +208,7 @@
         },
         "Rock Gnome": {
             "majorRace": ["Gnome"],
+            "Description": "Rock Gnomes have a natural inventiveness and hardiness beyond that of other gnomes",
             "CharismaBonus": 0,
             "ConstitutionBonus": 1,
             "DexterityBonus": 0,
@@ -228,6 +235,7 @@
         },
         "Forest Gnome": {
             "majorRace": ["Gnome"],
+            "Description": "Forset Gnomes have a natural knack for illusion and inherent quickness and stealth",
             "CharismaBonus": 0,
             "ConstitutionBonus": 0,
             "DexterityBonus": 1,
@@ -251,6 +259,7 @@
         },
         "Half-Elf": {
             "majorRace": ["Elf", "Human"],
+            "Description": "Half Elves combine what some say are the best qualities of their Elf and Human parents",
             "CharismaBonus": 2,
             "ConstitutionBonus": 0,
             "DexterityBonus": 0,
@@ -276,6 +285,7 @@
         },
         "Half-Orc": {
             "majorRace": ["Half-Orc"],
+            "Description": "Half-orcs are not evil by nature, but evil does lurk within them, whether they embrace it or rebel against it.",
             "CharismaBonus": 0,
             "ConstitutionBonus": 1,
             "DexterityBonus": 0,
@@ -301,6 +311,7 @@
         },
         "Lightfoot Halfling": {
             "majorRace": ["Halfling"],
+            "Description": "Lightfoot Halflings can easily hide from notice, even using other people as cover",
             "CharismaBonus": 1,
             "ConstitutionBonus": 0,
             "DexterityBonus": 2,
@@ -324,6 +335,7 @@
         },
         "Stout Halfling": {
             "majorRace": ["Halfling"],
+            "Description": "Stout Halflings are hardier than average and have some resistance to poison.",
             "CharismaBonus": 0,
             "ConstitutionBonus": 1,
             "DexterityBonus": 2,
@@ -347,6 +359,7 @@
         },
         "Human": {
             "majorRace": ["Human"],
+            "Description": "Humans are the most adaptable and ambitious people among the common races.",
             "CharismaBonus": 1,
             "ConstitutionBonus": 1,
             "DexterityBonus": 1,
@@ -366,6 +379,7 @@
         },
         "Tiefling": {
             "majorRace": ["Tiefling"],
+            "Description": "Tieflings were once humans, who had the essence of Asmodeus infused into their bloodline",
             "CharismaBonus": 2,
             "ConstitutionBonus": 0,
             "DexterityBonus": 0,
@@ -396,6 +410,7 @@
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
             "WisdomPriority": 4,
+            "Description": "Barbarians come alive in the chaos of combat.",
             "Hit Die": "D12",
             "Proficiencies": {
                 "Armor": [
@@ -434,6 +449,7 @@
             "IntelligencePriority": 3,
             "StrengthPriority": 5,
             "WisdomPriority": 2,
+            "Description": "Bard weave magic through words and music.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -477,6 +493,7 @@
             "IntelligencePriority": 4,
             "StrengthPriority": 1,
             "WisdomPriority": 0,
+            "Description": "Clerics are intermediaries between the mortal world and the distant planes of the gods",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -516,6 +533,7 @@
             "IntelligencePriority": 2,
             "StrengthPriority": 4,
             "WisdomPriority": 0,
+            "Description": "Druids are an embodiment of nature's resilience, cunning, and fury.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -567,6 +585,7 @@
             "StrengthPriority": 0,
             "WisdomPriority": 3,
             "Hit Die": "D10",
+            "Description": "Fighters have an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat.",
             "Proficiencies": {
                 "Armor": [
                     "All armor",
@@ -603,6 +622,7 @@
             "IntelligencePriority": 3,
             "StrengthPriority": 2,
             "WisdomPriority": 1,
+            "Description": "Monks have the abilily to magically harness the ki energy within themselves",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Weapons": [
@@ -638,6 +658,7 @@
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
             "WisdomPriority": 2,
+            "Description": "Paladins swear to uphold justice and righteousness, and stand against the forces of evil.",
             "Hit Die": "D10",
             "Proficiencies": {
                 "Armor": [
@@ -676,6 +697,7 @@
             "IntelligencePriority": 4,
             "StrengthPriority": 2,
             "WisdomPriority": 1,
+            "Description": "Rangers specialize in hunting the monsters that threaten the edges of civilization.",
             "Hit Die": "D10",
             "Proficiencies": {
                 "Armor": [
@@ -715,6 +737,7 @@
             "IntelligencePriority": 2,
             "StrengthPriority": 3,
             "WisdomPriority": 4,
+            "Description": "Rogues rely on skill, stealth, and their foes' vulnerabilities to gain the upper hand",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -760,6 +783,7 @@
             "IntelligencePriority": 2,
             "StrengthPriority": 5,
             "WisdomPriority": 3,
+            "Description": "No one chooses sorcery; the power chooses the sorcerer.",
             "Hit Die": "D6",
             "Proficiencies": {
                 "Weapons": [
@@ -796,6 +820,7 @@
             "IntelligencePriority": 3,
             "StrengthPriority": 5,
             "WisdomPriority": 2,
+            "Description": "Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -831,6 +856,7 @@
             "IntelligencePriority": 0,
             "StrengthPriority": 5,
             "WisdomPriority": 2,
+            "Description": "Wizards are supreme magic-users, who study the arcane arts.",
             "Hit Die": "D6",
             "Proficiencies": {
                 "Weapons": [
@@ -862,6 +888,7 @@
     },
     "BackgroundStats": {
         "Acolyte": {
+            "Description": "You have spent your life in the service of a temple to a specific god or pantheon of gods.",
             "Proficiencies": {
                 "Skills": [
                     "Insight",
@@ -882,6 +909,7 @@
             "Feature": "Shelter of the Faithful"
         },
         "Charlatan": {
+            "Description": "You can read people like an open book, and use this to your advantage.",
             "Proficiencies": {
                 "Skills": [
                     "Deception",
@@ -903,6 +931,7 @@
             "Feature": "False Identity"
         },
         "Criminal": {
+            "Description": "You are an experienced criminal wilh a history of breaking the law",
             "Proficiencies": {
                 "Skills": [
                     "Deception",
@@ -923,6 +952,7 @@
             "Feature": "Criminal Contact"
         },
         "Entertainer": {
+            "Description": "You thrive in front of an audience, and your art is your life.",
             "Proficiencies": {
                 "Skills": [
                     "Acrobatics",
@@ -944,6 +974,7 @@
             "Feature": "By Popular Demand"
         },
         "Folk Hero": {
+            "Description": "You come from a humble social rank, but you are destined for so much more.",
             "Proficiencies": {
                 "Skills": [
                     "Animal Handling",
@@ -966,6 +997,7 @@
             "Feature": "Rustic Hospitality"
         },
         "Guild Artisan": {
+            "Description": "You are a member of an artisan's guild, skilled in a particular field.",
             "Proficiencies": {
                 "Skills": [
                     "Insight",
@@ -987,6 +1019,7 @@
             "Feature": "Guild Membership"
         },
         "Hermit": {
+            "Description": "You lived in seclusion for a formative part of your life.",
             "Proficiencies": {
                 "Skills": [
                     "Medicine",
@@ -1009,6 +1042,7 @@
             "Feature": "Discovery"
         },
         "Noble": {
+            "Description": "You understand wealth, power, and privilege, and carry a noble title.",
             "Proficiencies": {
                 "Skills": [
                     "History",
@@ -1030,6 +1064,7 @@
             "Feature": "Position of Privilege"
         },
         "Outlander": {
+            "Description": "You grew up in lhe wilds, far from civilization and the comforts of town and technology.",
             "Proficiencies": {
                 "Skills": [
                     "Athletics",
@@ -1052,6 +1087,7 @@
             "Feature": "Wanderer"
         },
         "Sage": {
+            "Description": "You spent years learning the lore of the multiverse, and mastered your field of study.",
             "Proficiencies": {
                 "Skills": [
                     "Arcana",
@@ -1072,6 +1108,7 @@
             "Feature": "Researcher"
         },
         "Sailor": {
+            "Description": "You sailed on a seagoing vessel for years, facing down storms, monsters, and enemies.",
             "Proficiencies": {
                 "Skills": [
                     "Athletics",
@@ -1094,6 +1131,7 @@
             "Feature": "Ships Passage"
         },
         "Soldier": {
+            "Description": "War has been your life for as long as you care to remember.",
             "Proficiencies": {
                 "Skills": [
                     "Athletics",
@@ -1116,6 +1154,7 @@
             "Feature": "Military rank"
         },
         "Urchin": {
+            "Description": "You grew up on the streets alone, orphaned, and poor.",
             "Proficiencies": {
                 "Skills": [
                     "Sleight of hand",

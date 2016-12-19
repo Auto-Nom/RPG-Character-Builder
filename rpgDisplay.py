@@ -288,12 +288,13 @@ class NewCharW(QWidget):
 
         # Name Selection
         self.nameLabel = QLabel('What do you want to be named?')
-        self.hello = QLabel('Hello')
         self.nameEdit = QLineEdit()
         self.nameEdit.setFixedWidth(100)
         self.nameEdit.textChanged[str].connect(self.onChanged)
         self.nameRand = QPushButton("Random")
         self.nameRand.clicked.connect(self.randomName)
+        self.name = self.nameEdit.text()
+        self.hello = QLabel('Hello')
 
         grid.addWidget(self.nameLabel, 0, 0)
         grid.addWidget(self.nameEdit, 0, 1)
@@ -302,7 +303,6 @@ class NewCharW(QWidget):
 
         # Race Selection
         self.racePrompt = QLabel("Choose your race:")
-        self.raceLabel = QLabel("Race")
         self.raceSel = QComboBox(self)
 
         for i in rs.Races:
@@ -311,6 +311,9 @@ class NewCharW(QWidget):
         self.raceSel.currentIndexChanged[str].connect(self.SelActivated)
         self.raceRand = QPushButton("Random")
         self.raceRand.clicked.connect(self.randomRace)
+        self.race = self.raceSel.currentText()
+        self.raceLabel = QLabel(rs.RaceStats[self.race]["Description"])
+        self.raceLabel.setWordWrap(True)
 
         grid.addWidget(self.racePrompt, 1, 0)
         grid.addWidget(self.raceSel, 1, 1)
@@ -319,7 +322,6 @@ class NewCharW(QWidget):
 
         # Role Selection
         self.rolePrompt = QLabel("Choose your class:")
-        self.roleLabel = QLabel("Class")
         self.roleSel = QComboBox(self)
 
         for i in rs.Roles:
@@ -328,6 +330,9 @@ class NewCharW(QWidget):
         self.roleSel.currentIndexChanged[str].connect(self.SelActivated)
         self.roleRand = QPushButton("Random")
         self.roleRand.clicked.connect(self.randomRole)
+        self.role = self.roleSel.currentText()
+        self.roleLabel = QLabel(rs.RoleStats[self.role]["Description"])
+        self.roleLabel.setWordWrap(True)
 
         grid.addWidget(self.rolePrompt, 2, 0)
         grid.addWidget(self.roleSel, 2, 1)
@@ -336,7 +341,6 @@ class NewCharW(QWidget):
 
         # Background Selection
         self.bgPrompt = QLabel("Choose your background:")
-        self.bgLabel = QLabel("Background")
         self.bgSel = QComboBox(self)
 
         for i in rs.Backgrounds:
@@ -345,6 +349,9 @@ class NewCharW(QWidget):
         self.bgSel.currentIndexChanged[str].connect(self.SelActivated)
         self.bgRand = QPushButton("Random")
         self.bgRand.clicked.connect(self.randomBackground)
+        self.background = self.bgSel.currentText()
+        self.bgLabel = QLabel(rs.BackgroundStats[self.background]["Description"])
+        self.bgLabel.setWordWrap(True)
 
         grid.addWidget(self.bgPrompt, 3, 0)
         grid.addWidget(self.bgSel, 3, 1)
@@ -354,14 +361,10 @@ class NewCharW(QWidget):
         # Submit button
         self.submitBtn = QPushButton("Next")
         self.submitBtn.clicked.connect(self.submitChar)
-        grid.addWidget(self.submitBtn, 4, 4)
+        grid.setRowMinimumHeight(4, 100)
+        grid.addWidget(self.submitBtn, 5, 3)
 
         self.setLayout(grid)
-
-        self.name = self.nameEdit.text()
-        self.race = self.raceSel.currentText()
-        self.role = self.roleSel.currentText()
-        self.background = self.bgSel.currentText()
 
     def SelActivated(self, text):
         """ Update to the chosen race or role when selected."""
@@ -369,17 +372,17 @@ class NewCharW(QWidget):
         sender = self.sender()
 
         if sender == self.raceSel:
-            self.raceLabel.setText("Race Description")
+            self.raceLabel.setText(rs.RaceStats[self.race]["Description"])
             self.raceLabel.adjustSize()
             self.race = text
 
         elif sender == self.roleSel:
-            self.roleLabel.setText("Class Description")
+            self.roleLabel.setText(rs.RoleStats[self.role]["Description"])
             self.roleLabel.adjustSize()
             self.role = text
 
         elif sender == self.bgSel:
-            self.bgLabel.setText("Background Description")
+            self.bgLabel.setText(rs.BackgroundStats[self.background]["Description"])
             self.bgLabel.adjustSize()
             self.background = text
 
@@ -859,6 +862,10 @@ class CharDisplayW(QWidget):
         self.parent = parent
 
         self.aDict = {}
+        self.profDict = {}
+        self.langDict = {}
+        self.equipDict = {}
+        self.ruleDict = {}
 
         self.initUI()
 
@@ -871,25 +878,25 @@ class CharDisplayW(QWidget):
         self.grid.setSpacing(10)
 
         # Name label
-        self.nameLbl = QLabel("Name:")
+        self.nameLbl = QLabel("<b>Name:</b>")
         self.cName = QLabel(self.char.getName())
         self.grid.addWidget(self.nameLbl, 0, 0)
         self.grid.addWidget(self.cName, 0, 1)
 
         # Race label
-        self.raceLbl = QLabel("Race:")
+        self.raceLbl = QLabel("<b>Race:</b>")
         self.cRace = QLabel(self.char.getRace())
         self.grid.addWidget(self.raceLbl, 1, 0)
         self.grid.addWidget(self.cRace, 1, 1)
 
         # Role label
-        self.roleLbl = QLabel("Class:")
+        self.roleLbl = QLabel("<b>Class:</b>")
         self.cRole = QLabel(self.char.getRole())
         self.grid.addWidget(self.roleLbl, 2, 0)
         self.grid.addWidget(self.cRole, 2, 1)
 
         # Background Label
-        self.bgLbl = QLabel("Background:")
+        self.bgLbl = QLabel("<b>Background:</b>")
         self.cBG = QLabel(self.char.getBackground())
         self.grid.addWidget(self.bgLbl, 3, 0)
         self.grid.addWidget(self.cBG, 3, 1)
@@ -917,6 +924,9 @@ class CharDisplayW(QWidget):
         self.grid.addWidget(self.profBLbl, 8, 0)
         self.grid.addWidget(self.cProfB, 8, 1)
 
+        self.grid.setColumnMinimumWidth(1, 100)
+        self.grid.setColumnMinimumWidth(3, 30)
+
         # Space
 #        self.grid.setColumnMinimumWidth(1, 100)
 
@@ -942,8 +952,10 @@ class CharDisplayW(QWidget):
 
         self.rules = self.char.getSpecialRules()
         for i in self.rules:
-            self.grid.addWidget(QLabel(str(i)), j, 4)
-            self.grid.addWidget(QLabel(rs.textParse(str(self.rules[i]))), j, 5)
+            self.ruleDict[i] = (QLabel(str(i)), QLabel(rs.textParse(str(self.rules[i]))))
+            self.ruleDict[i][1].setWordWrap(True)
+            self.grid.addWidget(self.ruleDict[i][0], j, 4)
+            self.grid.addWidget(self.ruleDict[i][1], j, 5)
             j += 1
 
         # Equipment
@@ -953,7 +965,9 @@ class CharDisplayW(QWidget):
 
         self.equipment = self.char.getEquipment()
         for i in self.equipment:
-            self.grid.addWidget(QLabel(rs.textParse(i)), j, 5)
+            self.equipDict[i] = QLabel(rs.textParse(i))
+            self.equipDict[i].setWordWrap(True)
+            self.grid.addWidget(self.equipDict[i], j, 5)
             j += 1
 
         # Languages
@@ -964,7 +978,9 @@ class CharDisplayW(QWidget):
 
         self.languages = self.char.getLanguages()
         for i in self.languages:
-            self.grid.addWidget(QLabel(rs.textParse(i)), j, 5)
+            self.langDict[i] = QLabel(rs.textParse(i))
+            self.langDict[i].setWordWrap(True)
+            self.grid.addWidget(self.langDict[i], j, 5)
             j += 1
 
         # Proficiencies
@@ -974,8 +990,10 @@ class CharDisplayW(QWidget):
 
         self.proficiencies = self.char.getProficiencies()
         for i in self.proficiencies:
-            self.grid.addWidget(QLabel(str(i)), j, 4)
-            self.grid.addWidget(QLabel(rs.textParse(str(self.proficiencies[i]))), j, 5)
+            self.profDict[i] = (QLabel(str(i)), QLabel(rs.textParse(str(self.proficiencies[i]))))
+            self.profDict[i][1].setWordWrap(True)
+            self.grid.addWidget(self.profDict[i][0], j, 4)
+            self.grid.addWidget(self.profDict[i][1], j, 5)
             j += 1
 
         # Button for editing the character
@@ -1135,12 +1153,13 @@ class CharEditW(QWidget):
         # Add the widgets for editing attributes
         for i in range(len(rs.Attributes)):
             self.sDict[i] = (AttributeEdit(str(rs.Attributes[i]), self))
-            self.grid.addWidget(self.sDict[i], i, 2)
+            self.grid.addWidget(self.sDict[i], i, 2, 1, 2)
 
         # Edit hitpoints
         self.hpLbl = QLabel("Hitpoints:")
         self.cHP = QLineEdit(str(self.char.getHitpoints()))
         self.cHP.setValidator(self.validator)
+        self.cHP.setMaximumWidth(30)
         self.grid.addWidget(self.hpLbl, i+1, 2)
         self.grid.addWidget(self.cHP, i+1, 3)
 
@@ -1154,22 +1173,26 @@ class CharEditW(QWidget):
         self.grid.addWidget(self.raceRuleLbl, 1, 4)
         self.raceRules = QTextEdit(str(self.rules["Race Rules"]).strip('[]'))
         self.raceRules.setAcceptRichText(False)
-        self.grid.addWidget(self.raceRules, 1, 5)
+        self.raceRules.setFixedHeight(60)
+        self.grid.addWidget(self.raceRules, 1, 5, 2, 1)
 
         self.roleRuleLbl = QLabel("Role Rules:")
         self.grid.addWidget(self.roleRuleLbl, 2, 4)
         self.roleRules = QTextEdit(str(self.rules["Role Rules"]).strip('[]'))
-        self.grid.addWidget(self.roleRules, 2, 5)
+        self.roleRules.setFixedHeight(60)
+        self.grid.addWidget(self.roleRules, 2, 5, 2, 1)
 
         self.bgRuleLbl = QLabel("Background Feature:")
         self.grid.addWidget(self.bgRuleLbl, 3, 4)
         self.bgRules = QTextEdit(str(self.rules["Background Feature"]))
-        self.grid.addWidget(self.bgRules, 3, 5)
+        self.bgRules.setFixedHeight(60)
+        self.grid.addWidget(self.bgRules, 3, 5, 2, 1)
 
         self.otherRuleLbl = QLabel("Other:")
         self.grid.addWidget(self.otherRuleLbl, 4, 4)
         self.otherRules = QTextEdit(str(self.rules["Other"]).strip('[]'))
-        self.grid.addWidget(self.otherRules, 4, 5)
+        self.otherRules.setFixedHeight(60)
+        self.grid.addWidget(self.otherRules, 4, 5, 2, 1)
 
         # Edit Equipment
         self.equipLbl = QLabel("<b>Equipment</b>")
@@ -1177,7 +1200,8 @@ class CharEditW(QWidget):
 
         self.equipment = self.char.getEquipment()
         self.equipList = QTextEdit(str(self.equipment).strip('[]'))
-        self.grid.addWidget(self.equipList, 5, 5)
+        self.equipList.setFixedHeight(60)
+        self.grid.addWidget(self.equipList, 5, 5, 2, 1)
 
         # Edit Languages
         self.langLbl = QLabel("<b>Languages</b>")
@@ -1185,7 +1209,8 @@ class CharEditW(QWidget):
 
         self.languages = self.char.getLanguages()
         self.langList = QTextEdit(str(self.languages).strip('[]'))
-        self.grid.addWidget(self.langList, 6, 5)
+        self.langList.setFixedHeight(60)
+        self.grid.addWidget(self.langList, 6, 5, 2, 1)
 
         # Edit Proficiencies
         self.profLbl = QLabel("<b>Proficiencies</b>")
@@ -1199,10 +1224,13 @@ class CharEditW(QWidget):
         for i in rs.rpgData["Proficiency Types"]:
             self.profDict[i] = [QLabel(str(i)), QTextEdit(str(
                                                     self.proficiencies[i]).strip('[]'))]
-
+            self.profDict[i][1].setFixedHeight(60)
             self.grid.addWidget(self.profDict[i][0], j, 4)
-            self.grid.addWidget(self.profDict[i][1], j, 5)
+            self.grid.addWidget(self.profDict[i][1], j, 5, 2, 1)
             j += 1
+
+        for i in range(j+1):
+            self.grid.setRowMinimumHeight(i, 70)
 
         # Button to go back to the display screen
         self.backBtn = QPushButton("Go Back")
@@ -1347,7 +1375,7 @@ class DiceRollW(QWidget):
 
         self.resultLbl = QLabel(" ")
         self.resultLbl.setFont(QFont("serif", 12))
-        self.grid.addWidget(self.resultLbl, 1, 0)
+        self.grid.addWidget(self.resultLbl, 1, 0, 1, 5)
 
         self.clearBtn = QPushButton("Reset")
         self.clearBtn.clicked.connect(self.reset)
@@ -1384,14 +1412,14 @@ class DiceRollW(QWidget):
 
     def d20Roll(self):
         roll = random.randint(1, 20)
+        self.total = 0
+        self.topLbl.setText("You rolled: ")
         if roll == 20:
-            self.topLbl.setText("CRITICAL SUCCESS!")
+            self.resultLbl.setText(str(roll) + " CRITICAL SUCCESS!")
         elif roll == 1:
-            self.topLbl.setText("CRITICAL FAILURE!")
+            self.resultLbl.setText(str(roll) + " CRITICAL FAILURE!")
         else:
-            self.topLbl.setText("You rolled: ")
-
-        self.resultLbl.setText(str(roll))
+            self.resultLbl.setText(str(roll))
 
     def reset(self):
         self.total = 0
