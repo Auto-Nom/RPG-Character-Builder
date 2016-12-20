@@ -50,6 +50,7 @@ try:
     Races = rpgData["Races"]
     Roles = rpgData["Roles"]
     Backgrounds = rpgData["Backgrounds"]
+    Skills = rpgData["Skills"]
 except KeyError as err:
     print("DATA/rpgDATA.json is missing a", str(err), "section")
     raise
@@ -101,7 +102,8 @@ class Character(object):
         for i in RoleStats[role]["Proficiencies"]:
             self.proficiencies[i] += RoleStats[role]["Proficiencies"][i]
 
-        self.specialRules["Role Rules"] = RoleStats[role]["Special Rules"]
+        self.specialRules["Role Rules"] = RoleStats[role]["Levels"]["1"]["Special Rules"]
+        self.specialRules["Role Abilities"] = RoleStats[role]["Levels"]["1"]["Other"]
         for i in RoleStats[role]["Equipment"]:
             self.equipment.append(i)
         self.hitDie = RoleStats[role]["Hit Die"]
@@ -118,16 +120,21 @@ class Character(object):
         self.specialRules["Background Feature"] = BackgroundStats[background][
                                                                     "Feature"]
 
-        self.lvl = 1
-        self.xp = 0
-        self.proficiencyBonus = 2
-
-        self.hitpoints = 0
-
         self.attribDict = {}
 
         for i in Attributes:
             self.attribDict[i] = 0
+
+        self.modDict = {}
+        self.skillDict = {}
+        self.set_mods()
+
+        self.lvl = 1
+        self.xp = 0
+        self.proficiencyBonus = RoleStats[role]["Levels"][str(self.lvl)]["Proficiency Bonus"]
+
+        self.AC = 10 + self.modDict["Dexterity_mod"]
+        self.hitpoints = 0
 
         self.scorelist = []
 
@@ -140,6 +147,26 @@ class Character(object):
         """
         modifier = (stat - 10) // 2
         return modifier
+
+    def set_mods(self):
+        """ Sets all the ability modifiers."""
+        for i in self.attribDict:
+            mod = i + "_mod"
+            self.modDict[mod] = self.calc_mod(self.attribDict[i])
+
+        for i in Skills:
+            self.skillDict[i] = self.modDict[Skills[i]]
+
+    def level_up(self):
+        """ Levels up the character!"""
+        self.lvl += 1
+        self.set_mods()
+        self.hitpoints += (dice(int(self.hitDie[1:])) +
+                           int(self.modDict["Constitution_mod"]))
+        self.AC = 10 + self.modDict["Dexterity_mod"]
+        self.specialRules["Role Rules"] += RoleStats[self.role]["Levels"][str(self.lvl)]["Special Rules"]
+        self.specialRules["Role Abilities"] = RoleStats[self.role]["Levels"][str(self.lvl)]["Other"]
+        self.proficiencyBonus = RoleStats[self.role]["Levels"][str(self.lvl)]["Proficiency Bonus"]
 
     # Get attributes
     def getName(self):
@@ -163,6 +190,12 @@ class Character(object):
 
     def getAttribDict(self):
         return self.attribDict.copy()
+
+    def getModDict(self):
+        return self.modDict.copy()
+
+    def getSkillDict(self):
+        return self.skillDict.copy()
 
     def getSpecialRules(self):
         return self.specialRules.copy()
@@ -197,6 +230,9 @@ class Character(object):
     def getHitpoints(self):
         return self.hitpoints
 
+    def getAC(self):
+        return self.AC
+
     def getScorelist(self):
         return self.scorelist.copy()
 
@@ -218,6 +254,12 @@ class Character(object):
 
     def setAttribDict(self, X):
         self.attribDict = X
+
+    def setModDict(self, X):
+        self.modDict = X
+
+    def setSkillDict(self, X):
+        self.skillDict = X
 
     def setSize(self, X):
         self.size = X
@@ -269,6 +311,9 @@ class Character(object):
     def setHitpoints(self, X):
         self.hitpoints = X
 
+    def setAC(self, X):
+        self.AC = X
+
     def setScorelist(self, X):
         """ X is a list of integers."""
         self.scorelist = X
@@ -290,6 +335,7 @@ class Character(object):
                     "Speed": self.getSpeed(),
                     "Level": self.getLevel(),
                     "XP": self.getXP(),
+                    "AC": self.getAC(),
                     "Proficiency Bonus": self.getProficiencyBonus()
                     }
 
@@ -354,6 +400,7 @@ def load_char(filename):
                           charDict["Background"])
 
     savedChar.setAttribDict(charDict["Attributes"]),
+    savedChar.set_mods()
     savedChar.setHitpoints(charDict["Hitpoints"]),
     savedChar.setSpecialRules(charDict["SpecialRules"]),
     savedChar.setEquipment(charDict["Equipment"]),
@@ -363,6 +410,7 @@ def load_char(filename):
     savedChar.setSpeed(charDict["Speed"]),
     savedChar.setLevel(charDict["Level"]),
     savedChar.setXP(charDict["XP"]),
+    savedChar.setAC(charDict["AC"])
     savedChar.setProficiencyBonus(charDict["Proficiency Bonus"])
 
     print("Character", str(savedChar.getName()), "sucessfully loaded")
@@ -697,6 +745,7 @@ def modifier_assign(player):
         return False
 
     player.setHitpoints(hp)
+    player.set_mods()
 
 
 def auto_assign(player):
@@ -799,7 +848,7 @@ def textParse(text):
 
     textCpy = ""
     for i in range(len(text)):
-        if text[i] == "[" or text[i] == "]":
+        if text[i] == "[" or text[i] == "]" or text[i] == "{" or text[i] == "}":
             pass
         elif text[i] == "'":
             if i < (len(text) - 1) and i > 0:

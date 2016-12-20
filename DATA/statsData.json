@@ -410,7 +410,7 @@
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
             "WisdomPriority": 4,
-            "Description": "Barbarians come alive in the chaos of combat.",
+            "Description": "A fierce warrior of primitive background who can enter a battle rage.",
             "Hit Die": "D12",
             "Proficiencies": {
                 "Armor": [
@@ -436,10 +436,220 @@
                 "An expiorer's pack",
                 "four javelins"
             ],
-            "Special Rules": [
-                "Rage",
-                "Unarmored Defense"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Rage",
+                        "Unarmored Defense"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Rages": "2",
+                        "Rage Damage": "+2"
+                    }
+                }, 
+                "2": {
+                    "Special Rules": [
+                        "Reckless Attack",
+                        "Danger Sense"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Rages": "2",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Primal Path"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Rages": "3",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability score improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Rages": "3",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Extra Attack",
+                        "Fast Movement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Rages": "3",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Path Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Feral Instinct"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+2"
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "1 die"
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Path Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "1 die"
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Relentless Rage"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Rages": "4",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "1 die"
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Rages": "5",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "1 die"
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Rages": "5",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "2 dice"
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Path Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Rages": "5",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "2 dice"
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Persistant Rage"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Rages": "5",
+                        "Rage Damage": "+3",
+                        "Brutal Critical": "2 dice"
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Rages": "5",
+                        "Rage Damage": "+4",
+                        "Brutal Critical": "2 dice"
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Rages": "6",
+                        "Rage Damage": "+4",
+                        "Brutal Critical": "3 dice"
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Indomitable Might"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Rages": "6",
+                        "Rage Damage": "+4",
+                        "Brutal Critical": "3 dice"
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Rages": "6",
+                        "Rage Damage": "+4",
+                        "Brutal Critical": "3 dice"
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Primal Champion"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Rages": "Unlimited",
+                        "Rage Damage": "+4",
+                        "Brutal Critical": "3 dice"
+                    }
+                }
+            }
         },
         "Bard": {
             "CharismaPriority": 0,
@@ -480,10 +690,393 @@
                 "Leather armor",
                 "Dagger"
             ],
-            "Special Rules": [
-                "Spellcasting",
-                "Bardic Inspiration"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Spellcasting"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Bardic Inspiration": "d6",
+                        "Cantrips Known": 2,
+                        "Spells Knowm": 4,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Jack of All Trades"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Bardic Inspiration": "d6",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 2,
+                        "Spells Known": 5,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Bard College",
+                        "Expertise"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Bardic Inspiration": "d6",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 2,
+                        "Spells Known": 6,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Bardic Inspiration": "d6",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 3,
+                        "Spells Known": 7,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Font of Inspiration"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 3,
+                        "Spells Known": 8,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Countercharm",
+                        "Bard College Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 3,
+                        "Spells Known": 9,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 3,
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d6",
+                        "Cantrips Known": 3,
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d8",
+                        "Cantrips Known": 3,
+                        "Spells Known": 12,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Expertise",
+                        "Magical Secrets"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d8",
+                        "Cantrips Known": 4,
+                        "Spells Known": 14,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d8",
+                        "Cantrips Known": 4,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d8",
+                        "Cantrips Known": 4,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d10",
+                        "Cantrips Known": 4,
+                        "Spells Known": 16,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Magical Secrets",
+                        "Bard College Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Bardic Inspiration": "d8",
+                        "Song of Rest": "d10",
+                        "Cantrips Known": 4,
+                        "Spells Known": 18,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d10",
+                        "Cantrips Known": 4,
+                        "Spells Known": 19,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d10",
+                        "Cantrips Known": 4,
+                        "Spells Known": 19,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d12",
+                        "Cantrips Known": 4,
+                        "Spells Known": 20,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Magical Secrets"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d12",
+                        "Cantrips Known": 4,
+                        "Spells Known": 22,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d12",
+                        "Cantrips Known": 4,
+                        "Spells Known": 22,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Superior Inspiration"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Bardic Inspiration": "d12",
+                        "Song of Rest": "d12",
+                        "Cantrips Known": 4,
+                        "Spells Known": 22,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 3,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                }
+            }
         },
         "Cleric": {
             "CharismaPriority": 3,
@@ -493,7 +1086,7 @@
             "IntelligencePriority": 4,
             "StrengthPriority": 1,
             "WisdomPriority": 0,
-            "Description": "Clerics are intermediaries between the mortal world and the distant planes of the gods",
+            "Description": "A priestly champion who wields divine magic in service of a higher power.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -513,17 +1106,371 @@
                 ]
             },
             "Equipment": [
-            "(a) a mace or (b) a warhammer (if proficient)",
-            "(a) scale mail, (b) leather armor, or (c) chain mail (if proficient)",
-            "(a) a light crossbow and 20 bolts or (b) any simple weapon",
-            "(a) a priest's pack or (b) an explorer's pack",
-            "A shield",
-            "a holy symbol"
+                "(a) a mace or (b) a warhammer (if proficient)",
+                "(a) scale mail, (b) leather armor, or (c) chain mail (if proficient)",
+                "(a) a light crossbow and 20 bolts or (b) any simple weapon",
+                "(a) a priest's pack or (b) an explorer's pack",
+                "A shield",
+                "a holy symbol"
             ],
-            "Special Rules": [
-            "Spellcasting",
-            "Divine Domain"
-            ]            
+            "Levels": {
+            "1": {
+                    "Special Rules": [
+                        "Spellcasting",
+                        "Divine Domain"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Divine Domain Feature"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Channel Divinity": "1/rest",
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Channel Divinity": "1/rest",
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Channel Divinity": "1/rest",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Channel Divinity": "1/rest",
+                        "Destroy Undead": "CR 1/2",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Divine Domain Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 1/2",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 1/2",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement",
+                        "Divine Domain Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 1",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 1",
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Divine Intervention"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 1",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 2",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 2",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 2",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 3",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 3",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 3",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                        "Divine Domain Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Channel Divinity": "2/rest",
+                        "Destroy Undead": "CR 4",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Channel Divinity": "3/rest",
+                        "Destroy Undead": "CR 4",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Channel Divinity": "3/rest",
+                        "Destroy Undead": "CR 4",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Divine Intervention Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Channel Divinity": "3/rest",
+                        "Destroy Undead": "CR 4",
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 2,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                }
+            }           
         },
         "Druid": {
             "CharismaPriority": 5,
@@ -533,7 +1480,7 @@
             "IntelligencePriority": 2,
             "StrengthPriority": 4,
             "WisdomPriority": 0,
-            "Description": "Druids are an embodiment of nature's resilience, cunning, and fury.",
+            "Description": "A priest of the Old Faith, wielding the powers of nature and adopting animal forms.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -571,10 +1518,333 @@
                 "explorer's pack",
                 "druidic focus"
             ],
-            "Special Rules": [
-                "Druidic",
-                "Spellcasting"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Druidic",
+                        "Spellcasting"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 2,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Wild Shape",
+                        "Druid Circle"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 2,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 2,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Wild Shape Improvement",
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Druid Circle Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Wild Shape Improvement",
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Druid Circle Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Druid Circle Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Timeless Body",
+                        "Beast Spells"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Archdruid"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 2,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                }
+            }
         },
         "Fighter": {
             "CharismaPriority": 3,
@@ -583,9 +1853,9 @@
             "HitpointsBase": 10,
             "IntelligencePriority": 5,
             "StrengthPriority": 0,
-            "WisdomPriority": 3,
+            "WisdomPriority": 4,
             "Hit Die": "D10",
-            "Description": "Fighters have an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat.",
+            "Description": "A master of martial combal, skilled with a variety of weapons and armor.",
             "Proficiencies": {
                 "Armor": [
                     "All armor",
@@ -609,10 +1879,209 @@
                 "(a) a Iight crossbow and 20 bolts or (b) two handaxes",
                 "(a) a dungeoneer's pack or (b) an explorer's pack"
             ],
-            "Special Rules": [
-                "Fighting Style",
-                "Second Wind"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Fighting Style",
+                        "Second Wind"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Action Surge": "One use"
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Martial Archetype"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Action Surge": "One use"
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Action Surge": "One use"
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Martial Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1,
+                        "Indomitable": "One use"
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Martial Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 1,
+                        "Indomitable": "One use"
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "One use"
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "One use"
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "Two uses"
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "Two uses"
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Martial Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "Two uses"
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Action Surge": "One use",
+                        "Extra Attack": 2,
+                        "Indomitable": "Two uses"
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Action Surge": "Two uses",
+                        "Extra Attack": 2,
+                        "Indomitable": "Three uses"
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Martial Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Action Surge": "Two uses",
+                        "Extra Attack": 2,
+                        "Indomitable": "Three uses"
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Action Surge": "Two uses",
+                        "Extra Attack": 2,
+                        "Indomitable": "Three uses"
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Action Surge": "Two uses",
+                        "Extra Attack": 3,
+                        "Indomitable": "Three uses"
+                    }
+                }
+            }
         },
         "Monk": {
             "CharismaPriority": 4,
@@ -622,7 +2091,7 @@
             "IntelligencePriority": 3,
             "StrengthPriority": 2,
             "WisdomPriority": 1,
-            "Description": "Monks have the abilily to magically harness the ki energy within themselves",
+            "Description": "An master of martial arts, harnessing the power of the body in pursuit of physical and spiritual perfection.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Weapons": [
@@ -645,10 +2114,230 @@
                 "(a) a dungeoneer's pack or (b) an explorer's pack",
                 "10 darts"
             ],
-            "Special Rules": [
-                "Unarmored Defense",
-                "Martial arts"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Unarmored Defense"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Martial Arts": "1d4"
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Martial Arts": "1d4",
+                        "Ki points": 2,
+                        "Unarmoured Movement": "+10 ft"
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Monastic Tradition",
+                        "Deflect Missiles"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Martial Arts": "1d4",
+                        "Ki points": 3,
+                        "Unarmoured Movement": "+10 ft"
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement",
+                        "Slow Fall"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Martial Arts": "1d4",
+                        "Ki points": 4,
+                        "Unarmoured Movement": "+10 ft"
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Extra Attack",
+                        "Stunning Strike"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 5,
+                        "Unarmoured Movement": "+10 ft"
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Monastic Tradition Feature",
+                        "Ki Empowered Strikes"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 6,
+                        "Unarmoured Movement": "+15 ft"
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Evasion",
+                        "Stillness of Mind"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 7,
+                        "Unarmoured Movement": "+15 ft"
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 8,
+                        "Unarmoured Movement": "+15 ft"
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                        "Unarmored Movement Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 9,
+                        "Unarmoured Movement": "+15 ft"
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Purity of Body"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Martial Arts": "1d6",
+                        "Ki points": 10,
+                        "Unarmoured Movement": "+20 ft"
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Monastic Tradition Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 11,
+                        "Unarmoured Movement": "+20 ft"
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 12,
+                        "Unarmoured Movement": "+20 ft"
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                        "Tongue of the Sun and Moon"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 13,
+                        "Unarmoured Movement": "+20 ft"
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Diamond Soul"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 14,
+                        "Unarmoured Movement": "+25 ft"
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Timeless Body"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 15,
+                        "Unarmoured Movement": "+25 ft"
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Martial Arts": "1d8",
+                        "Ki points": 16,
+                        "Unarmoured Movement": "+25 ft"
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                        "Monastic Tradition Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Martial Arts": "1d10",
+                        "Ki points": 17,
+                        "Unarmoured Movement": "+25 ft"
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Empty Body"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Martial Arts": "1d10",
+                        "Ki points": 18,
+                        "Unarmoured Movement": "+30 ft"
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Martial Arts": "1d10",
+                        "Ki points": 19,
+                        "Unarmoured Movement": "+30 ft"
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Perfect Self"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Martial Arts": "1d10",
+                        "Ki points": 20,
+                        "Unarmoured Movement": "+30 ft"
+                    }
+                }
+            }
         },
         "Paladin": {
             "CharismaPriority": 1,
@@ -684,10 +2373,266 @@
                 "Chain mail",
                 "a holy symbol"
             ],
-            "Special Rules": [
-                "Divine Sense",
-                "Lay on hands"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Divine Sense",
+                        "Lay on hands"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Fighting Style",
+                        "Spellcasting",
+                        "Divine Smite"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Sacred Oath",
+                        "Divine Health"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Extra Attack"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Aura of Protection"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Sacred Oath Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Aura of Courage"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Improved Divine Smite"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Cleansing Touch"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Sacred Oath Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2,
+                            "5th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Aura Improvements"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2,
+                            "5th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvements"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2,
+                            "5th": 2
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Sacred Oath Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2,
+                            "5th": 2
+                        }
+                    }
+                }
+            }
         },
         "Ranger": {
             "CharismaPriority": 5,
@@ -724,10 +2669,288 @@
                 "a longbow",
                 "a quiver of 20 arrows"
             ],
-            "Special Rules": [
-                "Favoured Enemy",
-                "Natural Explorer"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Favoured Enemy",
+                        "Natural Explorer"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Fighting Style",
+                        "Spellcasting"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spells Known": 2,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Ranger Archetype",
+                        "Primeval Awareness"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spells Known": 3,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Spells Known": 3,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Extra Attack"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spells Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Favoured Enemy Improvement",
+                        "Natural Explorer Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spells Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Ranger Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spells Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement",
+                        "Land's Stride"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Spells Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spells Known": 6,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Natural Explorer Improvement",
+                        "Hide in Plain Sight"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spells Known": 6,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Ranger Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spells Known": 7,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Spells Known": 7,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spells Known": 8,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Favoured Enemy Improvement",
+                        "Vanish"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spells Known": 8,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Ranger Archetype feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spells Known": 9,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Spells Known": 9,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Feral Senses"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Foe Slayer"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                }
+            }
         },
         "Rogue": {
             "CharismaPriority": 1,
@@ -769,11 +2992,190 @@
                 "two daggers",
                 "and thieves' tools"
             ],
-            "Special Rules": [
-                "Expertise",
-                "Sneak Attack",
-                "Thieves' Cant"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Expertise",
+                        "Sneak Attack",
+                        "Thieves' Cant"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sneak Attack": "1d6"
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Cunning Action"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sneak Attack": "1d6"
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Rougish Archetype"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sneak Attack": "2d6"
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sneak Attack": "2d6"
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                        "Uncanny Dodge"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sneak Attack": "3d6"
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Expertise"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sneak Attack": "3d6"
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                        "Evasion"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sneak Attack": "4d6"
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sneak Attack": "4d6"
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                        "Roguish Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sneak Attack": "5d6"
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sneak Attack": "5d6"
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Reliable Talent"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sneak Attack": "6d6"
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sneak Attack": "6d6"
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                        "Roguish Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sneak Attack": "7d6"
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Blindsense"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sneak Attack": "7d6"
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Slippery Mind"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sneak Attack": "8d6"
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sneak Attack": "8d6"
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                        "Roguish Archetype Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sneak Attack": "9d6"
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Elusive"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sneak Attack": "9d6"
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sneak Attack": "10d6"
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Stroke of Luck"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sneak Attack": "10d6"
+                    }
+                }
+            }
         },
         "Sorceror": {
             "CharismaPriority": 0,
@@ -783,7 +3185,7 @@
             "IntelligencePriority": 2,
             "StrengthPriority": 5,
             "WisdomPriority": 3,
-            "Description": "No one chooses sorcery; the power chooses the sorcerer.",
+            "Description": "A spellcaster who draws on inherent magic from a gift or bloodline.",
             "Hit Die": "D6",
             "Proficiencies": {
                 "Weapons": [
@@ -807,10 +3209,370 @@
                 "(a) a dungeoneer's pack or (b) an explorer's pack",
                 "Two daggers"
             ],
-            "Special Rules": [
-                "Spellcasting",
-                "Sorcerous Origin"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Spellcasting",
+                        "Sorcerous Origin"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spells Known": 2,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Font of Magic"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sorcery Points": 2,
+                        "Cantrips Known": 4,
+                        "Spells Known": 3,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Metamagic"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sorcery Points": 3,
+                        "Cantrips Known": 4,
+                        "Spells Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Sorcery Points": 4,
+                        "Cantrips Known": 5,
+                        "Spells Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sorcery Points": 5,
+                        "Cantrips Known": 5,
+                        "Spells Known": 6,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Sorcerous Origin Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sorcery Points": 6,
+                        "Cantrips Known": 5,
+                        "Spells Known": 7,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sorcery Points": 7,
+                        "Cantrips Known": 5,
+                        "Spells Known": 8,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Sorcery Points": 8,
+                        "Cantrips Known": 5,
+                        "Spells Known": 9,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sorcery Points": 9,
+                        "Cantrips Known": 5,
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Metamagic"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sorcery Points": 10,
+                        "Cantrips Known": 6,
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sorcery Points": 11,
+                        "Cantrips Known": 6,
+                        "Spells Known": 12,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Sorcery Points": 12,
+                        "Cantrips Known": 6,
+                        "Spells Known": 12,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sorcery Points": 13,
+                        "Cantrips Known": 6,
+                        "Spells Known": 13,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Sorcerous Origin Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sorcery Points": 14,
+                        "Cantrips Known": 6,
+                        "Spells Known": 13,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sorcery Points": 15,
+                        "Cantrips Known": 6,
+                        "Spells Known": 14,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Sorcery Points": 16,
+                        "Cantrips Known": 6,
+                        "Spells Known": 14,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                        "Metamagic"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sorcery Points": 17,
+                        "Cantrips Known": 6,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Sorcerous Origin Feature"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sorcery Points": 18,
+                        "Cantrips Known": 6,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sorcery Points": 19,
+                        "Cantrips Known": 6,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 3,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Sorcerous Restoration"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Sorcery Points": 20,
+                        "Cantrips Known": 6,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 3,
+                            "6th": 2,
+                            "7th": 2,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                }
+            }
         },
         "Warlock": {
             "CharismaPriority": 0,
@@ -820,7 +3582,7 @@
             "IntelligencePriority": 3,
             "StrengthPriority": 5,
             "WisdomPriority": 2,
-            "Description": "Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse.",
+            "Description": "A wielder of magic that is derived from a bargain with an extraplanar entity.",
             "Hit Die": "D8",
             "Proficiencies": {
                 "Armor": [
@@ -843,10 +3605,284 @@
                 "(a) a scholar's pack or (b) a dungeoneer's pack",
                 "Leather armor, any simple weapon, and two daggers"
             ],
-            "Special Rules": [
-                "Otherworldly Patron",
-                "Pact magic"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Otherworldly Patron",
+                        "Pact magic"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 2,
+                        "Spells Known": 2,
+                        "Spell slots": {
+                            "1st": 1
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Eldritch Invocations"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Invocations Known": 2,
+                        "Cantrips Known": 2,
+                        "Spells Known": 3,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                        "Pact Boon"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Invocations Known": 2,
+                        "Cantrips Known": 2,
+                        "Spells Known": 4,
+                        "Spell slots": {
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Invocations Known": 2,
+                        "Cantrips Known": 3,
+                        "Spells Known": 5,
+                        "Spell slots": {
+                            "2nd": 2
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Invocations Known": 3,
+                        "Cantrips Known": 3,
+                        "Spells Known": 6,
+                        "Spell slots": {
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Otherworldy Patron Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Invocations Known": 3,
+                        "Cantrips Known": 3,
+                        "Spells Known": 7,
+                        "Spell slots": {
+                            "3rd": 2
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Invocations Known": 4,
+                        "Cantrips Known": 3,
+                        "Spells Known": 8,
+                        "Spell slots": {
+                            "4th": 2
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Invocations Known": 4,
+                        "Cantrips Known": 3,
+                        "Spells Known": 9,
+                        "Spell slots": {
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Invocations Known": 5,
+                        "Cantrips Known": 3,
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "5th": 2
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Otherworldy Patron Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Invocations Known": 5,
+                        "Cantrips Known": 4,
+                        "Spells Known": 10,
+                        "Spell slots": {
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                        "Mystic Arcanum (6th level)"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Invocations Known": 5,
+                        "Cantrips Known": 4,
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Invocations Known": 6,
+                        "Cantrips Known": 4,
+                        "Spells Known": 11,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                        "Mystic Arcanum (7th level)"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Invocations Known": 6,
+                        "Cantrips Known": 4,
+                        "Spells Known": 12,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Otherworldly Patron Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Invocations Known": 6,
+                        "Cantrips Known": 4,
+                        "Spells Known": 12,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                        "Mystic Arcanum (8th level)"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Invocations Known": 7,
+                        "Cantrips Known": 4,
+                        "Spells Known": 13,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Invocations Known": 7,
+                        "Cantrips Known": 4,
+                        "Spells Known": 13,
+                        "Spell slots": {
+                            "5th": 3
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                        "Mystic Arcanum (9th level)"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Invocations Known": 7,
+                        "Cantrips Known": 4,
+                        "Spells Known": 14,
+                        "Spell slots": {
+                            "5th": 4
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Invocations Known": 8,
+                        "Cantrips Known": 4,
+                        "Spells Known": 14,
+                        "Spell slots": {
+                            "5th": 4
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Invocations Known": 8,
+                        "Cantrips Known": 4,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "5th": 4
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Invocations Known": 8,
+                        "Cantrips Known": 4,
+                        "Spells Known": 15,
+                        "Spell slots": {
+                            "5th": 4
+                        }
+                    }
+                }
+            }
         },
         "Wizard": {
             "CharismaPriority": 4,
@@ -856,7 +3892,7 @@
             "IntelligencePriority": 0,
             "StrengthPriority": 5,
             "WisdomPriority": 2,
-            "Description": "Wizards are supreme magic-users, who study the arcane arts.",
+            "Description": "A scholarly magic-user capable of manipulating the structures of reality.",
             "Hit Die": "D6",
             "Proficiencies": {
                 "Weapons": [
@@ -880,10 +3916,329 @@
                 "(a) a scholar's pack or (b) an explorer's pack",
                 "A spellbook"
             ],
-            "Special Rules": [
-                "Spellcasting",
-                "Arcane Recovery"
-            ]
+            "Levels": {
+                "1": {
+                    "Special Rules": [
+                        "Spellcasting",
+                        "Arcane Recovery"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 2
+                        }
+                    }
+                },
+                "2": {
+                    "Special Rules": [
+                        "Arcane Tradition"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 3
+                        }
+                    }
+                },
+                "3": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 3,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 2
+                        }
+                    }
+                },
+                "4": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 2,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3
+                        }
+                    }
+                },
+                "5": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 2
+                        }
+                    }
+                },
+                "6": {
+                    "Special Rules": [
+                        "Arcane Tradition Feature"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3
+                        }
+                    }
+                },
+                "7": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 1
+                        }
+                    }
+                },
+                "8": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 3,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 2
+                        }
+                    }
+                },
+                "9": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 4,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 1
+                        }
+                    }
+                },
+                "10": {
+                    "Special Rules": [
+                        "Arcane Tradition Feature"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2
+                        }
+                    }
+                },
+                "11": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "12": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 4,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1
+                        }
+                    }
+                },
+                "13": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "14": {
+                    "Special Rules": [
+                        "Arcane Tradition Feature"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1
+                        }
+                    }
+                },
+                "15": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "16": {
+                    "Special Rules": [
+                        "Ability Score Improvement"
+                    ],
+                    "Proficiency Bonus": 5,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1
+                        }
+                    }
+                },
+                "17": {
+                    "Special Rules": [
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "18": {
+                    "Special Rules": [
+                        "Spell Mastery"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 1,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "19": {
+                    "Special Rules": [
+                        "Ability Score Increase"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 2,
+                            "7th": 1,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                },
+                "20": {
+                    "Special Rules": [
+                        "Signature Spell"
+                    ],
+                    "Proficiency Bonus": 6,
+                    "Other": {
+                        "Cantrips Known": 5,
+                        "Spell slots": {
+                            "1st": 4,
+                            "2nd": 3,
+                            "3rd": 3,
+                            "4th": 3,
+                            "5th": 2,
+                            "6th": 2,
+                            "7th": 2,
+                            "8th": 1,
+                            "9th": 1
+                        }
+                    }
+                }
+            }
         }
     },
     "BackgroundStats": {

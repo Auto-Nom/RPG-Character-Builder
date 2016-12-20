@@ -372,19 +372,19 @@ class NewCharW(QWidget):
         sender = self.sender()
 
         if sender == self.raceSel:
+            self.race = text
             self.raceLabel.setText(rs.RaceStats[self.race]["Description"])
             self.raceLabel.adjustSize()
-            self.race = text
 
         elif sender == self.roleSel:
+            self.role = text
             self.roleLabel.setText(rs.RoleStats[self.role]["Description"])
             self.roleLabel.adjustSize()
-            self.role = text
 
         elif sender == self.bgSel:
+            self.background = text
             self.bgLabel.setText(rs.BackgroundStats[self.background]["Description"])
             self.bgLabel.adjustSize()
-            self.background = text
 
     def onChanged(self, text):
         """ Update the name."""
@@ -862,6 +862,7 @@ class CharDisplayW(QWidget):
         self.parent = parent
 
         self.aDict = {}
+        self.kDict = {}
         self.profDict = {}
         self.langDict = {}
         self.equipDict = {}
@@ -924,6 +925,17 @@ class CharDisplayW(QWidget):
         self.grid.addWidget(self.profBLbl, 8, 0)
         self.grid.addWidget(self.cProfB, 8, 1)
 
+        # Label for hitpoints
+        self.hpLbl = QLabel("<b>Hitpoints:</b>")
+        self.cHP = QLabel(str(self.char.getHitpoints()))
+        self.grid.addWidget(self.hpLbl, 9, 0)
+        self.grid.addWidget(self.cHP, 9, 1)
+
+        self.acLbl = QLabel("<b>Armour Class:</b>")
+        self.cAC = QLabel(str(self.char.getAC()))
+        self.grid.addWidget(self.acLbl, 10, 0)
+        self.grid.addWidget(self.cAC, 10, 1)
+
         self.grid.setColumnMinimumWidth(1, 100)
         self.grid.setColumnMinimumWidth(3, 30)
 
@@ -931,76 +943,97 @@ class CharDisplayW(QWidget):
 #        self.grid.setColumnMinimumWidth(1, 100)
 
         self.attribs = self.char.getAttribDict()
+        self.mods = self.char.getModDict()
         i = 0
-        # Labels for all the attributes
+
+        self.attLbl = QLabel("<b>Attributes</b>")
+        self.grid.addWidget(self.attLbl, i, 2)
+        self.modLbl = QLabel("<b>Mod</b>")
+        self.grid.addWidget(self.modLbl, i, 4)
+        i += 1
+        # Labels for all the attributes and their modifiers
         for k, v in self.attribs.items():
-            self.aDict[k] = [QLabel(str(k) + ": "), QLabel(str(v))]
+            self.aDict[k] = [QLabel(str(k) + ": "), QLabel(str(v)),
+                             QLabel(str(self.mods[str(k) + "_mod"]))]
             self.grid.addWidget(self.aDict[k][0], i, 2)
             self.grid.addWidget(self.aDict[k][1], i, 3)
+            self.grid.addWidget(self.aDict[k][2], i, 4)
             i += 1
 
-        # Label for hitpoints
-        self.hpLbl = QLabel("Hitpoints:")
-        self.cHP = QLabel(str(self.char.getHitpoints()))
-        self.grid.addWidget(self.hpLbl, i+1, 2)
-        self.grid.addWidget(self.cHP, i+1, 3)
+        # Labels for all the skills
+        i += 1
+        self.skillLbl = QLabel("<b>Skills</b>")
+        self.grid.addWidget(self.skillLbl, i, 2)
+        i += 1
+
+        self.skills = self.char.getSkillDict()
+        for k, v in self.skills.items():
+            self.kDict[k] = [QLabel(str(k) + ": "), QLabel(str(v))]
+            self.grid.addWidget(self.kDict[k][0], i, 2)
+            self.grid.addWidget(self.kDict[k][1], i, 3)
+            i += 1
 
         j = 1
         # Special Rules etc.
         self.ruleLbl = QLabel("<b>Special Rules</b>")
-        self.grid.addWidget(self.ruleLbl, 0, 4)
+        self.grid.addWidget(self.ruleLbl, 0, 5)
 
         self.rules = self.char.getSpecialRules()
         for i in self.rules:
             self.ruleDict[i] = (QLabel(str(i)), QLabel(rs.textParse(str(self.rules[i]))))
             self.ruleDict[i][1].setWordWrap(True)
-            self.grid.addWidget(self.ruleDict[i][0], j, 4)
-            self.grid.addWidget(self.ruleDict[i][1], j, 5)
+            self.grid.addWidget(self.ruleDict[i][0], j, 5)
+            self.grid.addWidget(self.ruleDict[i][1], j, 6)
             j += 1
 
         # Equipment
         self.equipLbl = QLabel("<b>Equipment</b>")
-        self.grid.addWidget(self.equipLbl, j+1, 4)
+        self.grid.addWidget(self.equipLbl, j+1, 5)
         j += 2
 
         self.equipment = self.char.getEquipment()
         for i in self.equipment:
             self.equipDict[i] = QLabel(rs.textParse(i))
             self.equipDict[i].setWordWrap(True)
-            self.grid.addWidget(self.equipDict[i], j, 5)
+            self.grid.addWidget(self.equipDict[i], j, 6)
             j += 1
 
         # Languages
         self.langLbl = QLabel("<b>Languages</b>")
 #        self.langLbl.setFont()
-        self.grid.addWidget(self.langLbl, j+1, 4)
+        self.grid.addWidget(self.langLbl, j+1, 5)
         j += 2
 
         self.languages = self.char.getLanguages()
         for i in self.languages:
             self.langDict[i] = QLabel(rs.textParse(i))
             self.langDict[i].setWordWrap(True)
-            self.grid.addWidget(self.langDict[i], j, 5)
+            self.grid.addWidget(self.langDict[i], j, 6)
             j += 1
 
         # Proficiencies
         self.profLbl = QLabel("<b>Proficiencies</b>")
-        self.grid.addWidget(self.profLbl, j+1, 4)
+        self.grid.addWidget(self.profLbl, j+1, 5)
         j += 2
 
         self.proficiencies = self.char.getProficiencies()
         for i in self.proficiencies:
             self.profDict[i] = (QLabel(str(i)), QLabel(rs.textParse(str(self.proficiencies[i]))))
             self.profDict[i][1].setWordWrap(True)
-            self.grid.addWidget(self.profDict[i][0], j, 4)
-            self.grid.addWidget(self.profDict[i][1], j, 5)
+            self.grid.addWidget(self.profDict[i][0], j, 5)
+            self.grid.addWidget(self.profDict[i][1], j, 6)
             j += 1
 
         # Button for editing the character
         self.editBtn = QPushButton("Edit")
         self.editBtn.setMaximumSize(100, 30)
         self.editBtn.clicked.connect(self.editChar)
-        self.grid.addWidget(self.editBtn, 10, 0)
+        self.grid.addWidget(self.editBtn, 12, 0)
+
+        self.lvlupBtn = QPushButton("Level Up!")
+        self.lvlupBtn.setMaximumSize(100, 30)
+        self.lvlupBtn.clicked.connect(self.levelUp)
+        self.grid.addWidget(self.lvlupBtn, 13, 0)
 
         self.setLayout(self.grid)
         self.show()
@@ -1019,6 +1052,15 @@ class CharDisplayW(QWidget):
         self.parent.cew = CharEditW(self.parent)
         self.parent.layout.addWidget(self.parent.cew)
         self.parent.cew.show()
+        self.close()
+
+    def levelUp(self):
+        self.parent.rndmBtn.hide()
+        self.hide()
+        self.parent.PC.level_up()
+        self.parent.cdw = CharDisplayW(self.parent)
+        self.parent.layout.addWidget(self.parent.cdw)
+        self.parent.cdw.show()
         self.close()
 
 
@@ -1291,6 +1333,7 @@ class CharEditW(QWidget):
         self.parent.PC.setLevel(int(self.cLevel.text()))
         self.parent.PC.setXP(int(self.cXP.text()))
         self.parent.PC.setProficiencyBonus(int(self.cProfB.text()))
+        self.parent.PC.set_mods()
 
 #        rs.modifier_assign(self.parent.PC)
         self.parent.cdw = CharDisplayW(self.parent)

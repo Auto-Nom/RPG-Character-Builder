@@ -7,6 +7,26 @@
         "Wisdom",
         "Charisma"
     ],
+    "Skills": {
+        "Athletics": "Strength_mod",
+        "Acrobatics": "Dexterity_mod",
+        "Sleight of Hand": "Dexterity_mod",
+        "Stealth": "Dexterity_mod",
+        "Arcana": "Intelligence_mod",
+        "History": "Intelligence_mod",
+        "Investigation": "Intelligence_mod",
+        "Nature": "Intelligence_mod",
+        "Religion": "Intelligence_mod",
+        "Animal Handling": "Wisdom_mod",
+        "Insight": "Wisdom_mod",
+        "Medicine": "Wisdom_mod",
+        "Perception": "Wisdom_mod",
+        "Survival": "Wisdom_mod",
+        "Deception": "Charisma_mod",
+        "Intimidation": "Charisma_mod",
+        "Performance": "Charisma_mod",
+        "Persuasion": "Charisma_mod"
+    },
     "Proficiency Types": [
         "Armor",
         "Weapons",
