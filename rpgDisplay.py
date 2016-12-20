@@ -874,6 +874,7 @@ class CharDisplayW(QWidget):
 
         # The character to display
         self.char = self.parent.PC
+        self.proficiencies = self.char.getProficiencies()
 
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
@@ -968,9 +969,13 @@ class CharDisplayW(QWidget):
 
         self.skills = self.char.getSkillDict()
         for k, v in self.skills.items():
-            self.kDict[k] = [QLabel(str(k) + ": "), QLabel(str(v))]
+            self.kDict[k] = [QLabel(str(k) + ": "), QLabel(str(v)), QCheckBox("Prof")]
             self.grid.addWidget(self.kDict[k][0], i, 2)
             self.grid.addWidget(self.kDict[k][1], i, 3)
+            self.kDict[k][2].stateChanged.connect(self.isProf)
+            if k in self.proficiencies["Skills"]:
+                self.kDict[k][2].setChecked(True)
+            self.grid.addWidget(self.kDict[k][2], i, 4)
             i += 1
 
         j = 1
@@ -1016,7 +1021,6 @@ class CharDisplayW(QWidget):
         self.grid.addWidget(self.profLbl, j+1, 5)
         j += 2
 
-        self.proficiencies = self.char.getProficiencies()
         for i in self.proficiencies:
             self.profDict[i] = (QLabel(str(i)), QLabel(rs.textParse(str(self.proficiencies[i]))))
             self.profDict[i][1].setWordWrap(True)
@@ -1037,6 +1041,18 @@ class CharDisplayW(QWidget):
 
         self.setLayout(self.grid)
         self.show()
+
+    def isProf(self, state):
+        sender = self.sender()
+        for x in self.kDict:
+            if self.kDict[x][2] == sender:
+                k = x
+                val = self.kDict[x][1]
+
+        if state == Qt.Checked:
+            val.setText(str(int(val.text()) + self.char.getProficiencyBonus()))
+        else:
+            val.setText(str(self.skills[k]))
 
     def editChar(self):
         """ Edit a character's stats."""
