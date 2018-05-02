@@ -309,7 +309,7 @@ class Character(object):
             self.proficiencies[subset] = [X]
 
     def setHitpoints(self, X):
-        self.hitpoints = X
+        self.hitpoints = int(X)
 
     def setAC(self, X):
         self.AC = X
