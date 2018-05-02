@@ -2,6 +2,7 @@
 
 **This is in the very early stages and things may not work**
 
+Depends on having pyqt5 installed.
 
 At the moment this only really works for D&D 5th Edition (or a homebrewed version thereof), but I plan to make it work for any tabeletop RPG if you edit the json data files accordingly.
 
